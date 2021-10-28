@@ -1,14 +1,68 @@
 package com.tfworkers.PDSISystem.Model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class National {
-	 @Id
-	 @Column(nullable = false)
-	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	 private long id;
+import lombok.Data;
 
+@Entity
+@Data
+public class National {
+	@Id
+	@Column(nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private int noofOrganization;
+	private String location;
+	private int land;
+	private String createdDate;
+	private String updatedDate;
+	private boolean isActive;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public int getNoofOrganization() {
+		return noofOrganization;
+	}
+	public void setNoofOrganization(int noofOrganization) {
+		this.noofOrganization = noofOrganization;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public int getLand() {
+		return land;
+	}
+	public void setLand(int land) {
+		this.land = land;
+	}
+	public String getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+	public String getUpdatedDate() {
+		return updatedDate;
+	}
+	public void setUpdatedDate(String updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
+	
 }

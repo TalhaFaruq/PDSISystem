@@ -10,14 +10,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Budget {
+public class FuturePlan {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private long quantity;
-	private long budget;
+	private String description;
+	private String planType;
 	private String createdDate;
 	private String updatedDate;
 	private boolean isActive;
@@ -33,17 +33,17 @@ public class Budget {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public long getQuantity() {
-		return quantity;
+	public String getDescription() {
+		return description;
 	}
-	public void setQuantity(long quantity) {
-		this.quantity = quantity;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public long getBudget() {
-		return budget;
+	public String getPlanType() {
+		return planType;
 	}
-	public void setBudget(long budget) {
-		this.budget = budget;
+	public void setPlanType(String planType) {
+		this.planType = planType;
 	}
 	public String getCreatedDate() {
 		return createdDate;
@@ -63,6 +63,7 @@ public class Budget {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-
 	
+	
+
 }
