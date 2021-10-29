@@ -1,5 +1,6 @@
 package com.tfworkers.PDSISystem.Controller;
 
+import javax.mail.MessagingException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tfworkers.PDSISystem.Model.User;
+import com.tfworkers.PDSISystem.Model.Entity.User;
 import com.tfworkers.PDSISystem.Service.UserService;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -23,11 +24,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	final UserService userService;
+	private final UserService userService;
 	private final String na = "Not Authorize";
 
 	/**
-	 * UserService constructor
+	 * UserContorller constructor
 	 */
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -136,4 +137,20 @@ public class UserController {
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
 	}
 
+	/**
+	 * @return Just returns ResponseEntity
+	 * @author Talha Farooq
+	 * @version 0.3
+	 * @throws MessagingException 
+	 * @description This API create message and email with token
+	 * @createdTime 5 October 2021
+	 */
+	@PutMapping("/email/{userId}")
+	public ResponseEntity<Object> email(@RequestHeader("Authorization") String token,
+			@PathVariable(value = "userId") Long userId) throws MessagingException {
+		if (authorization(token)) {
+			return userService.tokensendemailandsms(userId);
+		} else
+			return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
+	}
 }

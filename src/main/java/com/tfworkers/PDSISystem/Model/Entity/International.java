@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model;
+package com.tfworkers.PDSISystem.Model.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

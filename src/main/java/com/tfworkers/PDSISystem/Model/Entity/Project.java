@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model;
+package com.tfworkers.PDSISystem.Model.Entity;
 
 import java.util.ArrayList;
 import java.util.List;

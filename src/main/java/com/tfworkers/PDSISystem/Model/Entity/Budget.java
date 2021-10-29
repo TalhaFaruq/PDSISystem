@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model;
+package com.tfworkers.PDSISystem.Model.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +10,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class National {
+public class Budget {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int noofOrganization;
-	private String location;
-	private int land;
+	private String name;
+	private long quantity;
+	private long budget;
 	private String createdDate;
 	private String updatedDate;
 	private boolean isActive;
@@ -27,23 +27,23 @@ public class National {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getNoofOrganization() {
-		return noofOrganization;
+	public String getName() {
+		return name;
 	}
-	public void setNoofOrganization(int noofOrganization) {
-		this.noofOrganization = noofOrganization;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getLocation() {
-		return location;
+	public long getQuantity() {
+		return quantity;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setQuantity(long quantity) {
+		this.quantity = quantity;
 	}
-	public int getLand() {
-		return land;
+	public long getBudget() {
+		return budget;
 	}
-	public void setLand(int land) {
-		this.land = land;
+	public void setBudget(long budget) {
+		this.budget = budget;
 	}
 	public String getCreatedDate() {
 		return createdDate;
@@ -63,6 +63,6 @@ public class National {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
+
 	
 }

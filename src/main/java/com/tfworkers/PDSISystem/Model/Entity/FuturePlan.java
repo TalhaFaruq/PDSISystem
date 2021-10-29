@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model;
+package com.tfworkers.PDSISystem.Model.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +10,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Process {
-	 @Id
-	 @Column(nullable = false)
-	 @GeneratedValue(strategy = GenerationType.IDENTITY )
+public class FuturePlan {
+	@Id
+	@Column(nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String description; 
-	private String approved;     //if approval needed otherwise it will empty
+	private String description;
+	private String planType;
 	private String createdDate;
 	private String updatedDate;
 	private boolean isActive;
@@ -39,11 +39,11 @@ public class Process {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getApproved() {
-		return approved;
+	public String getPlanType() {
+		return planType;
 	}
-	public void setApproved(String approved) {
-		this.approved = approved;
+	public void setPlanType(String planType) {
+		this.planType = planType;
 	}
 	public String getCreatedDate() {
 		return createdDate;

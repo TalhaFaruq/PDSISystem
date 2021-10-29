@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.tfworkers.PDSISystem.Model.Timeline;
+import com.tfworkers.PDSISystem.Model.Entity.Timeline;
 import com.tfworkers.PDSISystem.Repository.TimelineRepository;
 
 @Service
@@ -40,7 +40,7 @@ public class TimelineService {
 			} else
 				return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot access List of User from database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Object>("Cannot access List of timeline from database", HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -78,7 +78,7 @@ public class TimelineService {
 			timelineRepository.save(timeline);
 			return new ResponseEntity<Object>(timeline, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot update the user into database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Object>("Cannot update the timeline into database", HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -95,7 +95,7 @@ public class TimelineService {
 			timelineRepository.save(timeline.get());
 			return new ResponseEntity<Object>(timeline, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot Access certain user id from database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Object>("Cannot Access certain timeline id from database", HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -106,12 +106,12 @@ public class TimelineService {
 	 * @description Find by ID user from database
 	 * @creationDate 28 October 2021
 	 */
-	public ResponseEntity<Object> getUserbyid(Long id) {
+	public ResponseEntity<Object> getTimelinebyid(Long id) {
 		try {
 			Optional<Timeline> timeline = timelineRepository.findById(id);
 			return ResponseEntity.ok().body(timeline.get());
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("User does not Exist in database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Object>("tag timeline not Exist in database", HttpStatus.NOT_FOUND);
 		}
 
 	}

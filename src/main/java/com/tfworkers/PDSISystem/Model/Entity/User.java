@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model;
+package com.tfworkers.PDSISystem.Model.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,10 @@ public class User {
 	private String allowance;
 	private String post;
 	private String department;
+	@Column(nullable = false, unique = true)
+	private int token;
+	private boolean accountVerifyStatus = false;
+	private String expirationDate;
 
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
@@ -165,4 +169,29 @@ public class User {
 		this.tags = tags;
 	}
 
+	public int getToken() {
+		return token;
+	}
+
+	public void setToken(int token) {
+		this.token = token;
+	}
+
+	public String getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(String expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public boolean isAccountVerifyStatus() {
+		return accountVerifyStatus;
+	}
+
+	public void setAccountVerifyStatus(boolean accountVerifyStatus) {
+		this.accountVerifyStatus = accountVerifyStatus;
+	}
+
+	
 }
