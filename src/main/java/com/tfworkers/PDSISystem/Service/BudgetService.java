@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,8 +54,8 @@ public class BudgetService {
 	 */
 	public ResponseEntity<Object> saveBudget(Budget budget) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			budget.setCreatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			budget.setCreatedDate(date.getTime());
 			budgetRepository.save(budget);
 			return new ResponseEntity<Object>(budget, HttpStatus.OK);
 		} catch (Exception e) {
@@ -72,8 +73,8 @@ public class BudgetService {
 	 */
 	public ResponseEntity<Object> updateBudget(Budget budget) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			budget.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			budget.setUpdatedDate(date.getTime());
 			budgetRepository.save(budget);
 			return new ResponseEntity<Object>(budget, HttpStatus.OK);
 		} catch (Exception e) {

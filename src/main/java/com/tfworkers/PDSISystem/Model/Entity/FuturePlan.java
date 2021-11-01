@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 public class FuturePlan {
@@ -18,8 +20,8 @@ public class FuturePlan {
 	private String name;
 	private String description;
 	private String planType;
-	private String createdDate;
-	private String updatedDate;
+	private Date createdDate;
+	private Date updatedDate;
 	private boolean isActive;
 	public Long getId() {
 		return id;
@@ -45,25 +47,26 @@ public class FuturePlan {
 	public void setPlanType(String planType) {
 		this.planType = planType;
 	}
-	public String getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
-	}
-	public String getUpdatedDate() {
-		return updatedDate;
-	}
-	public void setUpdatedDate(String updatedDate) {
-		this.updatedDate = updatedDate;
-	}
 	public boolean isActive() {
 		return isActive;
 	}
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
 
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
 }

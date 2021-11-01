@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,8 +55,8 @@ public class ProcessService {
 	 */
 	public ResponseEntity<Object> saveProcess(Process process) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			process.setCreatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			process.setCreatedDate(date.getTime());
 			processRepository.save(process);
 			return new ResponseEntity<Object>(process, HttpStatus.OK);
 		} catch (Exception e) {
@@ -73,8 +74,8 @@ public class ProcessService {
 	 */
 	public ResponseEntity<Object> updateProcess(Process process) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			process.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			process.setUpdatedDate(date.getTime());
 			processRepository.save(process);
 			return new ResponseEntity<Object>(process, HttpStatus.OK);
 		} catch (Exception e) {

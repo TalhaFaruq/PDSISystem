@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,15 +32,15 @@ public class User {
 	@Column(nullable = true)
 	private String phoneNumber; // User Phone Number
 	@Column(nullable = false, unique = true)
-	private String createdDate; // User Created Date Set by System
-	private String updatedDate; // User Updated Date Set by System
+	private Date createdDate; // User Created Date Set by System
+	private Date updatedDate; // User Updated Date Set by System
 	private String allowance;
 	private String post;
 	private String department;
 	@Column(nullable = false, unique = true)
 	private int token;
 	private boolean accountVerifyStatus = false;
-	private String expirationDate;
+	private Date expirationDate;
 
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
@@ -113,19 +114,19 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 
@@ -177,11 +178,11 @@ public class User {
 		this.token = token;
 	}
 
-	public String getExpirationDate() {
+	public Date getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(String expirationDate) {
+	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

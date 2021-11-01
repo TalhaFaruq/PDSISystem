@@ -1,9 +1,6 @@
 package com.tfworkers.PDSISystem.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 import javax.mail.MessagingException;
 
@@ -16,6 +13,8 @@ import com.tfworkers.PDSISystem.Model.Entity.User;
 import com.tfworkers.PDSISystem.Repository.UserRepository;
 import com.tfworkers.PDSISystem.Utilities.EmailUtil;
 import com.tfworkers.PDSISystem.Utilities.SmsUtil;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Service
 public class UserService {
@@ -64,9 +63,9 @@ public class UserService {
 	 */
 	public ResponseEntity<Object> saveUser(User newuser) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
+			Calendar calendar = Calendar.getInstance();
 
-			newuser.setCreatedDate(date.toString());
+			newuser.setCreatedDate(calendar.getTime());
 
 			userRepository.save(newuser);
 			return new ResponseEntity<Object>(newuser, HttpStatus.OK);
@@ -85,14 +84,13 @@ public class UserService {
 	 */
 	public ResponseEntity<Object> updateUser(User user) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			user.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			user.setUpdatedDate(date.getTime());
 			userRepository.save(user);
 			return new ResponseEntity<Object>(user, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>("Cannot update the user into database", HttpStatus.NOT_FOUND);
 		}
-
 	}
 
 	/**
@@ -170,6 +168,14 @@ public class UserService {
 				emailUtil.sendMail(user.get().getEmail(), "Verification", message);
 				user.get().setToken(token); // Set verify token as inactive
 
+				Calendar date = Calendar.getInstance();
+				long timeInSecs = date.getTimeInMillis();
+				Date afterAdding10Mins = new Date(timeInSecs + (10 * 60 * 1000));
+				user.get().setExpirationDate(afterAdding10Mins);
+
+				userRepository.save(user.get());
+
+
 				return new ResponseEntity<>("Mail and message Sent", HttpStatus.OK);
 			} else
 				return new ResponseEntity<>("User is not found", HttpStatus.NOT_FOUND);
@@ -178,20 +184,20 @@ public class UserService {
 		}
 	}
 
-	public ResponseEntity<Object> verificationsmsandemail(int smstoken, int emailtoken, String email) {
+	public ResponseEntity<Object> verificationsmsandemail(int emailtoken, String email) {
 		try {
-			if (emailtoken == smstoken) { // Taking email and message token and saving them differently will waste storage
-				// instead we check them in this if statement
-				User user = userRepository.findByEmailAndToken(email, emailtoken); // If the user present then user will
-																					// get values otherwise user will be
-																					// empty
+				User user = userRepository.findByEmailAndToken(email, emailtoken);
+				Calendar date = Calendar.getInstance();
+				if(date.before(user.getExpirationDate())){
 				user.setAccountVerifyStatus(true);
 				userRepository.save(user);
-				return new ResponseEntity<Object>(user, HttpStatus.OK);
-			} else
-				return new ResponseEntity<Object>("Invalid Token", HttpStatus.UNAUTHORIZED);
+				return new ResponseEntity<Object>("YOU ARE NOW VERIFIED", HttpStatus.OK);
+				}
+				else return new ResponseEntity<Object>("Token Expired", HttpStatus.OK);
+
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e, HttpStatus.UNAUTHORIZED);
 		}
 	}
+
 }

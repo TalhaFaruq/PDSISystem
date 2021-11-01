@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 public class National {
@@ -18,8 +20,8 @@ public class National {
 	private int noofOrganization;
 	private String location;
 	private int land;
-	private String createdDate;
-	private String updatedDate;
+	private Date createdDate;
+	private Date updatedDate;
 	private boolean isActive;
 	public Long getId() {
 		return id;
@@ -45,18 +47,15 @@ public class National {
 	public void setLand(int land) {
 		this.land = land;
 	}
-	public String getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(String createdDate) {
+
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getUpdatedDate() {
-		return updatedDate;
-	}
-	public void setUpdatedDate(String updatedDate) {
+
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
 	public boolean isActive() {
 		return isActive;
 	}

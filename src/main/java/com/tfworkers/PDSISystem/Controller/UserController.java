@@ -153,4 +153,13 @@ public class UserController {
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
 	}
+
+	@PutMapping("/verify/{userId}")
+	public ResponseEntity<Object> verification(@RequestHeader("Authorization") String token,
+											   @RequestHeader("emailToken") int emailtoken,
+											   @RequestHeader("email") String email) {
+		if (authorization(token)) {
+			return userService.verificationsmsandemail(emailtoken,email);
+		}else return new ResponseEntity(na, HttpStatus.UNAUTHORIZED);
+	}
 }

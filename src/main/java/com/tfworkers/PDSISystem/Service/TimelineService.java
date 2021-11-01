@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,8 +55,8 @@ public class TimelineService {
 	 */
 	public ResponseEntity<Object> saveTimeline(Timeline timeline) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			timeline.setCreatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			timeline.setCreatedDate(date.getTime());
 			timelineRepository.save(timeline);
 			return new ResponseEntity<Object>(timeline, HttpStatus.OK);
 		} catch (Exception e) {
@@ -73,8 +74,8 @@ public class TimelineService {
 	 */
 	public ResponseEntity<Object> updateTimeline(Timeline timeline) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			timeline.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			timeline.setUpdatedDate(date.getTime());
 			timelineRepository.save(timeline);
 			return new ResponseEntity<Object>(timeline, HttpStatus.OK);
 		} catch (Exception e) {

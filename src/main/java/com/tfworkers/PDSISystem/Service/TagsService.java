@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,8 +55,8 @@ public class TagsService {
 	 */
 	public ResponseEntity<Object> saveTags(Tags tag) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			tag.setCreatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			tag.setCreatedDate(date.getTime());
 			tagsRepository.save(tag);
 			return new ResponseEntity<Object>(tag, HttpStatus.OK);
 		} catch (Exception e) {
@@ -73,8 +74,8 @@ public class TagsService {
 	 */
 	public ResponseEntity<Object> updateTags(Tags tag) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			tag.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			tag.setUpdatedDate(date.getTime());
 			tagsRepository.save(tag);
 			return new ResponseEntity<Object>(tag, HttpStatus.OK);
 		} catch (Exception e) {

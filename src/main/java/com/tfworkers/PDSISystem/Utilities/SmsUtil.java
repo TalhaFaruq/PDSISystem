@@ -11,7 +11,7 @@ import com.twilio.rest.api.v2010.account.Message;
 public class SmsUtil {
 	private String ACCOUNT_SID = "AC3fa3c0ff18fd3891dee5c43cc9b4d103";
 
-	private String AUTH_TOKEN = "71279f2bd833833f9a8505a99d54a2de";
+	private String AUTH_TOKEN = "a1925e78481f1d0a22224ea7581cf53d";
 
 	private String FROM_NUMBER = "+12058594517";
 

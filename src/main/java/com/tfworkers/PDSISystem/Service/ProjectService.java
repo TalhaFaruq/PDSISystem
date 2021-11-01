@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Service;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,8 +55,8 @@ public class ProjectService {
 	 */
 	public ResponseEntity<Object> saveProject(Project project) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			project.setCreatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			project.setCreatedDate(date.getTime());
 			projectRepository.save(project);
 			return new ResponseEntity<Object>(project, HttpStatus.OK);
 		} catch (Exception e) {
@@ -73,8 +74,8 @@ public class ProjectService {
 	 */
 	public ResponseEntity<Object> updateProject(Project project) {
 		try {
-			LocalDateTime date = LocalDateTime.now();
-			project.setUpdatedDate(date.toString());
+			Calendar date = Calendar.getInstance();
+			project.setUpdatedDate(date.getTime());
 			projectRepository.save(project);
 			return new ResponseEntity<Object>(project, HttpStatus.OK);
 		} catch (Exception e) {

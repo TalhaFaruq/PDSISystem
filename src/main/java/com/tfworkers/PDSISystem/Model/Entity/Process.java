@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 public class Process {
@@ -18,8 +20,8 @@ public class Process {
 	private String name;
 	private String description; 
 	private String approved;     //if approval needed otherwise it will empty
-	private String createdDate;
-	private String updatedDate;
+	private Date createdDate;
+	private Date updatedDate;
 	private boolean isActive;
 	public Long getId() {
 		return id;
@@ -45,18 +47,23 @@ public class Process {
 	public void setApproved(String approved) {
 		this.approved = approved;
 	}
-	public String getCreatedDate() {
+
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getUpdatedDate() {
+
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
-	public void setUpdatedDate(String updatedDate) {
+
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
 	public boolean isActive() {
 		return isActive;
 	}

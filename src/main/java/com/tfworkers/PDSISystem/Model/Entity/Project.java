@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,8 +24,8 @@ public class Project {
 	private String name;
 	private String Description;
 	private String projectStatus;
-	private String createdDate;
-	private String updatedDate;
+	private Date createdDate;
+	private Date updatedDate;
 	private boolean isActive;
 	
 	@OneToMany(targetEntity = Timeline.class,cascade = CascadeType.ALL)
@@ -75,19 +76,19 @@ public class Project {
 		this.projectStatus = projectStatus;
 	}
 
-	public String getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 

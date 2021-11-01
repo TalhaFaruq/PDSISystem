@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 public class International {
@@ -17,8 +19,8 @@ public class International {
 	 private Long id;
 	 private String foriegnMinisterapprovel;
 	 private int internoofOrganizations;
-	 private String createdDate;
- 	 private String updatedDate;
+	 private Date createdDate;
+ 	 private Date updatedDate;
 	 private boolean isActive;
 	public Long getId() {
 		return id;
@@ -38,18 +40,23 @@ public class International {
 	public void setInternoofOrganizations(int internoofOrganizations) {
 		this.internoofOrganizations = internoofOrganizations;
 	}
-	public String getCreatedDate() {
+
+	public Date getCreatedDate() {
 		return createdDate;
 	}
-	public void setCreatedDate(String createdDate) {
+
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getUpdatedDate() {
+
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
-	public void setUpdatedDate(String updatedDate) {
+
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
+
 	public boolean isActive() {
 		return isActive;
 	}

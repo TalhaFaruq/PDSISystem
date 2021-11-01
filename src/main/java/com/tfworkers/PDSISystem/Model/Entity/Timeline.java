@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,12 +23,12 @@ public class Timeline {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long id;
 	private String name;
-	private String startDate;
-	private String endDate;
+	private Date startDate;
+	private Date endDate;
 	private String updatedEndDate;
 	private boolean isActive = false;
-	private String createdDate;
-	private String updatedDate;
+	private Date createdDate;
+	private Date updatedDate;
 	
 	
 	@OneToMany(targetEntity = Process.class,cascade = CascadeType.ALL)
@@ -55,25 +56,29 @@ public class Timeline {
 	}
 
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
 
 	public String getUpdatedEndDate() {
 		return updatedEndDate;
@@ -92,26 +97,6 @@ public class Timeline {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
-	}
-
-
-	public String getCreatedDate() {
-		return createdDate;
-	}
-
-
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
-	}
-
-
-	public String getUpdatedDate() {
-		return updatedDate;
-	}
-
-
-	public void setUpdatedDate(String updatedDate) {
-		this.updatedDate = updatedDate;
 	}
 
 
