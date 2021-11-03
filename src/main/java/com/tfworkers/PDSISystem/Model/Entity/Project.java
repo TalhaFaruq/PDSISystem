@@ -4,14 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.Data;
 @Entity
@@ -20,7 +13,7 @@ public class Project {
 	 @Id
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long id;
+	private Long project_id;
 	private String name;
 	private String Description;
 	private String projectStatus;
@@ -44,12 +37,16 @@ public class Project {
 	 @JoinColumn(name = "id")
 	 private List<Budget> budgets = new ArrayList<Budget>();
 
-	public Long getId() {
-		return id;
+	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+	private List<Tags> tags = new ArrayList<Tags>();
+
+	public Long getProject_id() {
+		return project_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setProject_id(Long id) {
+		this.project_id = id;
 	}
 
 	public String getName() {

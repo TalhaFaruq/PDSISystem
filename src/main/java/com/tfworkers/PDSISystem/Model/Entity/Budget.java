@@ -16,18 +16,18 @@ public class Budget {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long budget_id;
 	private String name;
 	private long quantity;
 	private long budget;
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
-	public Long getId() {
-		return id;
+	public Long getBudget_id() {
+		return budget_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setBudget_id(Long id) {
+		this.budget_id = id;
 	}
 	public String getName() {
 		return name;

@@ -16,18 +16,18 @@ public class National {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long national_id;
 	private int noofOrganization;
 	private String location;
 	private int land;
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
-	public Long getId() {
-		return id;
+	public Long getNational_id() {
+		return national_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setNational_id(Long id) {
+		this.national_id = id;
 	}
 	public int getNoofOrganization() {
 		return noofOrganization;

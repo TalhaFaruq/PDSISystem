@@ -1,5 +1,7 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +20,7 @@ public class User {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id; // User ID
+	private long user_id; // User ID
 	@Column(nullable = false)
 	private String firstName; // User First Name
 	@Column(nullable = false)
@@ -28,7 +30,7 @@ public class User {
 	private int age;// User age
 	@Column(nullable = false)
 	private String password; // User Password
-	private boolean isActive = false;
+	private boolean isActive = true; //if deleted than it will be false
 	@Column(nullable = true)
 	private String phoneNumber; // User Phone Number
 	@Column(nullable = false, unique = true)
@@ -46,16 +48,18 @@ public class User {
 	@JoinColumn(name = "id")
 	private List<Project> projects = new ArrayList<Project>();
 
-	@ManyToMany(targetEntity = Tags.class, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = Tags.class, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id")
+	@JsonBackReference
 	private List<Tags> tags = new ArrayList<Tags>();
 
-	public long getId() {
-		return id;
+
+	public long getUser_id() {
+		return user_id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUser_id(long id) {
+		this.user_id = id;
 	}
 
 	public String getFirstName() {
@@ -193,6 +197,8 @@ public class User {
 	public void setAccountVerifyStatus(boolean accountVerifyStatus) {
 		this.accountVerifyStatus = accountVerifyStatus;
 	}
+
+
 
 	
 }

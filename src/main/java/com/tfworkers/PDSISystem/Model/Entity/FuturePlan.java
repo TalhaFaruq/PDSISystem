@@ -16,18 +16,18 @@ public class FuturePlan {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long future_id;
 	private String name;
 	private String description;
 	private String planType;
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
-	public Long getId() {
-		return id;
+	public Long getFuture_id() {
+		return future_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setFuture_id(Long id) {
+		this.future_id = id;
 	}
 	public String getName() {
 		return name;

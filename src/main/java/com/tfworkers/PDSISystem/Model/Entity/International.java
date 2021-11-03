@@ -16,17 +16,17 @@ public class International {
 	 @Id
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	 private Long id;
+	 private Long international_id;
 	 private String foriegnMinisterapprovel;
 	 private int internoofOrganizations;
 	 private Date createdDate;
  	 private Date updatedDate;
 	 private boolean isActive;
-	public Long getId() {
-		return id;
+	public Long getInternational_id() {
+		return international_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setInternational_id(Long id) {
+		this.international_id = id;
 	}
 	public String getForiegnMinisterapprovel() {
 		return foriegnMinisterapprovel;

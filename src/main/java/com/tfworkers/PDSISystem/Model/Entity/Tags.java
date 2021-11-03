@@ -16,17 +16,17 @@ public class Tags {
 	 @Id
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long id;
+	private Long tags_id;
 	private String name;
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
 	
-	public Long getId() {
-		return id;
+	public Long getTags_id() {
+		return tags_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setTags_id(Long id) {
+		this.tags_id = id;
 	}
 	public String getName() {
 		return name;

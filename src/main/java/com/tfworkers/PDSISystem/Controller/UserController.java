@@ -2,6 +2,7 @@ package com.tfworkers.PDSISystem.Controller;
 
 import javax.mail.MessagingException;
 
+import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -159,7 +160,19 @@ public class UserController {
 											   @RequestHeader("emailToken") int emailtoken,
 											   @RequestHeader("email") String email) {
 		if (authorization(token)) {
-			return userService.verificationsmsandemail(emailtoken,email);
+			return userService.verificationSmsAndEmail(emailtoken,email);
 		}else return new ResponseEntity(na, HttpStatus.UNAUTHORIZED);
+	}
+
+	@GetMapping("/pdf/download")
+	public ResponseEntity<Object> pdfdownload() {
+		UserPDFExporter userPDFExporter = null;
+
+		return null;
+	}
+
+	@PutMapping("/recommendedManagers")
+	public ResponseEntity<Object> showRecommendedManagers(@RequestHeader("tag") String tag){
+		return userService.recommendedManagers(tag);
 	}
 }

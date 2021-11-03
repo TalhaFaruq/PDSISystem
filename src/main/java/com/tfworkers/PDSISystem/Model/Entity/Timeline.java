@@ -21,7 +21,7 @@ public class Timeline {
 	 @Id
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long id;
+	private Long timeline_id;
 	private String name;
 	private Date startDate;
 	private Date endDate;
@@ -36,13 +36,13 @@ public class Timeline {
 	 private List<Process> processes = new ArrayList<Process>();
 
 
-	public Long getId() {
-		return id;
+	public Long getTimeline_id() {
+		return timeline_id;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setTimeline_id(Long id) {
+		this.timeline_id = id;
 	}
 
 

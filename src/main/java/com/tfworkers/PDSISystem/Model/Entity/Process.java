@@ -16,18 +16,18 @@ public class Process {
 	 @Id
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
-	private Long id;
+	private Long process_id;
 	private String name;
 	private String description; 
 	private String approved;     //if approval needed otherwise it will empty
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
-	public Long getId() {
-		return id;
+	public Long getProcess_id() {
+		return process_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setProcess_id(Long id) {
+		this.process_id = id;
 	}
 	public String getName() {
 		return name;

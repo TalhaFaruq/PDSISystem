@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.mail.MessagingException;
 
+import com.tfworkers.PDSISystem.Model.Entity.DTO.RecommendedManagerDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,6 @@ import com.tfworkers.PDSISystem.Model.Entity.User;
 import com.tfworkers.PDSISystem.Repository.UserRepository;
 import com.tfworkers.PDSISystem.Utilities.EmailUtil;
 import com.tfworkers.PDSISystem.Utilities.SmsUtil;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 @Service
 public class UserService {
@@ -68,9 +67,9 @@ public class UserService {
 			newuser.setCreatedDate(calendar.getTime());
 
 			userRepository.save(newuser);
-			return new ResponseEntity<Object>(newuser, HttpStatus.OK);
+			return new ResponseEntity<>(newuser, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -184,19 +183,28 @@ public class UserService {
 		}
 	}
 
-	public ResponseEntity<Object> verificationsmsandemail(int emailtoken, String email) {
+	public ResponseEntity<Object> verificationSmsAndEmail(int emailToken, String email) {
 		try {
-				User user = userRepository.findByEmailAndToken(email, emailtoken);
+				User user = userRepository.findByEmailAndToken(email, emailToken);
 				Calendar date = Calendar.getInstance();
 				if(date.before(user.getExpirationDate())){
 				user.setAccountVerifyStatus(true);
 				userRepository.save(user);
-				return new ResponseEntity<Object>("YOU ARE NOW VERIFIED", HttpStatus.OK);
+				return new ResponseEntity<>("YOU ARE NOW VERIFIED", HttpStatus.OK);
 				}
-				else return new ResponseEntity<Object>("Token Expired", HttpStatus.OK);
+				else return new ResponseEntity<>("Token Expired", HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<Object>(e, HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(e, HttpStatus.UNAUTHORIZED);
+		}
+	}
+
+	public ResponseEntity<Object> recommendedManagers(String tag){
+		try {
+			List<RecommendedManagerDTO> recommendedManagers = userRepository.recommendedManagers(tag, "Manager");
+			return new ResponseEntity<>(recommendedManagers, HttpStatus.OK);
+		}catch (Exception e){
+			return new ResponseEntity<>(e,HttpStatus.NOT_FOUND);
 		}
 	}
 
