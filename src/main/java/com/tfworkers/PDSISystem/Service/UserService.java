@@ -7,10 +7,7 @@ import javax.mail.MessagingException;
 
 
 import com.tfworkers.PDSISystem.Model.Entity.DTO.RecommendedManagerDTO;
-//import com.tfworkers.PDSISystem.Repository.RepositoryDTO.RecommendedManagerRepository;
-//import org.hibernate.query.Query;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -204,30 +201,48 @@ public class UserService {
         }
     }
 
+    /**
+     * Recommended managers response entity.
+     *
+     * @param tag the tag
+     * @return the response entity
+     */
     public ResponseEntity<Object> recommendedManagers(String tag) {
         try {
-            List<Object[]> userList = userRepository.findAllByTagsContaining(tag);
-            List<RecommendedManagerDTO> recommendedManagerDTOList = new ArrayList<>();
-            for (Object[] dto : userList) {
-
-
-                BigInteger id = (BigInteger) dto[0];
-                String firstname = (String) dto[1];
-                String lastName = (String) dto[2];
-                String tags = (String) dto[3];
-
-                long i = id.longValue();
-
-                System.out.println("data is " +firstname+lastName+tags);
-
-                recommendedManagerDTOList.add(new RecommendedManagerDTO( i,firstname, lastName, tags));
-
-
-            }
-            return new ResponseEntity<>(recommendedManagerDTOList, HttpStatus.OK);
+            List<Object[]> userList = userRepository.findRecommendedManagers(tag);
+            return maptoDTOclass(userList);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
         }
     }
 
+    /**
+     * Recommended officers response entity.
+     *
+     * @param tag the tag
+     * @return the response entity
+     */
+    public ResponseEntity<Object> recommendedOfficers(String tag) {
+        try {
+            List<Object[]> userList = userRepository.findRecommendedOfficers(tag);
+            return maptoDTOclass(userList);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private ResponseEntity<Object> maptoDTOclass(List<Object[]> userList) {
+        List<RecommendedManagerDTO> recommendedManagerDTOList = new ArrayList<>();
+        for (Object[] dto : userList) {
+            BigInteger id = (BigInteger) dto[0];
+            String firstname = (String) dto[1];
+            String lastName = (String) dto[2];
+            String tags = (String) dto[3];
+            long i = id.longValue();
+            System.out.println("data is " + firstname + lastName + tags);
+
+            recommendedManagerDTOList.add(new RecommendedManagerDTO(i, firstname, lastName, tags));
+        }
+        return new ResponseEntity<>(recommendedManagerDTOList, HttpStatus.OK);
+    }
 }

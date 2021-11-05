@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: pdsi-system
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.11:8761/eureka
