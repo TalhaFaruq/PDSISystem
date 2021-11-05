@@ -171,8 +171,8 @@ public class UserController {
 		return null;
 	}
 
-	@PutMapping("/recommendedManagers")
-	public ResponseEntity<Object> showRecommendedManagers(@RequestHeader("tag") String tag){
+	@GetMapping("/recommendedManagers")
+	public ResponseEntity<Object> showRecommendedManagers(@RequestHeader("tag") String tag ){
 		return userService.recommendedManagers(tag);
 	}
 }

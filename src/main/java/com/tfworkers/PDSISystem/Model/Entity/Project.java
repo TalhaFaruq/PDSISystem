@@ -22,23 +22,18 @@ public class Project {
 	private boolean isActive;
 	
 	@OneToMany(targetEntity = Timeline.class,cascade = CascadeType.ALL)
-	 @JoinColumn(name = "id")
 	 private List<Timeline> timelines = new ArrayList<Timeline>();
 	
 	@OneToMany(targetEntity = National.class,cascade = CascadeType.ALL)
-	 @JoinColumn(name = "id")
 	 private List<National> national = new ArrayList<National>();
 	
 	@OneToMany(targetEntity = International.class,cascade = CascadeType.ALL)
-	 @JoinColumn(name = "id")
 	 private List<International> international = new ArrayList<International>();
 	
 	@OneToMany(targetEntity = Budget.class,cascade = CascadeType.ALL)
-	 @JoinColumn(name = "id")
 	 private List<Budget> budgets = new ArrayList<Budget>();
 
 	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
 	private List<Tags> tags = new ArrayList<Tags>();
 
 	public Long getProject_id() {

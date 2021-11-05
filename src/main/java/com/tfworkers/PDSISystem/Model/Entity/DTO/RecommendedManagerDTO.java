@@ -1,21 +1,26 @@
 package com.tfworkers.PDSISystem.Model.Entity.DTO;
 
-import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import lombok.Data;
 
 @Data
 public class RecommendedManagerDTO {
-    @Id
-    @Column(name = "id", nullable = false)
+
     private Long id;
+    private String first_name;
+    private String last_name;
+    private String tag;
 
-    private int userId;
-    private String name;
-    private String department;
+    public RecommendedManagerDTO(Long id,String first_name, String last_name, String tag) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.tag = tag;
+    }
 
+    public RecommendedManagerDTO() {
 
+    }
 
 
 }

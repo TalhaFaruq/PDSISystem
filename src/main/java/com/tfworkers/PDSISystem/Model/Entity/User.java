@@ -1,19 +1,25 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.tfworkers.PDSISystem.Model.Entity.DTO.RecommendedManagerDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+
+//@NamedNativeQuery(name = "UserRepository.recommendedManagers",
+//		query = "user.user_id, user.first_name, user.department FROM user JOIN tags ON tags.name = 'Administrative' and user.post = 'Manager'",
+//		resultSetMapping ="Mapping.RecommendedManagerDTO")
+//@SqlResultSetMapping(name = "Mapping.RecommendedManagerDTO",
+//		classes = @ConstructorResult(targetClass = RecommendedManagerDTO.class,
+//									columns = {@ColumnResult(name = "id"),
+//									@ColumnResult(name = "first_name"),
+//											@ColumnResult(name = "department")}))
 
 @Entity
 public class User {
@@ -21,36 +27,27 @@ public class User {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id; // User ID
-	@Column(nullable = false)
 	private String firstName; // User First Name
-	@Column(nullable = false)
 	private String lastName;// User Last Name
 	@Column(nullable = false, unique = true)
 	private String email;// User email
 	private int age;// User age
-	@Column(nullable = false)
 	private String password; // User Password
 	private boolean isActive = true; //if deleted than it will be false
-	@Column(nullable = true)
 	private String phoneNumber; // User Phone Number
-	@Column(nullable = false, unique = true)
 	private Date createdDate; // User Created Date Set by System
 	private Date updatedDate; // User Updated Date Set by System
 	private String allowance;
 	private String post;
 	private String department;
-	@Column(nullable = false, unique = true)
 	private int token;
 	private boolean accountVerifyStatus = false;
 	private Date expirationDate;
 
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
 	private List<Project> projects = new ArrayList<Project>();
 
-	@ManyToMany(targetEntity = Tags.class, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "id")
-	@JsonBackReference
+	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	private List<Tags> tags = new ArrayList<Tags>();
 
 

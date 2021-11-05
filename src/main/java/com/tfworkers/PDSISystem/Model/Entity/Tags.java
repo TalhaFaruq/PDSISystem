@@ -1,11 +1,8 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -21,7 +18,8 @@ public class Tags {
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
-	
+
+
 	public Long getTags_id() {
 		return tags_id;
 	}
