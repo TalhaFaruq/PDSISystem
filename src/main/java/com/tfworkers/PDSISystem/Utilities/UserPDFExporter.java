@@ -11,7 +11,7 @@ import com.tfworkers.PDSISystem.Model.Entity.User;
 
 
 public class UserPDFExporter {
-    private List<User> listUsers;
+    final private List<User> listUsers;
 
     public UserPDFExporter(List<User> listUsers) {
         this.listUsers = listUsers;

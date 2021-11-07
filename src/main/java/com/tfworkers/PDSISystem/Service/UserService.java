@@ -1,13 +1,18 @@
 package com.tfworkers.PDSISystem.Service;
 
+import java.io.IOException;
 import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
-import javax.mail.MessagingException;
 
+import com.lowagie.text.DocumentException;
+import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 
-import com.tfworkers.PDSISystem.Model.Entity.DTO.RecommendedManagerDTO;
-
+import com.tfworkers.PDSISystem.Model.Entity.Project;
+import com.tfworkers.PDSISystem.Repository.ProjectRepository;
+import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,30 +23,42 @@ import com.tfworkers.PDSISystem.Repository.UserRepository;
 import com.tfworkers.PDSISystem.Utilities.EmailUtil;
 import com.tfworkers.PDSISystem.Utilities.SmsUtil;
 
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * The type User service.
+ */
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final ProjectRepository projectRepository;
     private final EmailUtil emailUtil;
     private final SmsUtil smsUtil;
 
 
     /**
      * Constructor
+     *
+     * @param userRepository    the user repository
+     * @param projectRepository the project repository
+     * @param emailUtil         the email util
+     * @param smsUtil           the sms util
      */
-    public UserService(UserRepository userRepository, EmailUtil emailUtil, SmsUtil smsUtil) {
+    public UserService(UserRepository userRepository, ProjectRepository projectRepository, EmailUtil emailUtil, SmsUtil smsUtil) {
         this.userRepository = userRepository;
+        this.projectRepository = projectRepository;
         this.emailUtil = emailUtil;
         this.smsUtil = smsUtil;
     }
 
     /**
-     * @return ResponseEntity which return list of user. and in else it just return
-     * not found status
+     * Listall users response entity.
+     *
+     * @return ResponseEntity which return list of user. and in else it just return not found status
      * @author Talha Farooq
      * @version 0.1
-     * @description This function get and show all the user which are saved in
-     * database. The data from database comes in list.
+     * @description This function get and show all the user which are saved in database. The data from database comes in list.
      * @creationDate 28 October 2021
      */
     public ResponseEntity<Object> listallUsers() {
@@ -50,18 +67,20 @@ public class UserService {
             if (!userList.isEmpty()) {
                 return ResponseEntity.ok().body(userList);
             } else
-                return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot access List of User from database", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Cannot access List of User from database", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
+     * Save user response entity.
+     *
+     * @param newuser the newuser
      * @return responseEntity Status and user object
      * @author Talha Farooq
      * @version 0.1
-     * @description Save user into database by getting values from controller and
-     * set date/time
+     * @description Save user into database by getting values from controller and set date/time
      * @creationDate 28 October 2021
      */
     public ResponseEntity<Object> saveUser(User newuser) {
@@ -78,11 +97,13 @@ public class UserService {
     }
 
     /**
+     * Update user response entity.
+     *
+     * @param user the user
      * @return only responseEntity Status and user
      * @author Talha Farooq
      * @version 0.1
-     * @description update user into database by getting values from controller and
-     * set date/time
+     * @description update user into database by getting values from controller and set date/time
      * @creationDate 28 October 2021
      */
     public ResponseEntity<Object> updateUser(User user) {
@@ -90,14 +111,17 @@ public class UserService {
             Calendar date = Calendar.getInstance();
             user.setUpdatedDate(date.getTime());
             userRepository.save(user);
-            return new ResponseEntity<Object>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot update the user into database", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Cannot update the user into database", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
-     * @return ResponseEntity
+     * Delete user response entity.
+     *
+     * @param id the id
+     * @return ResponseEntity response entity
      * @author Talha Farooq
      * @description Hide user in database
      * @creationDate 28 October 2021
@@ -107,13 +131,16 @@ public class UserService {
             Optional<User> user = userRepository.findById(id);
             user.get().setActive(false);
             userRepository.save(user.get());
-            return new ResponseEntity<Object>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot Access certain user id from database", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Cannot Access certain user id from database", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
+     * Gets userbyid.
+     *
+     * @param id the id
      * @return ResponseEntity with one object of user
      * @author Talha Farooq
      * @version 0.1
@@ -132,6 +159,10 @@ public class UserService {
 
     /**
      * Custom API logic for email ;)
+     *
+     * @param email    the email
+     * @param password the password
+     * @return the boolean
      */
     public boolean findByEmailandPassword(String email, String password) {
         try {
@@ -147,15 +178,15 @@ public class UserService {
     }
 
     /**
+     * Token send emailand msg response entity.
+     *
      * @param userId the user id
      * @return the response entity
-     * @throws MessagingException the messaging exception
-     * @Description It sends the token to message and email and set the verify
-     * status as false and save token in database
+     * @Description It sends the token to message and email and set the verify status as false and save token in database
      * @author Talha Farooq
      * @since 14 October 2021
      */
-    public ResponseEntity<Object> tokensendemailandsms(Long userId) throws MessagingException {
+    public ResponseEntity<Object> tokenSendEmailandMsg(Long userId) {
         Optional<User> user = userRepository.findById(userId);
         try {
             if (user.isPresent()) {
@@ -186,6 +217,13 @@ public class UserService {
         }
     }
 
+    /**
+     * Verification sms and email response entity.
+     *
+     * @param emailToken the email token
+     * @param email      the email
+     * @return the response entity
+     */
     public ResponseEntity<Object> verificationSmsAndEmail(int emailToken, String email) {
         try {
             User user = userRepository.findByEmailAndToken(email, emailToken);
@@ -244,5 +282,77 @@ public class UserService {
             recommendedManagerDTOList.add(new RecommendedManagerDTO(i, firstname, lastName, tags));
         }
         return new ResponseEntity<>(recommendedManagerDTOList, HttpStatus.OK);
+    }
+
+    /**
+     * Selection manager officer response entity.
+     *
+     * @param managerId the manager id
+     * @param officerId the officer id
+     * @param projectId the project id
+     * @return the response entity
+     */
+    public ResponseEntity<Object> selectionManagerOfficer(List<Long> managerId, List<Long> officerId, Long projectId) {
+        try {
+            Optional<Project> project = projectRepository.findById(projectId);
+            if (project.isPresent()) {
+                List<Project> projectList = new ArrayList<>();
+                projectList.add(project.get());
+                for (Long mId : managerId) {
+                    Optional<User> user = userRepository.findById(mId);
+                    user.get().setProjects(projectList);
+                }
+                for (Long oID : officerId) {
+                    Optional<User> user = userRepository.findById(oID);
+                    user.get().setProjects(projectList);
+                }
+            }
+            return new ResponseEntity<>("Project updated with officers and managers", HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.print(e);
+            return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Rejection manager officer response entity.
+     *
+     * @param userId    the user id
+     * @param projectId the project id
+     * @return the response entity
+     */
+    public ResponseEntity<Object> rejectionManagerOfficer(Long userId, Long projectId) {
+        try {
+            Optional<Project> project = projectRepository.findById(projectId);
+            if(project.isPresent()){
+                userRepository.delete(userId);
+                return new ResponseEntity<>("Done",HttpStatus.OK);
+            }
+            else return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            System.out.print(e);
+            return new ResponseEntity<>("Cannot access database", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * Export to pdf.
+     *
+     * @param response the response
+     * @throws DocumentException the document exception
+     * @throws IOException       the io exception
+     */
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<User> listUsers = userRepository.findAll();
+        UserPDFExporter exporter = new UserPDFExporter(listUsers);
+        exporter.export(response);
     }
 }

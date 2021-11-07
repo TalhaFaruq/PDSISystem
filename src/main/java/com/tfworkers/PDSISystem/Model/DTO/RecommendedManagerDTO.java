@@ -1,4 +1,4 @@
-package com.tfworkers.PDSISystem.Model.Entity.DTO;
+package com.tfworkers.PDSISystem.Model.DTO;
 
 
 import lombok.Data;
