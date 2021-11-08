@@ -8,11 +8,14 @@ import java.util.*;
 
 
 import com.lowagie.text.DocumentException;
+import com.tfworkers.PDSISystem.Model.DTO.OnSpotChangesDTO;
 import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Repository.ProjectRepository;
 import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -52,8 +55,10 @@ public class UserService {
         this.smsUtil = smsUtil;
     }
 
+    private static final Logger logger = LogManager.getLogger(UserService.class);
+
     /**
-     * Listall users response entity.
+     * List all users response entity.
      *
      * @return ResponseEntity which return list of user. and in else it just return not found status
      * @author Talha Farooq
@@ -65,6 +70,7 @@ public class UserService {
         try {
             List<User> userList = userRepository.findAll();
             if (!userList.isEmpty()) {
+                logger.info("In Service class getting user list");
                 return ResponseEntity.ok().body(userList);
             } else
                 return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
@@ -85,10 +91,9 @@ public class UserService {
      */
     public ResponseEntity<Object> saveUser(User newuser) {
         try {
+            logger.info("In Service class saving user");
             Calendar calendar = Calendar.getInstance();
-
             newuser.setCreatedDate(calendar.getTime());
-
             userRepository.save(newuser);
             return new ResponseEntity<>(newuser, HttpStatus.OK);
         } catch (Exception e) {
@@ -111,6 +116,7 @@ public class UserService {
             Calendar date = Calendar.getInstance();
             user.setUpdatedDate(date.getTime());
             userRepository.save(user);
+            logger.info("In Service class updating user");
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Cannot update the user into database", HttpStatus.NOT_FOUND);
@@ -131,6 +137,7 @@ public class UserService {
             Optional<User> user = userRepository.findById(id);
             user.get().setActive(false);
             userRepository.save(user.get());
+            logger.info("In Service class delete");
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Cannot Access certain user id from database", HttpStatus.NOT_FOUND);
@@ -138,7 +145,7 @@ public class UserService {
     }
 
     /**
-     * Gets userbyid.
+     * Gets user by id.
      *
      * @param id the id
      * @return ResponseEntity with one object of user
@@ -150,39 +157,43 @@ public class UserService {
     public ResponseEntity<Object> getUserbyid(Long id) {
         try {
             User user = userRepository.findById(id).get();
+            logger.info("In Service class getting user by id");
             return ResponseEntity.ok().body(user);
         } catch (Exception e) {
             return new ResponseEntity<Object>("User does not Exist in database", HttpStatus.NOT_FOUND);
         }
-
     }
 
     /**
-     * Custom API logic for email ;)
+     * Login check
      *
      * @param email    the email
      * @param password the password
      * @return the boolean
      */
-    public boolean findByEmailandPassword(String email, String password) {
+    public boolean findByEmailAndPassword(String email, String password) {
         try {
             User user = userRepository.findByEmail(email);
             if (user.getPassword().equals(password)) {
+                logger.info("In Service class found email and password");
                 return true;
-            } else
+            } else {
+                logger.info("In Service class not found email and password");
                 return false;
+            }
         } catch (Exception e) {
             System.out.print("User not exist");
+            logger.error("Error");
             return false;
         }
     }
 
     /**
-     * Token send emailand msg response entity.
+     * Token send email and msg response entity.
      *
      * @param userId the user id
      * @return the response entity
-     * @Description It sends the token to message and email and set the verify status as false and save token in database
+     * @Description It sends the token to message and email and set to verify status as false and save token in database
      * @author Talha Farooq
      * @since 14 October 2021
      */
@@ -207,6 +218,7 @@ public class UserService {
                 user.get().setExpirationDate(afterAdding10Mins);
 
                 userRepository.save(user.get());
+                logger.info("In Service class Token generated and sent");
 
 
                 return new ResponseEntity<>("Mail and message Sent", HttpStatus.OK);
@@ -231,16 +243,18 @@ public class UserService {
             if (date.before(user.getExpirationDate())) {
                 user.setAccountVerifyStatus(true);
                 userRepository.save(user);
+                logger.info("verified user");
                 return new ResponseEntity<>("YOU ARE NOW VERIFIED", HttpStatus.OK);
             } else return new ResponseEntity<>("Token Expired", HttpStatus.OK);
 
         } catch (Exception e) {
+            logger.error("Error");
             return new ResponseEntity<>(e, HttpStatus.UNAUTHORIZED);
         }
     }
 
     /**
-     * Recommended managers response entity.
+     * Recommended Manager response entity.
      *
      * @param tag the tag
      * @return the response entity
@@ -248,6 +262,7 @@ public class UserService {
     public ResponseEntity<Object> recommendedManagers(String tag) {
         try {
             List<Object[]> userList = userRepository.findRecommendedManagers(tag);
+            logger.info("Recommending Managers");
             return maptoDTOclass(userList);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
@@ -263,6 +278,7 @@ public class UserService {
     public ResponseEntity<Object> recommendedOfficers(String tag) {
         try {
             List<Object[]> userList = userRepository.findRecommendedOfficers(tag);
+            logger.info("Recommending Officers");
             return maptoDTOclass(userList);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
@@ -278,7 +294,7 @@ public class UserService {
             String tags = (String) dto[3];
             long i = id.longValue();
             System.out.println("data is " + firstname + lastName + tags);
-
+            logger.info("Mapping object to DTO");
             recommendedManagerDTOList.add(new RecommendedManagerDTO(i, firstname, lastName, tags));
         }
         return new ResponseEntity<>(recommendedManagerDTOList, HttpStatus.OK);
@@ -287,25 +303,23 @@ public class UserService {
     /**
      * Selection manager officer response entity.
      *
-     * @param managerId the manager id
-     * @param officerId the officer id
+     * @param userId    the manager id
      * @param projectId the project id
      * @return the response entity
      */
-    public ResponseEntity<Object> selectionManagerOfficer(List<Long> managerId, List<Long> officerId, Long projectId) {
+    public ResponseEntity<Object> selectionManagerOfficer(List<Long> userId, Long projectId,String post) {
         try {
             Optional<Project> project = projectRepository.findById(projectId);
             if (project.isPresent()) {
                 List<Project> projectList = new ArrayList<>();
                 projectList.add(project.get());
-                for (Long mId : managerId) {
-                    Optional<User> user = userRepository.findById(mId);
-                    user.get().setProjects(projectList);
+                for (Long uId : userId) {
+                    Optional<User> user = userRepository.findById(uId);
+                    if (user.isPresent() && (user.get().getPost().equals("manager") || user.get().getPost().equals("officer")))
+                        user.get().setProjects(projectList);
+                    userRepository.save(user.get());
                 }
-                for (Long oID : officerId) {
-                    Optional<User> user = userRepository.findById(oID);
-                    user.get().setProjects(projectList);
-                }
+                logger.info("adding project to managers and officers");
             }
             return new ResponseEntity<>("Project updated with officers and managers", HttpStatus.OK);
         } catch (Exception e) {
@@ -324,11 +338,11 @@ public class UserService {
     public ResponseEntity<Object> rejectionManagerOfficer(Long userId, Long projectId) {
         try {
             Optional<Project> project = projectRepository.findById(projectId);
-            if(project.isPresent()){
-                userRepository.delete(userId);
-                return new ResponseEntity<>("Done",HttpStatus.OK);
-            }
-            else return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
+            if (project.isPresent()) {
+                userRepository.delete(userId, projectId);
+                logger.info("Manager or Officer not accepting Project");
+                return new ResponseEntity<>("Done", HttpStatus.OK);
+            } else return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             System.out.print(e);
             return new ResponseEntity<>("Cannot access database", HttpStatus.NOT_FOUND);
@@ -354,5 +368,46 @@ public class UserService {
         List<User> listUsers = userRepository.findAll();
         UserPDFExporter exporter = new UserPDFExporter(listUsers);
         exporter.export(response);
+    }
+
+    /**
+     * Notify by email response entity.
+     *
+     * @param userId    the user id
+     * @param projectId the project id
+     * @return the response entity
+     */
+    public ResponseEntity<Object> notifyByEmail(Long userId, Long projectId) {
+        Optional<User> user = userRepository.findById(userId);
+        Optional<Project> project = projectRepository.findById(projectId);
+        try {
+            if (user.isPresent() && user.get().getWarning() <= 3 && user.get().getProjects().contains(project)) {
+
+                String message = "Timeline has passed please submit your report";
+                emailUtil.sendMail(user.get().getEmail(), "Warning", message);
+                int warn = user.get().getWarning();
+                user.get().setWarning(warn++);
+
+                logger.info("In Service class warning sent");
+                return new ResponseEntity<>("Mail and message Sent", HttpStatus.OK);
+            } else if (user.get().getWarning() >= 3) {
+                return new ResponseEntity<>("Please contact admin, you access is restricted", HttpStatus.UNAUTHORIZED);
+            } else
+                return new ResponseEntity<>("User is not found", HttpStatus.NOT_FOUND);
+        } catch (Exception exception) {
+            return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public ResponseEntity<Object> onSpotChanges(Long cnic, String cause, String actionsTaken){
+        try {
+
+
+
+        }catch (Exception e){
+
+        }
+
+        return null;
     }
 }

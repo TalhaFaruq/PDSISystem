@@ -70,7 +70,7 @@ public class TimelineController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getByTimelineID(@RequestHeader("Authorization") String token, @PathVariable Long id) {
 		if (authorization(token)) {
-			return timelineService.getTimelinebyid(id);
+			return timelineService.getTimelineId(id);
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
 	}

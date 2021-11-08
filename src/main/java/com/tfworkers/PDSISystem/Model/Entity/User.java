@@ -26,6 +26,7 @@ public class User {
 	@Column(nullable = false, unique = true)
 	private String email;// User email
 	private int age;// User age
+	private Long cnic;
 	private String password; // User Password
 	private boolean isActive = true; //if deleted than it will be false
 	private String phoneNumber; // User Phone Number
@@ -37,6 +38,7 @@ public class User {
 	private int token;
 	private boolean accountVerifyStatus = false;
 	private Date expirationDate;
+	private int warning;
 
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<Project>();
@@ -44,6 +46,14 @@ public class User {
 	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	private List<Tags> tags = new ArrayList<Tags>();
 
+
+	public Long getCnic() {
+		return cnic;
+	}
+
+	public void setCnic(Long cnic) {
+		this.cnic = cnic;
+	}
 
 	public long getUser_id() {
 		return user_id;
@@ -189,7 +199,11 @@ public class User {
 		this.accountVerifyStatus = accountVerifyStatus;
 	}
 
+	public int getWarning() {
+		return warning;
+	}
 
-
-	
+	public void setWarning(int warning) {
+		this.warning = warning;
+	}
 }

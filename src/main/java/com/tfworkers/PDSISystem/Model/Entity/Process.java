@@ -23,6 +23,8 @@ public class Process {
 	private Date createdDate;
 	private Date updatedDate;
 	private boolean isActive;
+
+
 	public Long getProcess_id() {
 		return process_id;
 	}

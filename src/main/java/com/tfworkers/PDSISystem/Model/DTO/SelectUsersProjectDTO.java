@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 @Service
-public class SelectManagersDTO {
-    private List<Long> Manager;
+public class SelectUsersProjectDTO {
     private List<Long> User;
     private Long projectId;
+    private String post;
 }

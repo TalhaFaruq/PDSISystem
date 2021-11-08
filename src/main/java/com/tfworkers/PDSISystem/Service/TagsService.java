@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,8 @@ public class TagsService {
 		this.tagsRepository = tagsRepository;
 	}
 
+	private static final Logger logger = LogManager.getLogger(UserService.class);
+
 	/**
 	 * @return ResponseEntity which return list of tags. and in else it just return
 	 *         not found status
@@ -37,10 +41,12 @@ public class TagsService {
 		try {
 			List<Tags> tagsList = tagsRepository.findAll();
 			if (!tagsList.isEmpty()) {
+				logger.info("List all tags");
 				return ResponseEntity.ok().body(tagsList);
 			} else
 				return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
+			logger.error("Error in tags");
 			return new ResponseEntity<Object>("Cannot access List of tags from database", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -54,12 +60,15 @@ public class TagsService {
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveTags(Tags tag) {
-		try {
+		try{
 			Calendar date = Calendar.getInstance();
 			tag.setCreatedDate(date.getTime());
 			tagsRepository.save(tag);
+			logger.info("Saving tag in service");
 			return new ResponseEntity<Object>(tag, HttpStatus.OK);
 		} catch (Exception e) {
+			logger.error("Error in tags service class");
+
 			return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -77,6 +86,7 @@ public class TagsService {
 			Calendar date = Calendar.getInstance();
 			tag.setUpdatedDate(date.getTime());
 			tagsRepository.save(tag);
+			logger.info("Updating tags Service class");
 			return new ResponseEntity<Object>(tag, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>("Cannot update the tags into database", HttpStatus.NOT_FOUND);
@@ -94,6 +104,7 @@ public class TagsService {
 			Optional<Tags> tag = tagsRepository.findById(id);
 			tag.get().setActive(false);
 			tagsRepository.save(tag.get());
+			logger.info("Deleting tags");
 			return new ResponseEntity<Object>(tag, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>("Cannot Access certain tags id from database", HttpStatus.NOT_FOUND);
@@ -110,6 +121,7 @@ public class TagsService {
 	public ResponseEntity<Object> getTagbyid(Long id) {
 		try {
 			Optional<Tags> tag = tagsRepository.findById(id);
+			logger.info("getting tags by ID");
 			return ResponseEntity.ok().body(tag.get());
 		} catch (Exception e) {
 			return new ResponseEntity<Object>("tags does not Exist in database", HttpStatus.NOT_FOUND);
