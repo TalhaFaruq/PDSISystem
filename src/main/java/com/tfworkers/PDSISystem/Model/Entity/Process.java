@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -17,7 +18,9 @@ public class Process {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long process_id;
+	@NotBlank(message = "Name is mandatory")
 	private String name;
+	@NotBlank(message = "Description is mandatory")
 	private String description; 
 	private String approved;     //if approval needed otherwise it will empty
 	private Date createdDate;

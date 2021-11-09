@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 
 @Data
@@ -15,4 +16,6 @@ public class CauseofAction {
     private String post;
     private String causeofChange;
     private String actions;
+    private Date createdDate;
+    private Date updatedDate;
 }

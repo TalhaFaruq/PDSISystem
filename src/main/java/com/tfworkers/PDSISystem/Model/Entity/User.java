@@ -5,15 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
-
-//@NamedNativeQuery(name = "UserRepository.recommendedManagers",
-//		query = "user.user_id, user.first_name, user.department FROM user JOIN tags ON tags.name = 'Administrative' and user.post = 'Manager'",
-//		resultSetMapping ="Mapping.RecommendedManagerDTO")
-//@SqlResultSetMapping(name = "Mapping.RecommendedManagerDTO",
-//		classes = @ConstructorResult(targetClass = RecommendedManagerDTO.class,
-//									columns = {@ColumnResult(name = "id"),
-//									@ColumnResult(name = "first_name"),
-//											@ColumnResult(name = "department")}))
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -21,12 +13,16 @@ public class User {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id; // User ID
+	@NotBlank(message = "Name is mandatory")
 	private String firstName; // User First Name
 	private String lastName;// User Last Name
 	@Column(nullable = false, unique = true)
+	@NotBlank(message = "Email is mandatory")
 	private String email;// User email
 	private int age;// User age
+	@NotBlank(message = "Cnic is mandatory")
 	private Long cnic;
+	@NotBlank(message = "Password is mandatory")
 	private String password; // User Password
 	private boolean isActive = true; //if deleted than it will be false
 	private String phoneNumber; // User Phone Number

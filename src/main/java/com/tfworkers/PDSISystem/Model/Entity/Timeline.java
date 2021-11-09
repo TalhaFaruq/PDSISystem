@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -17,7 +18,9 @@ public class Timeline {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long timeline_id;
 	private String name;
+	@NotBlank(message = "Start Date is mandatory")
 	private Date startDate;
+	@NotBlank(message = "End Date is mandatory")
 	private Date endDate;
 	private String updatedEndDate;
 	private boolean isActive = false;

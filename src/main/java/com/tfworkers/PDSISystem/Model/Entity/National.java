@@ -62,6 +62,6 @@ public class National {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
+
+
 }

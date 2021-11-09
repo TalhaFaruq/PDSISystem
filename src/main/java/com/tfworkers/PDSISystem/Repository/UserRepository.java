@@ -29,6 +29,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Transactional
 	@Modifying
-	@Query(value = "delete from user_projects up where up.user_user_id = ?1 and up.projects_project_id = ?1", nativeQuery = true)
+	@Query(value = "delete from user_projects up where up.user_user_id = ?1 and up.projects_project_id = ?2", nativeQuery = true)
 	void delete(Long userId, Long projectId);
 }

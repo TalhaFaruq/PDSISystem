@@ -1,5 +1,6 @@
 package com.tfworkers.PDSISystem.Controller;
 
+import com.lowagie.text.DocumentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,9 @@ import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Service.ProjectService;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @EnableSwagger2
 @RestController
@@ -121,6 +125,11 @@ public class ProjectController {
 			return projectService.deleteProject(id);
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
+	}
+
+	@GetMapping("/projectReport")
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		projectService.projectExportToPDF(response);
 	}
 
 }

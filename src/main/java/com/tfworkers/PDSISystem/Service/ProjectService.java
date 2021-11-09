@@ -1,10 +1,15 @@
 package com.tfworkers.PDSISystem.Service;
 
-import java.time.LocalDateTime;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.lowagie.text.DocumentException;
+import com.tfworkers.PDSISystem.Utilities.ProjectsPDFExporter;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -13,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Repository.ProjectRepository;
+
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class ProjectService {
@@ -123,6 +130,26 @@ public class ProjectService {
 		} catch (Exception e) {
 			return new ResponseEntity<>("project does not Exist in database", HttpStatus.NOT_FOUND);
 		}
+	}
+
+	public ResponseEntity<Object> projectEndDate(){
+
+		return null;
+	}
+
+	public void projectExportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/pdf");
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		String currentDateTime = dateFormatter.format(new Date());
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+
+
+		List<Project> projects = projectRepository.findAll();
+		ProjectsPDFExporter exporter = new ProjectsPDFExporter(projects, projectRepository);
+		exporter.export(response);
 	}
 
 }

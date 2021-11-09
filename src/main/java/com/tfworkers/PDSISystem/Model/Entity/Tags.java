@@ -1,6 +1,7 @@
 package com.tfworkers.PDSISystem.Model.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class Tags {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long tags_id;
+	@NotBlank(message = "Name is mandatory")
 	private String name;
 	private Date createdDate;
 	private Date updatedDate;

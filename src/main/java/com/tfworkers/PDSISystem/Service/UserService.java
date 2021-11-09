@@ -356,7 +356,7 @@ public class UserService {
      * @throws DocumentException the document exception
      * @throws IOException       the io exception
      */
-    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+    public void userExportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());

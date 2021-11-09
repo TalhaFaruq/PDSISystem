@@ -264,7 +264,7 @@ public class UserController {
      */
     @GetMapping("/exporttoPDF")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
-        userService.exportToPDF(response);
+        userService.userExportToPDF(response);
     }
 
     /**

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 @Entity
@@ -14,7 +15,9 @@ public class Project {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long project_id;
+	@NotBlank(message = "Name is mandatory")
 	private String name;
+	@NotBlank(message = "Description is mandatory")
 	private String Description;
 	private String projectStatus;
 	private Date createdDate;
@@ -35,6 +38,9 @@ public class Project {
 
 	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.ALL)
 	private List<Tags> tags = new ArrayList<Tags>();
+
+	@OneToMany(targetEntity = CauseofAction.class,cascade = CascadeType.ALL)
+	private List<CauseofAction> causeofActions = new ArrayList<>();
 
 	public Long getProject_id() {
 		return project_id;
