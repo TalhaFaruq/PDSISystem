@@ -12,24 +12,29 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.FuturePlan;
 import com.tfworkers.PDSISystem.Repository.FuturePlanRepository;
 
+/**
+ * The type Future plan service.
+ */
 @Service
 public class FuturePlanService {
 	private FuturePlanRepository futurePlanRepository;
 
 	/**
 	 * Constructor
+	 *
+	 * @param futurePlanRepository the future plan repository
 	 */
 	public FuturePlanService(FuturePlanRepository futurePlanRepository) {
 		this.futurePlanRepository = futurePlanRepository;
 	}
 
 	/**
-	 * @return ResponseEntity which return list of futurePlanes. and in else it just
-	 *         return not found status
+	 * List future plan response entity.
+	 *
+	 * @return ResponseEntity which return list of futurePlanes. and in else it just         return not found status
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This function get and show all the futurePlan which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the futurePlan which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listFuturePlan() {
@@ -45,11 +50,13 @@ public class FuturePlanService {
 	}
 
 	/**
+	 * Save future plan response entity.
+	 *
+	 * @param futurePlan the future plan
 	 * @return responseEntity Status and futurePlan object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description Save projects into database by getting values from controller
-	 *              and set date/time
+	 * @description Save projects into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveFuturePlan(FuturePlan futurePlan) {
@@ -64,11 +71,13 @@ public class FuturePlanService {
 	}
 
 	/**
+	 * Update future plan response entity.
+	 *
+	 * @param futurePlan the future plan
 	 * @return only responseEntity Status and futurePlan
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description update futurePlan into database by getting values from
-	 *              controller and set date/time
+	 * @description update futurePlan into database by getting values from              controller and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateFuturePlan(FuturePlan futurePlan) {
@@ -83,7 +92,10 @@ public class FuturePlanService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete future plan response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide futurePlan in database
 	 * @creationDate 28 October 2021
@@ -100,6 +112,9 @@ public class FuturePlanService {
 	}
 
 	/**
+	 * Gets future planbyid.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of futurePlan
 	 * @author Talha Farooq
 	 * @version 0.1

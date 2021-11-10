@@ -11,22 +11,30 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Causeof action service.
+ */
 @Service
 public class CauseofActionService {
     private CauseofActionRepository causeofActionRepository;
 
+    /**
+     * Instantiates a new Causeof action service.
+     *
+     * @param causeofActionRepository the causeof action repository
+     */
     public CauseofActionService(CauseofActionRepository causeofActionRepository) {
         this.causeofActionRepository = causeofActionRepository;
     }
 
 
     /**
-     * @return ResponseEntity which return list of cause of Actions. and in else it just
-     * return not found status
+     * List causeof action response entity.
+     *
+     * @return ResponseEntity which return list of cause of Actions. and in else it just return not found status
      * @author Talha Farooq
      * @version 0.1
-     * @description This function get and show all the cause of Actions which are saved in
-     * database. The data from database comes in list.
+     * @description This function get and show all the cause of Actions which are saved in database. The data from database comes in list.
      * @creationDate 28 October 2021
      */
     public ResponseEntity<Object> listCauseofAction() {
@@ -42,11 +50,13 @@ public class CauseofActionService {
     }
 
     /**
+     * Save causeof actions response entity.
+     *
+     * @param causeofAction the causeof action
      * @return responseEntity Status and causeofAction object
      * @author Talha Farooq
      * @version 0.1
-     * @description Save causeofAction into database by getting values from controller
-     * and set date/time
+     * @description Save causeofAction into database by getting values from controller and set date/time
      * @creationDate 28 October 2021
      */
     public ResponseEntity<Object> saveCauseofActions(CauseofAction causeofAction) {
@@ -59,6 +69,7 @@ public class CauseofActionService {
             return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
         }
     }
+
 
 
 

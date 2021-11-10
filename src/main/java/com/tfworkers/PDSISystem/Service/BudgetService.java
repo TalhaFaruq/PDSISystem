@@ -12,24 +12,29 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.Budget;
 import com.tfworkers.PDSISystem.Repository.BudgetRepository;
 
+/**
+ * The type Budget service.
+ */
 @Service
 public class BudgetService {
 	private BudgetRepository budgetRepository;
 
 	/**
 	 * Constructor
+	 *
+	 * @param budgetRepository the budget repository
 	 */
 	public BudgetService(BudgetRepository budgetRepository) {
 		this.budgetRepository = budgetRepository;
 	}
 
 	/**
-	 * @return ResponseEntity which return list of budget. and in else it just
-	 *         return not found status
+	 * List budget response entity.
+	 *
+	 * @return ResponseEntity which return list of budget. and in else it just         return not found status
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This function get and show all the budget which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the budget which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listBudget() {
@@ -45,11 +50,13 @@ public class BudgetService {
 	}
 
 	/**
+	 * Save budget response entity.
+	 *
+	 * @param budget the budget
 	 * @return responseEntity Status and budget object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description Save projects into database by getting values from controller
-	 *              and set date/time
+	 * @description Save projects into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveBudget(Budget budget) {
@@ -64,11 +71,13 @@ public class BudgetService {
 	}
 
 	/**
+	 * Update budget response entity.
+	 *
+	 * @param budget the budget
 	 * @return only responseEntity Status and budget
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description update budget into database by getting values from controller
-	 *              and set date/time
+	 * @description update budget into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateBudget(Budget budget) {
@@ -83,7 +92,10 @@ public class BudgetService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete budget response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide budget in database
 	 * @creationDate 28 October 2021
@@ -100,6 +112,9 @@ public class BudgetService {
 	}
 
 	/**
+	 * Gets budgetbyid.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of budget
 	 * @author Talha Farooq
 	 * @version 0.1

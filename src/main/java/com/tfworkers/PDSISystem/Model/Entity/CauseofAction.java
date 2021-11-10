@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import java.util.Date;
 
 
+/**
+ * The type Causeof action.
+ */
 @Data
 @Entity
 public class CauseofAction {

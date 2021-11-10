@@ -132,4 +132,12 @@ public class ProjectController {
 		projectService.projectExportToPDF(response);
 	}
 
+	@GetMapping("/endDateProject")
+	public ResponseEntity<Object> endDateProject(@RequestHeader("Authorization") String token){
+		if (authorization(token)) {
+			return projectService.projectEndDate();
+		} else
+			return new ResponseEntity<Object>(na, HttpStatus.OK);
+	}
+
 }

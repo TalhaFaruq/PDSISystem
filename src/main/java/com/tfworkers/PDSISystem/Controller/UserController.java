@@ -233,7 +233,7 @@ public class UserController {
     /**
      * Select officers managers response entity.
      *
-     * @param token             the token
+     * @param token                 the token
      * @param selectUsersProjectDTO the select managers dto
      * @return the response entity
      */

@@ -1,4 +1,5 @@
 package com.tfworkers.PDSISystem.Utilities;
+
 import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
@@ -10,9 +11,17 @@ import com.lowagie.text.pdf.*;
 import com.tfworkers.PDSISystem.Model.Entity.User;
 
 
+/**
+ * The type User pdf exporter.
+ */
 public class UserPDFExporter {
     final private List<User> listUsers;
 
+    /**
+     * Instantiates a new User pdf exporter.
+     *
+     * @param listUsers the list users
+     */
     public UserPDFExporter(List<User> listUsers) {
         this.listUsers = listUsers;
     }
@@ -52,6 +61,13 @@ public class UserPDFExporter {
         }
     }
 
+    /**
+     * Export.
+     *
+     * @param response the response
+     * @throws DocumentException the document exception
+     * @throws IOException       the io exception
+     */
     public void export(HttpServletResponse response) throws DocumentException, IOException {
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
@@ -68,7 +84,7 @@ public class UserPDFExporter {
 
         PdfPTable table = new PdfPTable(5);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
+        table.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f, 1.5f});
         table.setSpacingBefore(10);
 
         writeTableHeader(table);

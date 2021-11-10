@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.Process;
 import com.tfworkers.PDSISystem.Repository.ProcessRepository;
 
+/**
+ * The type Process service.
+ */
 @Service
 public class ProcessService {
 
@@ -19,18 +22,20 @@ public class ProcessService {
 
 	/**
 	 * Constructor
+	 *
+	 * @param processRepository the process repository
 	 */
 	public ProcessService(ProcessRepository processRepository) {
 		this.processRepository = processRepository;
 	}
 
 	/**
-	 * @return ResponseEntity which return list of processes. and in else it just
-	 *         return not found status
+	 * List process response entity.
+	 *
+	 * @return ResponseEntity which return list of processes. and in else it just         return not found status
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This function get and show all the process which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the process which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listProcess() {
@@ -46,11 +51,13 @@ public class ProcessService {
 	}
 
 	/**
+	 * Save process response entity.
+	 *
+	 * @param process the process
 	 * @return responseEntity Status and process object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description Save projects into database by getting values from controller
-	 *              and set date/time
+	 * @description Save projects into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveProcess(Process process) {
@@ -65,11 +72,13 @@ public class ProcessService {
 	}
 
 	/**
+	 * Update process response entity.
+	 *
+	 * @param process the process
 	 * @return only responseEntity Status and process
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description update process into database by getting values from controller
-	 *              and set date/time
+	 * @description update process into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateProcess(Process process) {
@@ -84,7 +93,10 @@ public class ProcessService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete process response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide process in database
 	 * @creationDate 28 October 2021
@@ -101,6 +113,9 @@ public class ProcessService {
 	}
 
 	/**
+	 * Gets processbyid.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of process
 	 * @author Talha Farooq
 	 * @version 0.1

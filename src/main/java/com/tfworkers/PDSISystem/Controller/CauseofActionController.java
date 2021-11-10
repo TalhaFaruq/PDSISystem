@@ -1,7 +1,6 @@
 package com.tfworkers.PDSISystem.Controller;
 
 import com.tfworkers.PDSISystem.Model.Entity.CauseofAction;
-import com.tfworkers.PDSISystem.Model.Entity.Process;
 import com.tfworkers.PDSISystem.Service.CauseofActionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

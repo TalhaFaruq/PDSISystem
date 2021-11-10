@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.National;
 import com.tfworkers.PDSISystem.Repository.NationalRepository;
 
+/**
+ * The type National service.
+ */
 @Service
 public class NationalService {
 
@@ -19,18 +22,20 @@ public class NationalService {
 
 	/**
 	 * Constructor
+	 *
+	 * @param nationalRepository the national repository
 	 */
 	public NationalService(NationalRepository nationalRepository) {
 		this.nationalRepository = nationalRepository;
 	}
 
 	/**
-	 * @return ResponseEntity which return list of national. and in else it just
-	 *         return not found status
+	 * List national response entity.
+	 *
+	 * @return ResponseEntity which return list of national. and in else it just         return not found status
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This function get and show all the national which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the national which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listNational() {
@@ -46,11 +51,13 @@ public class NationalService {
 	}
 
 	/**
+	 * Save national response entity.
+	 *
+	 * @param national the national
 	 * @return responseEntity Status and national object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description Save projects into database by getting values from controller
-	 *              and set date/time
+	 * @description Save projects into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveNational(National national) {
@@ -65,11 +72,13 @@ public class NationalService {
 	}
 
 	/**
+	 * Update national response entity.
+	 *
+	 * @param national the national
 	 * @return only responseEntity Status and national
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description update national into database by getting values from controller
-	 *              and set date/time
+	 * @description update national into database by getting values from controller              and set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateNational(National national) {
@@ -84,7 +93,10 @@ public class NationalService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete national response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide national in database
 	 * @creationDate 28 October 2021
@@ -101,6 +113,9 @@ public class NationalService {
 	}
 
 	/**
+	 * Gets nationalbyid.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of national
 	 * @author Talha Farooq
 	 * @version 0.1

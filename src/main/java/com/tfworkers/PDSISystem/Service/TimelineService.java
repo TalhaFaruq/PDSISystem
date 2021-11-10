@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.Timeline;
 import com.tfworkers.PDSISystem.Repository.TimelineRepository;
 
+/**
+ * The type Timeline service.
+ */
 @Service
 public class TimelineService {
 
@@ -20,6 +23,8 @@ public class TimelineService {
 
 	/**
 	 * Constructor
+	 *
+	 * @param timelineRepository the timeline repository
 	 */
 	public TimelineService(TimelineRepository timelineRepository) {
 		this.timelineRepository = timelineRepository;
@@ -28,11 +33,11 @@ public class TimelineService {
 	private static final Logger logger = LogManager.getLogger(UserService.class);
 
 	/**
-	 * @return ResponseEntity which return list of timeline. and in else it just returns
-	 *         not found status
+	 * List all timeline response entity.
+	 *
+	 * @return ResponseEntity which return list of timeline. and in else it just returns         not found status
 	 * @author Talha Farooq
-	 * @description This function get and show all the timelines which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the timelines which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listAllTimeline() {
@@ -51,10 +56,12 @@ public class TimelineService {
 	}
 
 	/**
+	 * Save timeline response entity.
+	 *
+	 * @param timeline the timeline
 	 * @return responseEntity Status and timeline object
 	 * @author Talha Farooq
-	 * @description Save timeline into database by getting values from controller and
-	 *              set date/time
+	 * @description Save timeline into database by getting values from controller and              set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveTimeline(Timeline timeline) {
@@ -72,10 +79,12 @@ public class TimelineService {
 	}
 
 	/**
+	 * Update timeline response entity.
+	 *
+	 * @param timeline the timeline
 	 * @return only responseEntity Status and timeline
 	 * @author Talha Farooq
-	 * @description update timeline into database by getting values from controller and
-	 *              set date/time
+	 * @description update timeline into database by getting values from controller and              set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateTimeline(Timeline timeline) {
@@ -91,7 +100,10 @@ public class TimelineService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete timeline response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide timeline in database
 	 * @creationDate 28 October 2021
@@ -109,6 +121,9 @@ public class TimelineService {
 	}
 
 	/**
+	 * Gets timeline id.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of user
 	 * @author Talha Farooq
 	 * @description Find by ID user from database

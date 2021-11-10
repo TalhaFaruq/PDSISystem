@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Select users project dto.
+ */
 @Data
 @Service
 public class SelectUsersProjectDTO {

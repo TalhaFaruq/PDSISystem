@@ -305,6 +305,7 @@ public class UserService {
      *
      * @param userId    the manager id
      * @param projectId the project id
+     * @param post      the post
      * @return the response entity
      */
     public ResponseEntity<Object> selectionManagerOfficer(List<Long> userId, Long projectId,String post) {
@@ -380,6 +381,7 @@ public class UserService {
     public ResponseEntity<Object> notifyByEmail(Long userId, Long projectId) {
         Optional<User> user = userRepository.findById(userId);
         Optional<Project> project = projectRepository.findById(projectId);
+
         try {
             if (user.isPresent() && user.get().getWarning() <= 3 && user.get().getProjects().contains(project)) {
 
@@ -399,15 +401,5 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<Object> onSpotChanges(Long cnic, String cause, String actionsTaken){
-        try {
 
-
-
-        }catch (Exception e){
-
-        }
-
-        return null;
-    }
 }

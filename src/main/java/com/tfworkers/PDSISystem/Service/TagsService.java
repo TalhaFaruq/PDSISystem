@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import com.tfworkers.PDSISystem.Model.Entity.Tags;
 import com.tfworkers.PDSISystem.Repository.TagsRepository;
 
+/**
+ * The type Tags service.
+ */
 @Service
 public class TagsService {
 
@@ -21,6 +24,8 @@ public class TagsService {
 
 	/**
 	 * Constructor
+	 *
+	 * @param tagsRepository the tags repository
 	 */
 	public TagsService(TagsRepository tagsRepository) {
 		this.tagsRepository = tagsRepository;
@@ -29,12 +34,12 @@ public class TagsService {
 	private static final Logger logger = LogManager.getLogger(UserService.class);
 
 	/**
-	 * @return ResponseEntity which return list of tags. and in else it just return
-	 *         not found status
+	 * List tags response entity.
+	 *
+	 * @return ResponseEntity which return list of tags. and in else it just return         not found status
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This function get and show all the tags which are saved in
-	 *              database. The data from database comes in list.
+	 * @description This function get and show all the tags which are saved in              database. The data from database comes in list.
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> listTags() {
@@ -52,11 +57,13 @@ public class TagsService {
 	}
 
 	/**
+	 * Save tags response entity.
+	 *
+	 * @param tag the tag
 	 * @return responseEntity Status and tags object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description Save tags into database by getting values from controller and
-	 *              set date/time
+	 * @description Save tags into database by getting values from controller and              set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> saveTags(Tags tag) {
@@ -74,11 +81,13 @@ public class TagsService {
 	}
 
 	/**
+	 * Update tags response entity.
+	 *
+	 * @param tag the tag
 	 * @return only responseEntity Status and tags
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description update tags into database by getting values from controller and
-	 *              set date/time
+	 * @description update tags into database by getting values from controller and              set date/time
 	 * @creationDate 28 October 2021
 	 */
 	public ResponseEntity<Object> updateTags(Tags tag) {
@@ -94,7 +103,10 @@ public class TagsService {
 	}
 
 	/**
-	 * @return ResponseEntity
+	 * Delete tags response entity.
+	 *
+	 * @param id the id
+	 * @return ResponseEntity response entity
 	 * @author Talha Farooq
 	 * @description Hide tags in database
 	 * @creationDate 28 October 2021
@@ -112,6 +124,9 @@ public class TagsService {
 	}
 
 	/**
+	 * Gets tagbyid.
+	 *
+	 * @param id the id
 	 * @return ResponseEntity with one object of tag
 	 * @author Talha Farooq
 	 * @version 0.1
