@@ -8,16 +8,7 @@ import com.tfworkers.PDSISystem.Model.DTO.SelectUsersProjectDTO;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.User;
 import com.tfworkers.PDSISystem.Service.UserService;
@@ -48,7 +39,7 @@ public class UserController {
     /**
      * This is token for checking authorization
      */
-    final private String key = "40dc498b-e837-4fa9-8e53-c1d51e01af15";
+    final private String key = "12345";
 
     /**
      * Authorization function
@@ -277,5 +268,18 @@ public class UserController {
     @GetMapping("/emailNotification")
     public void emailNotification(@RequestHeader("Authorization") String token, @RequestHeader("userId") Long userId, @RequestHeader("projectId") Long projectId) {
         userService.notifyByEmail(userId, projectId);
+    }
+
+    /**
+     * Input validation exception response entity.
+     *
+     * @param e the e
+     * @return the response entity
+     */
+    @ExceptionHandler(javax.validation.ConstraintViolationException.class)
+    public ResponseEntity<Object> inputValidationException(Exception e) {
+
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
     }
 }

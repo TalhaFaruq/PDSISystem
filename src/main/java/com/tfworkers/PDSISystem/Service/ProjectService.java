@@ -3,21 +3,16 @@ package com.tfworkers.PDSISystem.Service;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import com.lowagie.text.DocumentException;
-import com.tfworkers.PDSISystem.Model.Entity.Timeline;
 import com.tfworkers.PDSISystem.Utilities.EmailUtil;
 import com.tfworkers.PDSISystem.Utilities.ProjectsPDFExporter;
-import org.apache.http.protocol.HTTP;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -54,14 +49,14 @@ public class ProjectService {
      */
     public ResponseEntity<Object> listProjects() {
         try {
-            List<Project> projectList = projectRepository.findAll();
+            List<Project> projectList = projectRepository.findByOrderByCreatedDateAsc();
             if (!projectList.isEmpty()) {
                 logger.info("Showing projects Service Class");
                 return ResponseEntity.ok().body(projectList);
             } else
                 return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot access List of projects from database", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

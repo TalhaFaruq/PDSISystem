@@ -3,9 +3,12 @@ package com.tfworkers.PDSISystem.Service;
 import com.tfworkers.PDSISystem.Model.Entity.CauseofAction;
 import com.tfworkers.PDSISystem.Repository.CauseofActionRepository;
 import com.tfworkers.PDSISystem.Repository.NationalRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Calendar;
 import java.util.List;
@@ -27,6 +30,8 @@ public class CauseofActionService {
         this.causeofActionRepository = causeofActionRepository;
     }
 
+    private static final Logger logger = LogManager.getLogger(CauseofActionService.class);
+
 
     /**
      * List causeof action response entity.
@@ -39,13 +44,15 @@ public class CauseofActionService {
      */
     public ResponseEntity<Object> listCauseofAction() {
         try {
-            List<CauseofAction> causeofActions = causeofActionRepository.findAll();
+            List<CauseofAction> causeofActions = causeofActionRepository.findByOrderByCreatedDateAsc();
             if (!causeofActions.isEmpty()) {
+                logger.info("Getting list of Cause of Action");
                 return ResponseEntity.ok().body(causeofActions);
             } else
-                return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot access List of causeofActions from database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage(),"Error getting list of cause of action");
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -64,13 +71,12 @@ public class CauseofActionService {
             Calendar date = Calendar.getInstance();
             causeofAction.setCreatedDate(date.getTime());
             causeofActionRepository.save(causeofAction);
-            return new ResponseEntity<Object>(causeofAction, HttpStatus.OK);
+            logger.info("Saving cause of action object");
+            return new ResponseEntity<>(causeofAction, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage(),"Error in saving cause of action");
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-
-
-
 
 }

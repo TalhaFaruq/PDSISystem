@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import com.tfworkers.PDSISystem.Model.Entity.National;
 
+import java.util.List;
+
 @Repository
 public interface NationalRepository extends JpaRepository<National,Long>{
-
+    List<National> findByOrderByCreatedDateAsc();
 }

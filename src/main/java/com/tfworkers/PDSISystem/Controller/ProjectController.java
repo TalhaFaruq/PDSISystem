@@ -3,15 +3,7 @@ package com.tfworkers.PDSISystem.Controller;
 import com.lowagie.text.DocumentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Service.ProjectService;
@@ -21,6 +13,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Project controller.
+ */
 @EnableSwagger2
 @RestController
 @RequestMapping("/project")
@@ -30,6 +25,8 @@ public class ProjectController {
 
 	/**
 	 * ProjectController constructor
+	 *
+	 * @param projectService the project service
 	 */
 	public ProjectController(ProjectService projectService) {
 		this.projectService = projectService;
@@ -38,21 +35,26 @@ public class ProjectController {
 	/**
 	 * This is token for checking authorization
 	 */
-	private String key = "40dc498b-e837-4fa9-8e53-c1d51e01af15";
+	private String key = "12345";
 
 	/**
 	 * Authorization function
+	 *
+	 * @param token the token
+	 * @return the boolean
 	 */
 	public Boolean authorization(String token) {
 		return key.equals(token);
 	}
 
 	/**
+	 * List all project response entity.
+	 *
+	 * @param token the token
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the projects from database in ArrayList and shows it in
-	 *              front end. With Authorization token.
+	 * @description This API get the projects from database in ArrayList and shows it in              front end. With Authorization token.
 	 * @createdTime 28 October 2021
 	 */
 	@GetMapping("all")
@@ -65,11 +67,14 @@ public class ProjectController {
 	}
 
 	/**
+	 * Gets by project id.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return ResponseEntity with object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the Project from database in object and shows it in
-	 *              front end. With Authorization token.
+	 * @description This API get the Project from database in object and shows it in              front end. With Authorization token.
 	 * @createdTime 29 October 2021
 	 */
 	@GetMapping("/{id}")
@@ -81,11 +86,14 @@ public class ProjectController {
 	}
 
 	/**
+	 * Add project response entity.
+	 *
+	 * @param token   the token
+	 * @param project the project
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the Project from front end in json. With Authorization
-	 *              token.
+	 * @description This API get the Project from front end in json. With Authorization              token.
 	 * @createdTime 29 October 2021
 	 */
 	@PostMapping("/add")
@@ -97,11 +105,14 @@ public class ProjectController {
 	}
 
 	/**
+	 * Update project response entity.
+	 *
+	 * @param token   the token
+	 * @param project the project
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
-	 * @description This API update the Project in database. With Authorization
-	 *              token.
+	 * @description This API update the Project in database. With Authorization              token.
 	 * @createdTime 29 October 2021
 	 */
 	@PutMapping("/update")
@@ -113,6 +124,10 @@ public class ProjectController {
 	}
 
 	/**
+	 * Delete project response entity.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
@@ -127,17 +142,43 @@ public class ProjectController {
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
 	}
 
+	/**
+	 * Export to pdf.
+	 *
+	 * @param response the response
+	 * @throws DocumentException the document exception
+	 * @throws IOException       the io exception
+	 */
 	@GetMapping("/projectReport")
 	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
 		projectService.projectExportToPDF(response);
 	}
 
+	/**
+	 * End date project response entity.
+	 *
+	 * @param token the token
+	 * @return the response entity
+	 */
 	@GetMapping("/endDateProject")
 	public ResponseEntity<Object> endDateProject(@RequestHeader("Authorization") String token){
 		if (authorization(token)) {
-			return projectService.projectEndDate();
+			return null;
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
+	}
+
+	/**
+	 * Input validation exception response entity.
+	 *
+	 * @param e the e
+	 * @return the response entity
+	 */
+	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
+	public ResponseEntity<Object> inputValidationException(Exception e) {
+
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
 	}
 
 }

@@ -14,12 +14,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Report controller.
+ */
 public class ReportController {
 
     @Autowired
     private UserPDFExporter userPDFExporter;
     private UserService userService;
 
+    /**
+     * Export to pdf.
+     *
+     * @param response the response
+     * @throws DocumentException the document exception
+     * @throws IOException       the io exception
+     */
     @GetMapping("/users/export/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");

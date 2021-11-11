@@ -2,21 +2,16 @@ package com.tfworkers.PDSISystem.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.Timeline;
 import com.tfworkers.PDSISystem.Service.TimelineService;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * The type Timeline controller.
+ */
 @EnableSwagger2
 @RestController
 @RequestMapping("/timeline")
@@ -26,6 +21,8 @@ public class TimelineController {
 
 	/**
 	 * TimelineController constructor
+	 *
+	 * @param timelineService the timeline service
 	 */
 	public TimelineController(TimelineService timelineService) {
 		this.timelineService = timelineService;
@@ -34,21 +31,26 @@ public class TimelineController {
 	/**
 	 * This is token for checking authorization
 	 */
-	private String key = "40dc498b-e837-4fa9-8e53-c1d51e01af15";
+	private String key = "12345";
 
 	/**
 	 * Authorization function
+	 *
+	 * @param token the token
+	 * @return the boolean
 	 */
 	public Boolean authorization(String token) {
 		return key.equals(token);
 	}
 
 	/**
+	 * List all timeline response entity.
+	 *
+	 * @param token the token
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the time line from database in ArrayList and shows
-	 *              it in front end. With Authorization token.
+	 * @description This API get the time line from database in ArrayList and shows              it in front end. With Authorization token.
 	 * @createdTime 28 October 2021
 	 */
 	@GetMapping("all")
@@ -60,11 +62,14 @@ public class TimelineController {
 	}
 
 	/**
+	 * Gets by timeline id.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return ResponseEntity with object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the time line from database in object and shows it
-	 *              in front end. With Authorization token.
+	 * @description This API get the time line from database in object and shows it              in front end. With Authorization token.
 	 * @createdTime 28 October 2021
 	 */
 	@GetMapping("/{id}")
@@ -76,11 +81,14 @@ public class TimelineController {
 	}
 
 	/**
+	 * Add timeline response entity.
+	 *
+	 * @param token    the token
+	 * @param timeline the timeline
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the time line from front end in json. With
-	 *              Authorization token.
+	 * @description This API get the time line from front end in json. With              Authorization token.
 	 * @createdTime 28 October 2021
 	 */
 	@PostMapping("/add")
@@ -93,11 +101,14 @@ public class TimelineController {
 	}
 
 	/**
+	 * Update timeline response entity.
+	 *
+	 * @param token    the token
+	 * @param timeline the timeline
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
-	 * @description This API update the time line in database. With Authorization
-	 *              token.
+	 * @description This API update the time line in database. With Authorization              token.
 	 * @createdTime 28 October 2021
 	 */
 	@PutMapping("/update")
@@ -110,6 +121,10 @@ public class TimelineController {
 	}
 
 	/**
+	 * Delete timeline response entity.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
@@ -122,6 +137,19 @@ public class TimelineController {
 			return timelineService.deleteTimeline(id);
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
+	}
+
+	/**
+	 * Input validation exception response entity.
+	 *
+	 * @param e the e
+	 * @return the response entity
+	 */
+	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
+	public ResponseEntity<Object> inputValidationException(Exception e) {
+
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
 	}
 
 }

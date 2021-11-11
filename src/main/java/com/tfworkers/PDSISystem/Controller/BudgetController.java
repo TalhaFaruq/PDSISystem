@@ -2,21 +2,16 @@ package com.tfworkers.PDSISystem.Controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.Budget;
 import com.tfworkers.PDSISystem.Service.BudgetService;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * The type Budget controller.
+ */
 @EnableSwagger2
 @RestController
 @RequestMapping("/budget")
@@ -26,6 +21,8 @@ public class BudgetController {
 
 	/**
 	 * BudgetController constructor
+	 *
+	 * @param budgetService the budget service
 	 */
 	public BudgetController(BudgetService budgetService) {
 		this.budgetService = budgetService;
@@ -34,21 +31,26 @@ public class BudgetController {
 	/**
 	 * This is token for checking authorization
 	 */
-	private String key = "40dc498b-e837-4fa9-8e53-c1d51e01af15";
+	private String key = "12345";
 
 	/**
 	 * Authorization function
+	 *
+	 * @param token the token
+	 * @return the boolean
 	 */
 	public Boolean authorization(String token) {
 		return key.equals(token);
 	}
 
 	/**
+	 * List all budget response entity.
+	 *
+	 * @param token the token
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the budget from database in ArrayList and shows it in
-	 *              front end. With Authorization token.
+	 * @description This API get the budget from database in ArrayList and shows it in              front end. With Authorization token.
 	 * @createdTime 28 October 2021
 	 */
 	@GetMapping("all")
@@ -61,11 +63,14 @@ public class BudgetController {
 	}
 
 	/**
+	 * Gets by budget id.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return ResponseEntity with object
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the Budget from database in object and shows it in
-	 *              front end. With Authorization token.
+	 * @description This API get the Budget from database in object and shows it in              front end. With Authorization token.
 	 * @createdTime 29 October 2021
 	 */
 	@GetMapping("/{id}")
@@ -77,11 +82,14 @@ public class BudgetController {
 	}
 
 	/**
+	 * Add budget response entity.
+	 *
+	 * @param token  the token
+	 * @param budget the budget
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.1
-	 * @description This API get the Budget from front end in json. With Authorization
-	 *              token.
+	 * @description This API get the Budget from front end in json. With Authorization              token.
 	 * @createdTime 29 October 2021
 	 */
 	@PostMapping("/add")
@@ -93,11 +101,14 @@ public class BudgetController {
 	}
 
 	/**
+	 * Update budget response entity.
+	 *
+	 * @param token  the token
+	 * @param budget the budget
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
-	 * @description This API update the Budget in database. With Authorization
-	 *              token.
+	 * @description This API update the Budget in database. With Authorization              token.
 	 * @createdTime 29 October 2021
 	 */
 	@PutMapping("/update")
@@ -109,6 +120,10 @@ public class BudgetController {
 	}
 
 	/**
+	 * Delete budget response entity.
+	 *
+	 * @param token the token
+	 * @param id    the id
 	 * @return Just returns ResponseEntity
 	 * @author Talha Farooq
 	 * @version 0.3
@@ -121,6 +136,19 @@ public class BudgetController {
 			return budgetService.deleteBudget(id);
 		} else
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
+	}
+
+	/**
+	 * Input validation exception response entity.
+	 *
+	 * @param e the e
+	 * @return the response entity
+	 */
+	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
+	public ResponseEntity<Object> inputValidationException(Exception e) {
+
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
 	}
 
 

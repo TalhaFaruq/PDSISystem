@@ -27,7 +27,7 @@ public class CauseofActionController {
         this.causeofActionService = causeofActionService;
     }
 
-    private String key = "40dc498b-e837-4fa9-8e53-c1d51e01af15";
+    private String key = "12345";
 
     /**
      * Authorization function
@@ -38,7 +38,6 @@ public class CauseofActionController {
     public Boolean authorization(String token) {
         return key.equals(token);
     }
-
 
     /**
      * List all causeof action response entity.
@@ -68,5 +67,18 @@ public class CauseofActionController {
             return causeofActionService.saveCauseofActions(causeofAction);
         } else
             return new ResponseEntity<Object>(na, HttpStatus.OK);
+    }
+
+    /**
+     * Input validation exception response entity.
+     *
+     * @param e the e
+     * @return the response entity
+     */
+    @ExceptionHandler(javax.validation.ConstraintViolationException.class)
+    public ResponseEntity<Object> inputValidationException(Exception e) {
+
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+
     }
 }

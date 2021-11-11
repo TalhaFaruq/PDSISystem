@@ -14,8 +14,9 @@ import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Repository.ProjectRepository;
 import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -400,6 +401,5 @@ public class UserService {
             return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
         }
     }
-
 
 }
