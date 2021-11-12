@@ -8,7 +8,6 @@ import java.util.*;
 
 
 import com.lowagie.text.DocumentException;
-import com.tfworkers.PDSISystem.Model.DTO.OnSpotChangesDTO;
 import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
@@ -226,6 +225,7 @@ public class UserService {
             } else
                 return new ResponseEntity<>("User is not found", HttpStatus.NOT_FOUND);
         } catch (Exception exception) {
+            logger.error("Error",exception.getMessage());
             return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
         }
     }
@@ -309,7 +309,7 @@ public class UserService {
      * @param post      the post
      * @return the response entity
      */
-    public ResponseEntity<Object> selectionManagerOfficer(List<Long> userId, Long projectId,String post) {
+    public ResponseEntity<Object> selectionManagerOfficer(List<Long> userId, Long projectId, String post) {
         try {
             Optional<Project> project = projectRepository.findById(projectId);
             if (project.isPresent()) {
@@ -325,7 +325,7 @@ public class UserService {
             }
             return new ResponseEntity<>("Project updated with officers and managers", HttpStatus.OK);
         } catch (Exception e) {
-            System.out.print(e);
+            System.out.print(e.getMessage());
             return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
         }
     }
@@ -346,7 +346,7 @@ public class UserService {
                 return new ResponseEntity<>("Done", HttpStatus.OK);
             } else return new ResponseEntity<>("The user or project does not exist", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            System.out.print(e);
+            System.out.print(e.getMessage());
             return new ResponseEntity<>("Cannot access database", HttpStatus.NOT_FOUND);
         }
     }

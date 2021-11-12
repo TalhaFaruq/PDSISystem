@@ -47,7 +47,7 @@ public class UserPDFExporter {
         cell.setPhrase(new Phrase("Phone Number", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Verify", font));
+        cell.setPhrase(new Phrase("Projects", font));
         table.addCell(cell);
     }
 
@@ -57,7 +57,7 @@ public class UserPDFExporter {
             table.addCell(user.getEmail());
             table.addCell(user.getFirstName());
             table.addCell(user.getPhoneNumber());
-            table.addCell(String.valueOf(user.isAccountVerifyStatus()));
+            table.addCell(String.valueOf(user.getProjects()));
         }
     }
 

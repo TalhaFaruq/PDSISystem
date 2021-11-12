@@ -129,7 +129,7 @@ public class TagsService {
 	}
 
 	/**
-	 * Gets tagbyid.
+	 * Gets tags by id.
 	 *
 	 * @param id the id
 	 * @return ResponseEntity with one object of tag

@@ -28,20 +28,26 @@ public class Project {
     private Date updatedDate;
     private boolean isActive = true;
 
+    //One project have many Timelines
     @OneToMany(targetEntity = Timeline.class, cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = false, fetch = FetchType.LAZY)
     private List<Timeline> timelines = new ArrayList<Timeline>();
 
+    //National Organizations which are working on current project
     @OneToMany(targetEntity = National.class, cascade = CascadeType.ALL)
     private List<National> national = new ArrayList<National>();
 
+    //International Organizations which are working on current project
     @OneToMany(targetEntity = International.class, cascade = CascadeType.ALL)
     private List<International> international = new ArrayList<International>();
 
+    //A project have many budget for travel, budget for construction material
     @OneToMany(targetEntity = Budget.class, cascade = CascadeType.ALL)
     private List<Budget> budgets = new ArrayList<Budget>();
 
+
     @ManyToMany(targetEntity = Tags.class, cascade = CascadeType.ALL)
     private List<Tags> tags = new ArrayList<Tags>();
+
 
     @OneToMany(targetEntity = CauseofAction.class, cascade = CascadeType.ALL)
     private List<CauseofAction> causeofActions = new ArrayList<>();

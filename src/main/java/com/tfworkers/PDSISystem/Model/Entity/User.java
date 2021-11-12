@@ -47,6 +47,8 @@ public class User {
 	private List<Tags> tags = new ArrayList<Tags>();
 
 
+
+
 	/**
 	 * Gets cnic.
 	 *

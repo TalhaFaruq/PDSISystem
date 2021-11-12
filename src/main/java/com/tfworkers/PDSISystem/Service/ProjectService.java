@@ -34,8 +34,8 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class ProjectService {
 
-    private ProjectRepository projectRepository;
-    private UserRepository userRepository;
+    private final ProjectRepository projectRepository;
+    private final UserRepository userRepository;
 
 
     private final EmailUtil emailUtil;
@@ -178,6 +178,7 @@ public class ProjectService {
     public ResponseEntity<Object> projectEndDate() {
         try {
             List<User> user = userRepository.findAllByIsActiveOrderByCreatedDate(true);
+//            user.stream().filter()
             for (User users : user) {
                 List<Project> projectList = users.getProjects();
                 LocalDateTime ldt = LocalDateTime.now();
