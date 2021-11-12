@@ -69,7 +69,7 @@ public class UserService {
      */
     public ResponseEntity<Object> listallUsers() {
         try {
-            List<User> userList = userRepository.findAll();
+            List<User> userList = userRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!userList.isEmpty()) {
                 logger.info("In Service class getting user list");
                 return ResponseEntity.ok().body(userList);
@@ -370,36 +370,6 @@ public class UserService {
         List<User> listUsers = userRepository.findAll();
         UserPDFExporter exporter = new UserPDFExporter(listUsers);
         exporter.export(response);
-    }
-
-    /**
-     * Notify by email response entity.
-     *
-     * @param userId    the user id
-     * @param projectId the project id
-     * @return the response entity
-     */
-    public ResponseEntity<Object> notifyByEmail(Long userId, Long projectId) {
-        Optional<User> user = userRepository.findById(userId);
-        Optional<Project> project = projectRepository.findById(projectId);
-
-        try {
-            if (user.isPresent() && user.get().getWarning() <= 3 && user.get().getProjects().contains(project)) {
-
-                String message = "Timeline has passed please submit your report";
-                emailUtil.sendMail(user.get().getEmail(), "Warning", message);
-                int warn = user.get().getWarning();
-                user.get().setWarning(warn++);
-
-                logger.info("In Service class warning sent");
-                return new ResponseEntity<>("Mail and message Sent", HttpStatus.OK);
-            } else if (user.get().getWarning() >= 3) {
-                return new ResponseEntity<>("Please contact admin, you access is restricted", HttpStatus.UNAUTHORIZED);
-            } else
-                return new ResponseEntity<>("User is not found", HttpStatus.NOT_FOUND);
-        } catch (Exception exception) {
-            return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
-        }
     }
 
 }

@@ -258,28 +258,5 @@ public class UserController {
         userService.userExportToPDF(response);
     }
 
-    /**
-     * Email notification.
-     *
-     * @param token     the token
-     * @param userId    the user id
-     * @param projectId the project id
-     */
-    @GetMapping("/emailNotification")
-    public void emailNotification(@RequestHeader("Authorization") String token, @RequestHeader("userId") Long userId, @RequestHeader("projectId") Long projectId) {
-        userService.notifyByEmail(userId, projectId);
-    }
 
-    /**
-     * Input validation exception response entity.
-     *
-     * @param e the e
-     * @return the response entity
-     */
-    @ExceptionHandler(javax.validation.ConstraintViolationException.class)
-    public ResponseEntity<Object> inputValidationException(Exception e) {
-
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-
-    }
 }

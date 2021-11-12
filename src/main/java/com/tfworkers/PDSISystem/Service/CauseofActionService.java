@@ -44,7 +44,7 @@ public class CauseofActionService {
      */
     public ResponseEntity<Object> listCauseofAction() {
         try {
-            List<CauseofAction> causeofActions = causeofActionRepository.findByOrderByCreatedDateAsc();
+            List<CauseofAction> causeofActions = causeofActionRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!causeofActions.isEmpty()) {
                 logger.info("Getting list of Cause of Action");
                 return ResponseEntity.ok().body(causeofActions);
@@ -52,6 +52,7 @@ public class CauseofActionService {
                 return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error getting list of cause of action");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -75,6 +76,7 @@ public class CauseofActionService {
             return new ResponseEntity<>(causeofAction, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error in saving cause of action");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

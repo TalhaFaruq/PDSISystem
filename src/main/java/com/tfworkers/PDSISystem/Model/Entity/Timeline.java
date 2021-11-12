@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -20,11 +21,14 @@ public class Timeline {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long timeline_id;
+	@NotBlank(message = "Name is Mandatory")
 	private String name;
+	@NotNull(message = "Name is Mandatory")
 	private Date startDate;
+	@NotNull(message = "Name is Mandatory")
 	private Date endDate;
 	private String updatedEndDate;
-	private boolean isActive = false;
+	private boolean isActive = true;
 	private Date createdDate;
 	private Date updatedDate;
 	

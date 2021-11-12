@@ -52,6 +52,7 @@ public class FuturePlanService {
 				return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
 			logger.error(e.getMessage(),"Error getting list of future plans");
+			System.out.println(e.getMessage());
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
@@ -75,6 +76,7 @@ public class FuturePlanService {
 			return new ResponseEntity<>(futurePlan, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage(),"Error saving future plan");
+			System.out.println(e.getMessage());
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
@@ -98,6 +100,7 @@ public class FuturePlanService {
 			return new ResponseEntity<>(futurePlan, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage(),"Error updating future plans");
+			System.out.println(e.getMessage());
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
@@ -120,6 +123,7 @@ public class FuturePlanService {
 			return new ResponseEntity<>(futurePlan, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage(),"Error in deleting future plan");
+			System.out.println(e.getMessage());
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
@@ -141,6 +145,7 @@ public class FuturePlanService {
 			return ResponseEntity.ok().body(futurePlan.get());
 		} catch (Exception e) {
 			logger.error(e.getMessage(),"Error getting by ID");
+			System.out.println(e.getMessage());
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}

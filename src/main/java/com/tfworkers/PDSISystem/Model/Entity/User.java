@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 /**
@@ -16,10 +17,14 @@ public class User {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id; // User ID
+	@NotBlank(message = "First name is Mandatory")
 	private String firstName; // User First Name
+	@NotBlank(message = "last name is Mandatory")
 	private String lastName;// User Last Name
+	@NotBlank(message = "Email is Mandatory")
 	@Column(nullable = false, unique = true)
 	private String email;// User email
+	@Min(value=1, message = "age should be greater than 18")
 	private int age;// User age
 	private Long cnic;
 	private String password; // User Password

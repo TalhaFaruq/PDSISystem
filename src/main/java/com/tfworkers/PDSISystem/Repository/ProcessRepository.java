@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.tfworkers.PDSISystem.Model.Entity.Process;
 
+import java.util.List;
+
 @Repository
 public interface ProcessRepository extends JpaRepository<Process,Long>{
-
+    List<Process> findAllByIsActiveOrderByCreatedDate(boolean status);
 }

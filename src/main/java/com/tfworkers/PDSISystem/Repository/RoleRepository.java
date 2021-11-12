@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Roles,Long> {
-    List<Roles> findAllByisActive(boolean status);
+    List<Roles> findAllByIsActiveOrderByCreatedDate(boolean Status);
 }

@@ -18,10 +18,11 @@ public class Tags {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long tags_id;
+	@NotBlank(message = "Name is Mandatory")
 	private String name;
 	private Date createdDate;
 	private Date updatedDate;
-	private boolean isActive;
+	private boolean isActive = true;
 
 
 	/**

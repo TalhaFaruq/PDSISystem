@@ -155,7 +155,8 @@ public class ProjectController {
 	}
 
 	/**
-	 * End date project response entity.
+	 * Checks the timeline of projects from users and send them email to notify about end date with warning
+	 * after three warnings the manager or officer can not be able to submit report.
 	 *
 	 * @param token the token
 	 * @return the response entity
@@ -163,22 +164,9 @@ public class ProjectController {
 	@GetMapping("/endDateProject")
 	public ResponseEntity<Object> endDateProject(@RequestHeader("Authorization") String token){
 		if (authorization(token)) {
-			return null;
+			return projectService.projectEndDate();
 		} else
-			return new ResponseEntity<Object>(na, HttpStatus.OK);
-	}
-
-	/**
-	 * Input validation exception response entity.
-	 *
-	 * @param e the e
-	 * @return the response entity
-	 */
-	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
-	public ResponseEntity<Object> inputValidationException(Exception e) {
-
-		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-
+			return new ResponseEntity<>(na, HttpStatus.OK);
 	}
 
 }

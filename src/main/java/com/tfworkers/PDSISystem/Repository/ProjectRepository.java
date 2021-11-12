@@ -11,8 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project,Long>{
-    List<Project> findByProjectStatus(boolean projectStatus);
-    List<Project>findByOrderByCreatedDateAsc();
+    List<Project> findAllByIsActiveOrderByCreatedDate(boolean Status);
 
 //    @Query(value = "Select project.name, project.project_id,timeline.timeline_id,timeline.start_date FROM project join project_timelines\n" +
 //            "on project.project_id = project_timelines.project_project_id join timeline on timeline.timeline_id = project_timelines\n" +

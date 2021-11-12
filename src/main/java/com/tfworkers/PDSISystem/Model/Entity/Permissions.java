@@ -16,10 +16,10 @@ public class Permissions {
     @Id
     @GeneratedValue
     private long id;
-    @NotBlank(message = "role_name is mandatory")
+    @NotBlank(message = "Name of the role is mandatory")
     @Column(unique = true, nullable = false)
     private String name;
-    private boolean isActive;
+    private boolean isActive = true;
     @Column(name = "createdDate")
     private Date createdDate;
     @Column(name = "updatedDate")

@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import com.tfworkers.PDSISystem.Model.Entity.International;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,8 @@ public class NationalService {
         this.nationalRepository = nationalRepository;
     }
 
+    private static final Logger logger = LogManager.getLogger(NationalService.class);
+
     /**
      * List national response entity.
      *
@@ -41,13 +46,16 @@ public class NationalService {
      */
     public ResponseEntity<Object> listNational() {
         try {
-            List<National> nationalList = nationalRepository.findAll();
+            List<National> nationalList = nationalRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!nationalList.isEmpty()) {
+                logger.info("Showing National List");
                 return ResponseEntity.ok().body(nationalList);
             } else
                 return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot access List of projects from database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -66,9 +74,12 @@ public class NationalService {
             Calendar date = Calendar.getInstance();
             national.setCreatedDate(date.getTime());
             nationalRepository.save(national);
-            return new ResponseEntity<Object>(national, HttpStatus.OK);
+            logger.info("Saving National Object");
+            return new ResponseEntity<>(national, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -87,9 +98,12 @@ public class NationalService {
             Calendar date = Calendar.getInstance();
             national.setUpdatedDate(date.getTime());
             nationalRepository.save(national);
-            return new ResponseEntity<Object>(national, HttpStatus.OK);
+            logger.info("Updating National Object");
+            return new ResponseEntity<>(national, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot update the national into database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -107,9 +121,12 @@ public class NationalService {
             Optional<National> national = nationalRepository.findById(id);
             national.get().setActive(false);
             nationalRepository.save(national.get());
-            return new ResponseEntity<Object>(national, HttpStatus.OK);
+            logger.info("Deleted National");
+            return new ResponseEntity<>(national, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("Cannot Access certain project id from database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -126,9 +143,12 @@ public class NationalService {
     public ResponseEntity<Object> getNationalbyid(Long id) {
         try {
             Optional<National> national = nationalRepository.findById(id);
+            logger.info("Getting by ID National");
             return ResponseEntity.ok().body(national.get());
         } catch (Exception e) {
-            return new ResponseEntity<Object>("National does not Exist in database", HttpStatus.NOT_FOUND);
+            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

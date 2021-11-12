@@ -21,12 +21,14 @@ public class Process {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Long process_id;
+	@NotBlank(message = "Name is Mandatory")
 	private String name;
+	@NotBlank(message = "Description is Mandatory")
 	private String description;
 	private String approved;     //if approval needed otherwise it will empty
 	private Date createdDate;
 	private Date updatedDate;
-	private boolean isActive;
+	private boolean isActive = true;
 
 
 	/**

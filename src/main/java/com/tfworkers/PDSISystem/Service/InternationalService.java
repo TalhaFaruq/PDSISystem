@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class InternationalService {
     private InternationalRepository internationalRepository;
 
-    private static final Logger logger = LogManager.getLogger(International.class);
+    private static final Logger logger = LogManager.getLogger(InternationalService.class);
 
 
     /**
@@ -45,7 +45,7 @@ public class InternationalService {
      */
     public ResponseEntity<Object> listInternational() {
         try {
-            List<International> internationalList = internationalRepository.findByOrderByCreatedDateAsc();
+            List<International> internationalList = internationalRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!internationalList.isEmpty()) {
                 logger.info("Showing list of International");
                 return ResponseEntity.ok().body(internationalList);
@@ -53,6 +53,7 @@ public class InternationalService {
                 return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error in getting list");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -76,6 +77,7 @@ public class InternationalService {
             return new ResponseEntity<>(international, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error in saving international");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -99,6 +101,7 @@ public class InternationalService {
             return new ResponseEntity<>(international, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error updating international");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -121,6 +124,7 @@ public class InternationalService {
             return new ResponseEntity<>(international, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(),"Cannot delete International");
+            System.out.println(e.getMessage());
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -142,6 +146,7 @@ public class InternationalService {
             return ResponseEntity.ok().body(international.get());
         } catch (Exception e) {
             logger.error(e.getMessage(),"Error in getting by id international");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

@@ -34,6 +34,8 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
+    private static final Logger logger = LogManager.getLogger(RoleService.class);
+
     /**
      * Gets all roles.
      *
@@ -41,7 +43,8 @@ public class RoleService {
      */
     public ResponseEntity<Object> getAllRoles() {
         try {
-            List<Roles> roles = roleRepository.findAllByisActive(true);
+            List<Roles> roles = roleRepository.findAllByIsActiveOrderByCreatedDate(true);
+            logger.info("Getting role list",roles);
             // check if list is empty or not
             if (roles.isEmpty()) {
                 return new ResponseEntity<>("No roles found... ", HttpStatus.NOT_FOUND);

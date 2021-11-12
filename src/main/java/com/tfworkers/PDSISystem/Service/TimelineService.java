@@ -30,7 +30,7 @@ public class TimelineService {
 		this.timelineRepository = timelineRepository;
 	}
 
-	private static final Logger logger = LogManager.getLogger(UserService.class);
+	private static final Logger logger = LogManager.getLogger(TimelineService.class);
 
 	/**
 	 * List all timeline response entity.
@@ -42,7 +42,7 @@ public class TimelineService {
 	 */
 	public ResponseEntity<Object> listAllTimeline() {
 		try {
-			List<Timeline> timelineList = timelineRepository.findAll();
+			List<Timeline> timelineList = timelineRepository.findAllByIsActiveOrderByCreatedDate(true);
 			if (!timelineList.isEmpty()) {
 				logger.info("In Service class getting timeline list");
 				return ResponseEntity.ok().body(timelineList);
@@ -51,7 +51,7 @@ public class TimelineService {
 		} catch (Exception e) {
 			logger.error("Error getting list");
 			System.out.print(e);
-			return new ResponseEntity<>("Cannot access List of timeline from database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class TimelineService {
 		} catch (Exception e) {
 			logger.error("Error saving timeline");
 			System.out.print(e);
-			return new ResponseEntity<>("Cannot save values in database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -95,7 +95,7 @@ public class TimelineService {
 			logger.info("Service class updating timeline");
 			return new ResponseEntity<>(timeline, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Cannot update the timeline into database", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -116,6 +116,8 @@ public class TimelineService {
 			logger.info("Delete timeline");
 			return new ResponseEntity<>(timeline, HttpStatus.OK);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 			return new ResponseEntity<>("Cannot Access certain timeline id from database", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -132,13 +134,15 @@ public class TimelineService {
 	public ResponseEntity<Object> getTimelineId(Long id) {
 		try {
 			Optional<Timeline> timeline = timelineRepository.findById(id);
-			logger.info("Getting by ID timeline");
-			return ResponseEntity.ok().body(timeline.get());
+			if (timeline.isPresent()) {
+				logger.info("Getting by ID timeline");
+				return ResponseEntity.ok().body(timeline.get());
+			}
+			else return new ResponseEntity<>("List is Empty", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			return new ResponseEntity<>("tag timeline not Exist in database", HttpStatus.NOT_FOUND);
+			System.out.println(e.getMessage());
+			logger.error(e.getMessage());
+			return new ResponseEntity<>("Error getting value", HttpStatus.NOT_FOUND);
 		}
 	}
-
-
-
 }

@@ -138,17 +138,4 @@ public class TagsController {
 			return new ResponseEntity<Object>(na, HttpStatus.OK);
 	}
 
-	/**
-	 * Input validation exception response entity.
-	 *
-	 * @param e the e
-	 * @return the response entity
-	 */
-	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
-	public ResponseEntity<Object> inputValidationException(Exception e) {
-
-		return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-
-	}
-
 }

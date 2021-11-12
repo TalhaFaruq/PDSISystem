@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface NationalRepository extends JpaRepository<National,Long>{
-    List<National> findByOrderByCreatedDateAsc();
+    List<National> findAllByIsActiveOrderByCreatedDate(boolean status);
 }

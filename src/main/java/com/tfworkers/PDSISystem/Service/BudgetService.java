@@ -44,7 +44,7 @@ public class BudgetService {
      */
     public ResponseEntity<Object> listBudget() {
         try {
-            List<Budget> budgetList = budgetRepository.findByOrderByCreatedDateAsc();
+            List<Budget> budgetList = budgetRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!budgetList.isEmpty()) {
                 logger.info("Getting Budget List");
                 return ResponseEntity.ok().body(budgetList);
@@ -52,6 +52,7 @@ public class BudgetService {
                 return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             logger.error(e.getMessage(), "Error in getting budget list");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -75,6 +76,7 @@ public class BudgetService {
             return new ResponseEntity<>(budget, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(), "Error saving Budget Object");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -98,6 +100,7 @@ public class BudgetService {
             return new ResponseEntity<Object>(budget, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(), "Error in updating Budget");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -120,6 +123,7 @@ public class BudgetService {
             return new ResponseEntity<>(budget, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(e.getMessage(), "Error Deleting Budget");
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -141,6 +145,7 @@ public class BudgetService {
             return ResponseEntity.ok().body(budget.get());
         } catch (Exception e) {
             logger.error(e.getMessage(), "Error Getting by id Budget");
+            System.out.println(e.getMessage());
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

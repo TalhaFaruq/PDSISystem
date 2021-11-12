@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -20,12 +22,13 @@ public class National {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long national_id;
+	@NotNull(message = "Number of Organization are Mandatory")
 	private int noofOrganization;
 	private String location;
 	private int land;
 	private Date createdDate;
 	private Date updatedDate;
-	private boolean isActive;
+	private boolean isActive = true;
 
 	/**
 	 * Gets national id.

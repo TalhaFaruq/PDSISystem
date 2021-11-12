@@ -18,7 +18,13 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByEmail(String email);
 	User findByEmailAndToken(String email, int emailToken);
-	User findByCnic(Long cnic);
+
+	List<User> findAllByIsActiveOrderByFirstNameAsc();
+
+//	@Query(value = "select * from users order by phonenumber")
+//	List<User> findUserByIsActiveOrderbyPhoneNumber();
+
+	List<User> findAllByIsActiveOrderByCreatedDate(boolean status);
 
 
 	@Query(value = "SELECT user.user_id, user.first_name,user.last_name, tags.name FROM user join user_tags on user.user_id=user_tags.user_user_id join tags on tags.tags_id=user_tags.tags_tags_id where tags.name=?1 AND user.post='Manager'",nativeQuery = true)

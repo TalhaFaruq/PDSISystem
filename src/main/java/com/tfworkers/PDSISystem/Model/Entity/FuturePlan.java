@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -20,12 +21,13 @@ public class FuturePlan {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long future_id;
+	@NotBlank(message = "Name is Mandatory")
 	private String name;
 	private String description;
 	private String planType;
 	private Date createdDate;
 	private Date updatedDate;
-	private boolean isActive;
+	private boolean isActive = true;
 
 	/**
 	 * Gets future id.

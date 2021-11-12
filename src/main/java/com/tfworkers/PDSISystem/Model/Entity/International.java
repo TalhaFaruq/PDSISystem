@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -20,8 +21,9 @@ public class International {
 	 @Column(nullable = false)
 	 @GeneratedValue(strategy = GenerationType.IDENTITY )
 	 private Long international_id;
-	 private String foriegnMinisterapprovel;
-	 private int internoofOrganizations;
+	 @NotBlank(message = "Status Approval 'Write approved or not approved'")
+	 private String foreignMinisterApproval;
+	 private int internOfOrganizations;
 	 private Date createdDate;
  	 private Date updatedDate;
 	 private boolean isActive;
@@ -45,39 +47,39 @@ public class International {
 	}
 
 	/**
-	 * Gets foriegn ministerapprovel.
+	 * Gets foreign minister approval.
 	 *
-	 * @return the foriegn ministerapprovel
+	 * @return the foreign minister approval
 	 */
-	public String getForiegnMinisterapprovel() {
-		return foriegnMinisterapprovel;
+	public String getForeignMinisterApproval() {
+		return foreignMinisterApproval;
 	}
 
 	/**
-	 * Sets foriegn ministerapprovel.
+	 * Sets foreign minister approval.
 	 *
-	 * @param foriegnMinisterapprovel the foriegn ministerapprovel
+	 * @param foreignMinisterApproval the foreign minister approval
 	 */
-	public void setForiegnMinisterapprovel(String foriegnMinisterapprovel) {
-		this.foriegnMinisterapprovel = foriegnMinisterapprovel;
+	public void setForeignMinisterApproval(String foreignMinisterApproval) {
+		this.foreignMinisterApproval = foreignMinisterApproval;
 	}
 
 	/**
-	 * Gets internoof organizations.
+	 * Gets intern of organizations.
 	 *
-	 * @return the internoof organizations
+	 * @return the intern of organizations
 	 */
-	public int getInternoofOrganizations() {
-		return internoofOrganizations;
+	public int getInternOfOrganizations() {
+		return internOfOrganizations;
 	}
 
 	/**
-	 * Sets internoof organizations.
+	 * Sets intern of organizations.
 	 *
-	 * @param internoofOrganizations the internoof organizations
+	 * @param internOfOrganizations the intern of organizations
 	 */
-	public void setInternoofOrganizations(int internoofOrganizations) {
-		this.internoofOrganizations = internoofOrganizations;
+	public void setInternOfOrganizations(int internOfOrganizations) {
+		this.internOfOrganizations = internOfOrganizations;
 	}
 
 	/**

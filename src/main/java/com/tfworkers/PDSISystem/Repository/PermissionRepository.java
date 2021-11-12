@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PermissionRepository extends JpaRepository<Permissions,Long> {
-    List<Permissions> findAllByIsActive(boolean status);
+    List<Permissions> findAllByIsActiveOrderByCreatedDate(boolean status);
 }

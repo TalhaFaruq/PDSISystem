@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -20,12 +23,17 @@ public class Budget {
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long budget_id;
+	@NotBlank(message = "Name is Mandatory")
 	private String name;
+	@Min(value=1, message = "Quantity should be greater than 0")
+	@NotNull(message = "Quantity of the product is Mandatory")
 	private long quantity;
+	@Min(value=1, message = "Budget should be greater than 0")
+	@NotNull(message = "Budget of the product is Mandatory")
 	private long budget;
 	private Date createdDate;
 	private Date updatedDate;
-	private boolean isActive;
+	private boolean isActive = true;
 
 	/**
 	 * Gets budget id.

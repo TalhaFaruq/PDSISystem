@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
@@ -16,10 +17,11 @@ public class Roles implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Name is Mandatory")
     private String name;
-    private Date CreatedDate;
-    private Date UpdatedDate;
-    private boolean isActive;
+    private Date createdDate;
+    private Date updatedDate;
+    private boolean isActive = true;
 
     @ManyToMany(targetEntity = Permissions.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<Permissions> permissions = new ArrayList<>();

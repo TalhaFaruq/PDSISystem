@@ -1,10 +1,11 @@
 package com.tfworkers.PDSISystem.Service;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class ProcessService {
 		this.processRepository = processRepository;
 	}
 
+	private static final Logger logger = LogManager.getLogger(ProcessService.class);
+
 	/**
 	 * List process response entity.
 	 *
@@ -40,13 +43,16 @@ public class ProcessService {
 	 */
 	public ResponseEntity<Object> listProcess() {
 		try {
-			List<Process> processList = processRepository.findAll();
+			List<Process> processList = processRepository.findAllByIsActiveOrderByCreatedDate(true);
 			if (!processList.isEmpty()) {
+				logger.info("Getting list of Process");
 				return ResponseEntity.ok().body(processList);
 			} else
-				return new ResponseEntity<Object>("List Empty", HttpStatus.NOT_FOUND);
+				return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot access List of projects from database", HttpStatus.NOT_FOUND);
+			logger.error(e.getMessage());
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -65,9 +71,11 @@ public class ProcessService {
 			Calendar date = Calendar.getInstance();
 			process.setCreatedDate(date.getTime());
 			processRepository.save(process);
-			return new ResponseEntity<Object>(process, HttpStatus.OK);
+			return new ResponseEntity<>(process, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot save values in database", HttpStatus.NOT_FOUND);
+			logger.error(e.getMessage());
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -86,9 +94,12 @@ public class ProcessService {
 			Calendar date = Calendar.getInstance();
 			process.setUpdatedDate(date.getTime());
 			processRepository.save(process);
-			return new ResponseEntity<Object>(process, HttpStatus.OK);
+			logger.info("Updating Process");
+			return new ResponseEntity<>(process, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot update the process into database", HttpStatus.NOT_FOUND);
+			logger.error(e.getMessage());
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -106,9 +117,12 @@ public class ProcessService {
 			Optional<Process> process = processRepository.findById(id);
 			process.get().setActive(false);
 			processRepository.save(process.get());
-			return new ResponseEntity<Object>(process, HttpStatus.OK);
+			logger.info("Deleting Process",process);
+			return new ResponseEntity<>(process, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Cannot Access certain project id from database", HttpStatus.NOT_FOUND);
+			logger.error(e.getMessage());
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -125,9 +139,12 @@ public class ProcessService {
 	public ResponseEntity<Object> getProcessbyid(Long id) {
 		try {
 			Optional<Process> process = processRepository.findById(id);
+			logger.info("Getting Process by ID",process);
 			return ResponseEntity.ok().body(process.get());
 		} catch (Exception e) {
-			return new ResponseEntity<Object>("Process does not Exist in database", HttpStatus.NOT_FOUND);
+			logger.error(e.getMessage());
+			System.out.println(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 

@@ -19,12 +19,14 @@ public class Project {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long project_id;
+    @NotBlank(message = "Name is Mandatory")
     private String name;
+    @NotBlank(message = "Description is Mandatory")
     private String Description;
     private boolean projectStatus;
     private Date createdDate;
     private Date updatedDate;
-    private boolean isActive;
+    private boolean isActive = true;
 
     @OneToMany(targetEntity = Timeline.class, cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = false, fetch = FetchType.LAZY)
     private List<Timeline> timelines = new ArrayList<Timeline>();
