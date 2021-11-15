@@ -164,7 +164,8 @@ public class ProjectController {
 	@GetMapping("/endDateProject")
 	public ResponseEntity<Object> endDateProject(@RequestHeader("Authorization") String token){
 		if (authorization(token)) {
-			return null;
+			projectService.projectEndDate();
+			return new ResponseEntity<>("sent",HttpStatus.OK);
 		} else
 			return new ResponseEntity<>(na, HttpStatus.OK);
 	}

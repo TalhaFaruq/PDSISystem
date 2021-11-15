@@ -3,6 +3,7 @@ package com.tfworkers.PDSISystem.Model.Entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -39,6 +40,7 @@ public class User {
 	private boolean accountVerifyStatus = false;
 	private Date expirationDate;
 	private int warning;
+
 
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<Project>();
@@ -121,20 +123,10 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	/**
-	 * Gets email.
-	 *
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * Sets email.
-	 *
-	 * @param email the email
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}

@@ -29,7 +29,7 @@ public class Project {
     private boolean isActive = true;
 
     //One project have many Timelines
-    @OneToMany(targetEntity = Timeline.class, cascade = {CascadeType.ALL, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = false, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Timeline.class, cascade = CascadeType.ALL)
     private List<Timeline> timelines = new ArrayList<Timeline>();
 
     //National Organizations which are working on current project
