@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findByEmail(String email);
 	User findByEmailAndToken(String email, int emailToken);
 
-	List<User> findAllByIsActiveOrderByFirstNameAsc();
+	List<User> findAllByIsActiveOrderByFirstNameAsc(boolean status);
 
 //	@Query(value = "select * from users order by phonenumber")
 //	List<User> findUserByIsActiveOrderbyPhoneNumber();
