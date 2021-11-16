@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.lowagie.text.DocumentException;
 import com.tfworkers.PDSISystem.Model.Entity.User;
@@ -170,107 +171,20 @@ public class ProjectService {
 
     /**
      * Checks the end date of project from timeline and send users email which are associated with them.
-     *
      */
-    public void projectEndDate() {
+    public ResponseEntity<Object> projectEndDate() {
         try {
-            List<User> userList = userRepository.findAllByIsActiveOrderByCreatedDate(true);
-
-
-            Calendar date = Calendar.getInstance();
-//            userList.stream()
-//                    .flatMap(user -> user.getProjects().stream()
-//                            .flatMap(project -> project.getTimelines().stream()
-//                                    .filter(timeline -> {
-//                                        try {
-//                                            if (timeline.getEndDate().after(date.getTime()) && user.getWarning() <= 3) {
-//                                                emailUtil.sendMail(user.getEmail(), "Warning", "Timeline has passed please submit your report");
-//                                                System.out.println("Here");
-//                                                return true;
-//                                            } else
-//                                                return false;
-//                                        } catch (Exception e) {
-//                                            System.out.println(e);
-//                                            return false;
-//                                        }
-//                                    })));
-
-            userList.stream().map(User::getProjects)
-                    .forEach(projects -> {
-                        projects.forEach(project -> {
-                            project.getTimelines().forEach(timeline -> {
-                                try {
-                                    if (timeline.getEndDate().after(date.getTime())) {
-                                        emailUtil.sendMail("hafiztalha1997@gmail.com", "Warning", "Timeline has passed please submit your report");
-                                        System.out.println("Here");
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println(e);
-                                }
-                            });
-                        });
-                    });
-
-//            orders.stream()
-//    .map(Order::getOrderItems)
-//    .forEach(items -> {
-//        items.forEach(item -> {
-//            Product product = item.getProduct();
-//            int quantity = item.getQuantity();
-//            add(product, quantity);
-//        });
-//    });
-
-//            LocalDateTime ldt = LocalDateTime.now();
-//            Instant instant = ldt.toInstant(ZoneOffset.UTC);
-//            Date date = Date.from(instant);
-//            java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-
-//            userList = (List<User>) userList.stream().flatMap(user -> user.getProjects().stream().flatMap(project ->
-//                    project.getTimelines().stream().filter(timeline -> timeline.getEndDate().after(date2.getTime()))
-//                      ));
-
-
-//                        if(timeline.getEndDate().after(date) && user.getWarning()<=3){
-//                            user.setWarning(user.getWarning()+1);
-//                            userRepository.save(user);
-//                            String message = "Timeline has passed please submit your report";
-//                            emailUtil.sendMail(user.getEmail(), "Warning", message);
-//                        }
-//                    }
-//            for (User users : userList) {
-//                List<Project> projectList = users.getProjects();
-//
-//                for (Project projects : projectList) {
-//                    if (!projects.getTimelines().isEmpty()) {
-//                        List<Timeline> timeline = projects.getTimelines();
-//                        for (Timeline timelines : timeline) {
-//                            Date endDate = timelines.getEndDate();
-//                            int warning = users.getWarning();
-//                            if (endDate.after(date)  && warning <= 3 ) {
-//                                users.setWarning(warning++);
-//                                userRepository.save(users);
-//                                String message = "Timeline has passed please submit your report";
-//                                emailUtil.sendMail(users.getEmail(), "Warning", message);
-//                            }
-//                        }
-//                        return new ResponseEntity<>("Sent Warnings", HttpStatus.OK);
-//                    }
-//                }
-//            }
-
-//            return new ResponseEntity<>("working", HttpStatus.OK);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//
-//        }
-        } finally {
-            System.out.println("Not working bro not working");
+            notifyUserAfterEndDateOfProject();
+            return new ResponseEntity<>("Email sent to Users who are managers or officers " +
+                    "who have not submitted report on before end time", HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-    public void timelinewithuser() {
+    public void notifyUserAfterEndDateOfProject() {
         List<User> userList = userRepository.findAllByIsActiveOrderByCreatedDate(true);
         Calendar date = Calendar.getInstance();
         userList.stream()
@@ -278,12 +192,15 @@ public class ProjectService {
                         .flatMap(project -> project.getTimelines().stream()
                                 .filter(timeline -> {
                                     if (timeline.getEndDate().after(date.getTime()) && user.getWarning() <= 3) {
+                                        user.setWarning((1 + user.getWarning()));
+                                        userRepository.save(user);
                                         emailUtil.sendMail(user.getEmail(), "Warning",
-                                                "Timeline has passed please submit your report");
+                                                user.getFirstName() + " end date of " + project.getName() + " timeline " + timeline.getName() + " has passed please submit your report"
+                                                        + " this is your warning " + user.getWarning() + " if warning exceed 3 you will be forced logged out");
                                         return true;
                                     } else return false;
                                 })
-                        ));
+                        )).collect(Collectors.toList());
     }
 
     /**

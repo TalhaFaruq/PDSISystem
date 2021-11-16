@@ -10,7 +10,10 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Table(name = "roles", indexes = {
+        @Index(name = "created_date_index", columnList = "createdDate"),
+        @Index(name = "active_index", columnList = "isActive")
+})
 @Entity
 @Data
 public class Roles implements Serializable {

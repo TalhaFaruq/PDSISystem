@@ -3,13 +3,13 @@ package com.tfworkers.PDSISystem.Model.Entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
-
+@Table(name = "permissions", indexes = {
+        @Index(name = "created_date_index", columnList = "createdDate"),
+        @Index(name = "active_index", columnList = "isActive")
+})
 @Entity
 @Data
 public class Permissions {

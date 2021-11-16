@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -11,6 +13,10 @@ import java.util.Date;
 /**
  * The type Causeof action.
  */
+@Table(name = "causeofaction", indexes = {
+        @Index(name = "created_date_index", columnList = "createdDate"),
+        @Index(name = "active_index", columnList = "isActive")
+})
 @Data
 @Entity
 public class CauseofAction {
