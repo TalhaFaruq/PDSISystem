@@ -18,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tfworkers.PDSISystem.Model.Entity.SMS;
@@ -38,21 +39,23 @@ public class UserService {
     private final ProjectRepository projectRepository;
     private final EmailUtil emailUtil;
     private final SmsUtil smsUtil;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     /**
      * Constructor
-     *
-     * @param userRepository    the user repository
+     *  @param userRepository    the user repository
      * @param projectRepository the project repository
      * @param emailUtil         the email util
      * @param smsUtil           the sms util
+     * @param bCryptPasswordEncoder
      */
-    public UserService(UserRepository userRepository, ProjectRepository projectRepository, EmailUtil emailUtil, SmsUtil smsUtil) {
+    public UserService(UserRepository userRepository, ProjectRepository projectRepository, EmailUtil emailUtil, SmsUtil smsUtil, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.projectRepository = projectRepository;
         this.emailUtil = emailUtil;
         this.smsUtil = smsUtil;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     private static final Logger logger = LogManager.getLogger(UserService.class);
@@ -94,6 +97,7 @@ public class UserService {
             logger.info("In Service class saving user");
             Calendar calendar = Calendar.getInstance();
             newuser.setCreatedDate(calendar.getTime());
+            newuser.setPassword(bCryptPasswordEncoder.encode(newuser.getPassword()));
             userRepository.save(newuser);
             return new ResponseEntity<>(newuser, HttpStatus.OK);
         } catch (Exception e) {
@@ -160,31 +164,29 @@ public class UserService {
             logger.info("In Service class getting user by id");
             return ResponseEntity.ok().body(user);
         } catch (Exception e) {
-            return new ResponseEntity<Object>("User does not Exist in database", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("User does not Exist in database", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
      * Login check
-     *
-     * @param email    the email
-     * @param password the password
      * @return the boolean
      */
-    public boolean findByEmailAndPassword(String email, String password) {
+    public ResponseEntity<Object> loginCheck(User user) {
         try {
-            User user = userRepository.findByEmail(email);
-            if (user.getPassword().equals(password)) {
+
+            Optional<User> newuser= Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
+            if (newuser.isPresent()) {
                 logger.info("In Service class found email and password");
-                return true;
+                return new ResponseEntity<>("You are now logged in",HttpStatus.OK);
             } else {
                 logger.info("In Service class not found email and password");
-                return false;
+                return new ResponseEntity<>("Username or Password are incorrect",HttpStatus.NOT_FOUND);
             }
         } catch (Exception e) {
             System.out.print("User not exist");
             logger.error("Error");
-            return false;
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -34,6 +34,7 @@ public class UserController {
      */
     public UserController(UserService userService) {
         this.userService = userService;
+
     }
 
     /**
@@ -55,17 +56,11 @@ public class UserController {
      * Login it takes email and password from front end then check from database by
      * calling object with email
      *
-     * @param email    the email
-     * @param password the password
      * @return the response entity
      */
-    @GetMapping("/login")
-    public ResponseEntity<Object> login(@RequestParam("email") String email,
-                                        @RequestParam("password") String password) {
-        if (userService.findByEmailAndPassword(email, password)) {
-            return new ResponseEntity<>("Logged in", HttpStatus.OK);
-        } else
-            return new ResponseEntity<>("Email not Exist", HttpStatus.OK);
+    @PutMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody User user) {
+            return userService.loginCheck(user);
     }
 
     /**
@@ -76,12 +71,9 @@ public class UserController {
      * @author Talha Farooq
      * @createdTime 28 October 2021
      */
-    @GetMapping("all")
+    @GetMapping("/all")
     public ResponseEntity<Object> listAllUsers(@RequestHeader("Authorization") String token) {
-        if (authorization(token)) {
             return userService.listallUsers();
-        } else
-            return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
     }
 
     /**
@@ -100,7 +92,7 @@ public class UserController {
         if (authorization(token)) {
             return userService.getUserbyid(id);
         } else
-            return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(na, HttpStatus.UNAUTHORIZED);
     }
 
     /**
@@ -257,6 +249,5 @@ public class UserController {
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         userService.userExportToPDF(response);
     }
-
 
 }

@@ -194,9 +194,9 @@ public class ProjectService {
                                     if (timeline.getEndDate().after(date.getTime()) && user.getWarning() <= 3) {
                                         user.setWarning((1 + user.getWarning()));
                                         userRepository.save(user);
-                                        emailUtil.sendMail(user.getEmail(), "Warning",
-                                                user.getFirstName() + " end date of " + project.getName() + " timeline " + timeline.getName() + " has passed please submit your report"
-                                                        + " this is your warning " + user.getWarning() + " if warning exceed 3 you will be forced logged out");
+                                        emailUtil.sendMail(user.getEmail(), project.getName(),
+                                                user.getFirstName() + " end date of \"" + project.getName() + "\" timeline \"" + timeline.getName() + "\" has passed please submit your report"
+                                                        + " this is your warning \"" + user.getWarning() + "\" if warning exceed 3 you will be forced logged out");
                                         return true;
                                     } else return false;
                                 })
