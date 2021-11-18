@@ -73,7 +73,7 @@ public class UserController {
      */
     @GetMapping("/all")
     public ResponseEntity<Object> listAllUsers(@RequestHeader("Authorization") String token) {
-            return userService.listallUsers();
+            return userService.listAllUsers();
     }
 
     /**
@@ -90,7 +90,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getByUserID(@RequestHeader("Authorization") String token, @PathVariable Long id) {
         if (authorization(token)) {
-            return userService.getUserbyid(id);
+            return userService.getUserById(id);
         } else
             return new ResponseEntity<>(na, HttpStatus.UNAUTHORIZED);
     }

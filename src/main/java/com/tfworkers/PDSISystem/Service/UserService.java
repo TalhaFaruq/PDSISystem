@@ -12,6 +12,7 @@ import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
 import com.tfworkers.PDSISystem.Repository.ProjectRepository;
+import com.tfworkers.PDSISystem.Utilities.ResponseHandler;
 import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
 
 import org.apache.logging.log4j.LogManager;
@@ -44,10 +45,11 @@ public class UserService {
 
     /**
      * Constructor
-     *  @param userRepository    the user repository
-     * @param projectRepository the project repository
-     * @param emailUtil         the email util
-     * @param smsUtil           the sms util
+     *
+     * @param userRepository        the user repository
+     * @param projectRepository     the project repository
+     * @param emailUtil             the email util
+     * @param smsUtil               the sms util
      * @param bCryptPasswordEncoder
      */
     public UserService(UserRepository userRepository, ProjectRepository projectRepository, EmailUtil emailUtil, SmsUtil smsUtil, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -69,16 +71,16 @@ public class UserService {
      * @description This function get and show all the user which are saved in database. The data from database comes in list.
      * @creationDate 28 October 2021
      */
-    public ResponseEntity<Object> listallUsers() {
+    public ResponseEntity<Object> listAllUsers() {
         try {
             List<User> userList = userRepository.findAllByIsActiveOrderByCreatedDate(true);
             if (!userList.isEmpty()) {
                 logger.info("In Service class getting user list");
-                return ResponseEntity.ok().body(userList);
+                return ResponseHandler.generateResponse(HttpStatus.OK, "Showing List of users", userList);
             } else
-                return new ResponseEntity<>("List Empty", HttpStatus.NOT_FOUND);
+                return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND, "Empty List", userList);
         } catch (Exception e) {
-            return new ResponseEntity<>("Cannot access List of User from database", HttpStatus.NOT_FOUND);
+            return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Error in getting List", e.getMessage());
         }
     }
 
@@ -121,9 +123,9 @@ public class UserService {
             user.setUpdatedDate(date.getTime());
             userRepository.save(user);
             logger.info("In Service class updating user");
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return ResponseHandler.generateResponse(HttpStatus.OK, "Updated User", user);
         } catch (Exception e) {
-            return new ResponseEntity<>("Cannot update the user into database", HttpStatus.NOT_FOUND);
+            return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Error", e.getMessage());
         }
     }
 
@@ -142,7 +144,7 @@ public class UserService {
             user.get().setActive(false);
             userRepository.save(user.get());
             logger.info("In Service class delete");
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return ResponseHandler.generateResponse(HttpStatus.OK, "Deleted User", null);
         } catch (Exception e) {
             return new ResponseEntity<>("Cannot Access certain user id from database", HttpStatus.NOT_FOUND);
         }
@@ -158,35 +160,39 @@ public class UserService {
      * @description Find by ID user from database
      * @creationDate 28 October 2021
      */
-    public ResponseEntity<Object> getUserbyid(Long id) {
+    public ResponseEntity<Object> getUserById(Long id) {
         try {
-            User user = userRepository.findById(id).get();
-            logger.info("In Service class getting user by id");
-            return ResponseEntity.ok().body(user);
+            Optional<User> user = Optional.of(userRepository.findById(id).get());
+            if (user.isPresent()) {
+                logger.info("In Service class getting user by id");
+                return ResponseHandler.generateResponse(HttpStatus.OK, "User By ID = " + user.get().getUser_id(), user.get());
+            }else return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND, "User By ID = " + id, null );
+
         } catch (Exception e) {
-            return new ResponseEntity<>("User does not Exist in database", HttpStatus.NOT_FOUND);
+            return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Error", e.getMessage() );
         }
     }
 
     /**
      * Login check
+     *
      * @return the boolean
      */
     public ResponseEntity<Object> loginCheck(User user) {
         try {
 
-            Optional<User> newuser= Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
+            Optional<User> newuser = Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
             if (newuser.isPresent()) {
                 logger.info("In Service class found email and password");
-                return new ResponseEntity<>("You are now logged in",HttpStatus.OK);
+                return ResponseHandler.generateResponse(HttpStatus.FOUND, "You are now Logged in",null);
             } else {
                 logger.info("In Service class not found email and password");
-                return new ResponseEntity<>("Username or Password are incorrect",HttpStatus.NOT_FOUND);
+                return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND,"The Email and password are incorrect",null);
             }
         } catch (Exception e) {
             System.out.print("User not exist");
             logger.error("Error");
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -227,7 +233,7 @@ public class UserService {
             } else
                 return new ResponseEntity<>("User is not found", HttpStatus.NOT_FOUND);
         } catch (Exception exception) {
-            logger.error("Error",exception.getMessage());
+            logger.error("Error", exception.getMessage());
             return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
         }
     }

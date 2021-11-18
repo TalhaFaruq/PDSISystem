@@ -40,7 +40,7 @@ public class ReportController {
         String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        List<User> listUsers = (List<User>) userService.listallUsers();
+        List<User> listUsers = (List<User>) userService.listAllUsers();
 
         UserPDFExporter exporter = new UserPDFExporter(listUsers);
         exporter.export(response);
