@@ -4,10 +4,12 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lowagie.text.DocumentException;
+import com.tfworkers.PDSISystem.Model.DTO.JwtRequest;
 import com.tfworkers.PDSISystem.Model.DTO.SelectUsersProjectDTO;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.User;
@@ -25,16 +27,19 @@ import java.io.IOException;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
+    private final Authentication authenticate;
     private final String na = "Not Authorize";
 
     /**
      * UserContorller constructor
      *
      * @param userService the user service
+     * @param authenticate
      */
-    public UserController(UserService userService) {
+    public UserController(UserService userService, Authentication authenticate) {
         this.userService = userService;
 
+        this.authenticate = authenticate;
     }
 
     /**
@@ -59,8 +64,12 @@ public class UserController {
      * @return the response entity
      */
     @PutMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user) {
-            return userService.loginCheck(user);
+    public ResponseEntity<Object> login(@RequestHeader JwtRequest jwtRequest) {
+        authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
+        authenticate.
+
+       // userService.login(username,password);
+        return new ResponseEntity<>("",HttpStatus.OK);
     }
 
     /**

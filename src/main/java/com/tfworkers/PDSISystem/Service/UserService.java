@@ -19,6 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,8 @@ import com.tfworkers.PDSISystem.Utilities.EmailUtil;
 import com.tfworkers.PDSISystem.Utilities.SmsUtil;
 
 import javax.servlet.http.HttpServletResponse;
+
+import static java.util.Collections.emptyList;
 
 /**
  * The type User service.
@@ -178,21 +182,30 @@ public class UserService {
      *
      * @return the boolean
      */
-    public ResponseEntity<Object> loginCheck(User user) {
+    public org.springframework.security.core.userdetails.User login(String username, String password) {
         try {
 
-            Optional<User> newuser = Optional.ofNullable(userRepository.findByUsername(user.getUsername()));
-            if (newuser.isPresent()) {
+            Optional<User> newuser = Optional.ofNullable(userRepository.findByUsername(username));
+            if (newuser.isPresent() && newuser.get().getPassword() == password) {
                 logger.info("In Service class found email and password");
-                return ResponseHandler.generateResponse(HttpStatus.FOUND, "You are now Logged in",null);
+              //  Authentication authenticate = authenticate(new UsernamePasswordAuthenticationToken(username, password));
+
+                return new org.springframework.security.core.userdetails.User(username, password, emptyList());
+                //  return ResponseHandler.generateResponse(HttpStatus.FOUND, "You are now Logged in",null);
             } else {
                 logger.info("In Service class not found email and password");
-                return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND,"The Email and password are incorrect",null);
+                return null;
+//                return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND,"The Email and password are incorrect",null);
+//            }
+//        } catch (Exception e) {
+//            System.out.print("User not exist");
+//            logger.error("Error");
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
             }
-        } catch (Exception e) {
-            System.out.print("User not exist");
-            logger.error("Error");
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            System.out.println(e);
+            return null;
         }
     }
 
