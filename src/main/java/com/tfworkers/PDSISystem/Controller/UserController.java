@@ -7,9 +7,15 @@ import com.lowagie.text.DocumentException;
 import com.tfworkers.PDSISystem.Model.DTO.JwtRequest;
 import com.tfworkers.PDSISystem.Model.DTO.SelectUsersProjectDTO;
 
+import com.tfworkers.PDSISystem.Security.JwtResponse;
+import com.tfworkers.PDSISystem.Security.JwtTokenUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import com.tfworkers.PDSISystem.Model.Entity.User;
@@ -27,19 +33,22 @@ import java.io.IOException;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    private final Authentication authenticate;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+
     private final String na = "Not Authorize";
 
     /**
      * UserContorller constructor
      *
      * @param userService the user service
-     * @param authenticate
      */
-    public UserController(UserService userService, Authentication authenticate) {
+    public UserController(UserService userService) {
         this.userService = userService;
-
-        this.authenticate = authenticate;
     }
 
     /**
@@ -65,11 +74,11 @@ public class UserController {
      */
     @PutMapping("/login")
     public ResponseEntity<Object> login(@RequestHeader JwtRequest jwtRequest) {
-        authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
-        authenticate.
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
+        final UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
 
-       // userService.login(username,password);
-        return new ResponseEntity<>("",HttpStatus.OK);
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     /**
@@ -82,7 +91,7 @@ public class UserController {
      */
     @GetMapping("/all")
     public ResponseEntity<Object> listAllUsers(@RequestHeader("Authorization") String token) {
-            return userService.listAllUsers();
+        return userService.listAllUsers();
     }
 
     /**

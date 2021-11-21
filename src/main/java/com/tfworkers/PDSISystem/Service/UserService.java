@@ -21,6 +21,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +41,7 @@ import static java.util.Collections.emptyList;
  * The type User service.
  */
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final ProjectRepository projectRepository;
@@ -65,6 +68,17 @@ public class UserService {
     }
 
     private static final Logger logger = LogManager.getLogger(UserService.class);
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
+        if (user.isPresent()) {
+            return new org.springframework.security.core.userdetails.User(user.get().getUsername(), user.get().getPassword(),
+                    new ArrayList<>());
+        } else {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+    }
 
     /**
      * List all users response entity.
