@@ -1,149 +1,551 @@
-2021-11-19 10:59:52,542 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
-2021-11-19 10:59:52,716 INFO o.s.b.StartupInfoLogger [main] Starting PdsiSystemApplication using Java 1.8.0_73 on LTI-TRAINING-06 with PID 12132 (C:\Users\Talha\Downloads\gitprogamcheck\PDSISystem\target\classes started by Talha in C:\Users\Talha\Downloads\gitprogamcheck\PDSISystem)
-2021-11-19 10:59:52,732 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2021-11-19 10:59:58,672 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-11-19 10:59:59,960 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 1189 ms. Found 12 JPA repository interfaces.
-2021-11-19 11:00:04,468 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2021-11-19 11:00:04,499 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2021-11-19 11:00:04,499 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2021-11-19 11:00:04,514 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-11-19 11:00:05,389 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2021-11-19 11:00:05,389 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 12354 ms
-2021-11-19 11:00:05,983 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-11-19 11:00:06,118 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-11-19 11:00:06,915 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-11-19 11:00:07,350 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration boolean -> org.hibernate.type.BooleanType@32dcfeea
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration boolean -> org.hibernate.type.BooleanType@32dcfeea
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@32dcfeea
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@5103eea2
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration true_false -> org.hibernate.type.TrueFalseType@5f0677f3
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration yes_no -> org.hibernate.type.YesNoType@46b6701e
-2021-11-19 11:00:07,365 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte -> org.hibernate.type.ByteType@11abd6c
-2021-11-19 11:00:07,381 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte -> org.hibernate.type.ByteType@11abd6c
-2021-11-19 11:00:07,381 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@11abd6c
-2021-11-19 11:00:07,381 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration character -> org.hibernate.type.CharacterType@236861da
-2021-11-19 11:00:07,381 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration char -> org.hibernate.type.CharacterType@236861da
-2021-11-19 11:00:07,381 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@236861da
-2021-11-19 11:00:07,397 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration short -> org.hibernate.type.ShortType@3ba3f40d
-2021-11-19 11:00:07,397 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration short -> org.hibernate.type.ShortType@3ba3f40d
-2021-11-19 11:00:07,397 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Short -> org.hibernate.type.ShortType@3ba3f40d
-2021-11-19 11:00:07,397 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration integer -> org.hibernate.type.IntegerType@547aaa32
-2021-11-19 11:00:07,397 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration int -> org.hibernate.type.IntegerType@547aaa32
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@547aaa32
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration long -> org.hibernate.type.LongType@65e4cb84
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration long -> org.hibernate.type.LongType@65e4cb84
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Long -> org.hibernate.type.LongType@65e4cb84
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration float -> org.hibernate.type.FloatType@b55f5b7
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration float -> org.hibernate.type.FloatType@b55f5b7
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Float -> org.hibernate.type.FloatType@b55f5b7
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration double -> org.hibernate.type.DoubleType@1426370c
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration double -> org.hibernate.type.DoubleType@1426370c
-2021-11-19 11:00:07,412 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@1426370c
-2021-11-19 11:00:07,428 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@75527e36
-2021-11-19 11:00:07,428 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@75527e36
-2021-11-19 11:00:07,428 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration big_integer -> org.hibernate.type.BigIntegerType@40016ce1
-2021-11-19 11:00:07,428 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@40016ce1
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration string -> org.hibernate.type.StringType@3b39e79b
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.String -> org.hibernate.type.StringType@3b39e79b
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration nstring -> org.hibernate.type.StringNVarcharType@7e2bd5e6
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@1322b575
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration url -> org.hibernate.type.UrlType@be6d228
-2021-11-19 11:00:07,881 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.net.URL -> org.hibernate.type.UrlType@be6d228
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Duration -> org.hibernate.type.DurationType@2ae5bd34
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.Duration -> org.hibernate.type.DurationType@2ae5bd34
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Instant -> org.hibernate.type.InstantType@57c6feea
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.Instant -> org.hibernate.type.InstantType@57c6feea
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@c732e1c
-2021-11-19 11:00:07,897 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@c732e1c
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalDate -> org.hibernate.type.LocalDateType@308e87a1
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@308e87a1
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@4efb13f1
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@4efb13f1
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@58882a93
-2021-11-19 11:00:07,912 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@58882a93
-2021-11-19 11:00:07,928 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@1930a804
-2021-11-19 11:00:07,928 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@1930a804
-2021-11-19 11:00:07,928 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@4276ad40
-2021-11-19 11:00:07,928 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@4276ad40
-2021-11-19 11:00:07,943 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration date -> org.hibernate.type.DateType@cec590c
-2021-11-19 11:00:07,943 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Date -> org.hibernate.type.DateType@cec590c
-2021-11-19 11:00:07,943 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration time -> org.hibernate.type.TimeType@6f3b13d0
-2021-11-19 11:00:07,943 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Time -> org.hibernate.type.TimeType@6f3b13d0
-2021-11-19 11:00:07,959 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration timestamp -> org.hibernate.type.TimestampType@5c33008f
-2021-11-19 11:00:07,959 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@5c33008f
-2021-11-19 11:00:07,959 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Date -> org.hibernate.type.TimestampType@5c33008f
-2021-11-19 11:00:07,959 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@79ad1774
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar -> org.hibernate.type.CalendarType@455f4483
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@455f4483
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@455f4483
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@7e0986c9
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@752973de
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration locale -> org.hibernate.type.LocaleType@6903ed0e
-2021-11-19 11:00:07,975 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@6903ed0e
-2021-11-19 11:00:07,990 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration currency -> org.hibernate.type.CurrencyType@77c23d90
-2021-11-19 11:00:07,990 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@77c23d90
-2021-11-19 11:00:07,990 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration timezone -> org.hibernate.type.TimeZoneType@3d033453
-2021-11-19 11:00:07,990 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@3d033453
-2021-11-19 11:00:08,006 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration class -> org.hibernate.type.ClassType@5eeee124
-2021-11-19 11:00:08,006 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Class -> org.hibernate.type.ClassType@5eeee124
-2021-11-19 11:00:08,022 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@2037f12b
-2021-11-19 11:00:08,022 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@2037f12b
-2021-11-19 11:00:08,022 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@b94703b
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration binary -> org.hibernate.type.BinaryType@3ac0a14b
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte[] -> org.hibernate.type.BinaryType@3ac0a14b
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [B -> org.hibernate.type.BinaryType@3ac0a14b
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@26ffd2c0
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@26ffd2c0
-2021-11-19 11:00:08,037 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@26ffd2c0
-2021-11-19 11:00:08,053 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration row_version -> org.hibernate.type.RowVersionType@619c3546
-2021-11-19 11:00:08,053 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration image -> org.hibernate.type.ImageType@1d944fc0
-2021-11-19 11:00:08,053 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration characters -> org.hibernate.type.CharArrayType@12f9f896
-2021-11-19 11:00:08,053 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration char[] -> org.hibernate.type.CharArrayType@12f9f896
-2021-11-19 11:00:08,053 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [C -> org.hibernate.type.CharArrayType@12f9f896
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@faec277
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@faec277
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@faec277
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration text -> org.hibernate.type.TextType@12e007be
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ntext -> org.hibernate.type.NTextType@36d697ab
-2021-11-19 11:00:08,068 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration blob -> org.hibernate.type.BlobType@25470477
-2021-11-19 11:00:08,084 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@25470477
-2021-11-19 11:00:08,084 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@30dd00b6
-2021-11-19 11:00:08,084 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration clob -> org.hibernate.type.ClobType@40f9f60d
-2021-11-19 11:00:08,084 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@40f9f60d
-2021-11-19 11:00:08,100 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration nclob -> org.hibernate.type.NClobType@4d20616a
-2021-11-19 11:00:08,100 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@4d20616a
-2021-11-19 11:00:08,100 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@36f6d25c
-2021-11-19 11:00:08,100 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@1b1e1f02
-2021-11-19 11:00:08,115 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration serializable -> org.hibernate.type.SerializableType@76af34b5
-2021-11-19 11:00:08,115 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration object -> org.hibernate.type.ObjectType@6cd45b6c
-2021-11-19 11:00:08,115 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@6cd45b6c
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@4bfa5eb9
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@2a2b7a35
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@58186f9f
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@62faf77
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@1f39269d
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@6e321d9d
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@754de353
-2021-11-19 11:00:08,131 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@ee2ae9a
-2021-11-19 11:00:08,320 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2021-11-19 11:00:09,789 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2021-11-19 11:00:09,898 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2021-11-19 11:00:10,824 DEBUG o.h.t.s.TypeConfiguration [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@38848217] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@1607d391]
-2021-11-19 11:00:13,352 DEBUG o.h.t.s.TypeConfiguration [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@38848217] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@434d001d]
-2021-11-19 11:00:19,286 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-11-19 11:00:19,317 TRACE o.h.t.s.TypeConfiguration [main] Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@434d001d] for TypeConfiguration
-2021-11-19 11:00:19,333 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-11-19 11:00:23,614 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-11-19 11:00:24,567 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2021-11-19 11:00:25,067 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@407ff25f, org.springframework.security.web.context.SecurityContextPersistenceFilter@6079d219, org.springframework.security.web.header.HeaderWriterFilter@5471342, org.springframework.web.filter.CorsFilter@3ba8fbc8, org.springframework.security.web.authentication.logout.LogoutFilter@31ecb361, com.tfworkers.PDSISystem.Security.JWTAuthenticationFilter@113a89c5, com.tfworkers.PDSISystem.Security.JWTAuthorizationFilter@55da6bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@686ace1f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@386d41cb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a0f5141, org.springframework.security.web.session.SessionManagementFilter@4e9d1119, org.springframework.security.web.access.ExceptionTranslationFilter@1e834a5b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2bef33e7]
-2021-11-19 11:00:26,039 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2021-11-19 11:00:26,102 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2021-11-19 11:00:26,102 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
-2021-11-19 11:00:26,196 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2021-11-19 11:00:26,305 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
-2021-11-19 11:00:26,946 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addProcessUsingPOST_1
-2021-11-19 11:00:27,164 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: exportToPDFUsingGET_1
-2021-11-19 11:00:27,305 INFO o.s.b.StartupInfoLogger [main] Started PdsiSystemApplication in 36.756 seconds (JVM running for 44.462)
-2021-11-19 11:00:32,319 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-11-19 11:00:32,319 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2021-11-19 11:00:32,327 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 8 ms
+2021-11-22 16:23:50,347 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-11-22 16:23:50,472 INFO o.s.b.StartupInfoLogger [main] Starting PdsiSystemApplication using Java 1.8.0_73 on LTI-TRAINING-06 with PID 15012 (C:\Users\Talha\Downloads\gitprogamcheck\PDSISystem\target\classes started by Talha in C:\Users\Talha\Downloads\gitprogamcheck\PDSISystem)
+2021-11-22 16:23:50,488 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2021-11-22 16:23:53,287 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-22 16:23:53,584 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 277 ms. Found 12 JPA repository interfaces.
+2021-11-22 16:23:54,584 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@545b5ed0' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-22 16:23:54,599 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-11-22 16:23:55,381 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2021-11-22 16:23:55,396 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2021-11-22 16:23:55,396 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2021-11-22 16:23:55,396 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-22 16:23:55,787 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2021-11-22 16:23:55,787 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 5080 ms
+2021-11-22 16:23:56,318 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-22 16:23:56,474 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-22 16:23:56,817 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration boolean -> org.hibernate.type.BooleanType@b3857e2
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration boolean -> org.hibernate.type.BooleanType@b3857e2
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@b3857e2
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@99c4993
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration true_false -> org.hibernate.type.TrueFalseType@36463b09
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration yes_no -> org.hibernate.type.YesNoType@64bba0eb
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte -> org.hibernate.type.ByteType@4c56644f
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte -> org.hibernate.type.ByteType@4c56644f
+2021-11-22 16:23:56,895 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@4c56644f
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration character -> org.hibernate.type.CharacterType@7c5f29c6
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration char -> org.hibernate.type.CharacterType@7c5f29c6
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@7c5f29c6
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration short -> org.hibernate.type.ShortType@68fc9167
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration short -> org.hibernate.type.ShortType@68fc9167
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Short -> org.hibernate.type.ShortType@68fc9167
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration integer -> org.hibernate.type.IntegerType@3a5e2525
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration int -> org.hibernate.type.IntegerType@3a5e2525
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@3a5e2525
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration long -> org.hibernate.type.LongType@bfb93cf
+2021-11-22 16:23:56,911 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration long -> org.hibernate.type.LongType@bfb93cf
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Long -> org.hibernate.type.LongType@bfb93cf
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration float -> org.hibernate.type.FloatType@464ede1f
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration float -> org.hibernate.type.FloatType@464ede1f
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Float -> org.hibernate.type.FloatType@464ede1f
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration double -> org.hibernate.type.DoubleType@b428830
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration double -> org.hibernate.type.DoubleType@b428830
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@b428830
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@6987a133
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@6987a133
+2021-11-22 16:23:56,927 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration big_integer -> org.hibernate.type.BigIntegerType@2a1e57c6
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@2a1e57c6
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration string -> org.hibernate.type.StringType@6d421fe
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.String -> org.hibernate.type.StringType@6d421fe
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration nstring -> org.hibernate.type.StringNVarcharType@c758a2d
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@2ba024cb
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration url -> org.hibernate.type.UrlType@505d2bac
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.net.URL -> org.hibernate.type.UrlType@505d2bac
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Duration -> org.hibernate.type.DurationType@45dde6ac
+2021-11-22 16:23:56,942 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.Duration -> org.hibernate.type.DurationType@45dde6ac
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Instant -> org.hibernate.type.InstantType@2c8a445b
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.Instant -> org.hibernate.type.InstantType@2c8a445b
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@11e834ad
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@11e834ad
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalDate -> org.hibernate.type.LocalDateType@bb6f3f7
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@bb6f3f7
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@639cb788
+2021-11-22 16:23:56,958 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@639cb788
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@590013c7
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@590013c7
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@6f07d414
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@6f07d414
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@6ba6557e
+2021-11-22 16:23:56,974 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@6ba6557e
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration date -> org.hibernate.type.DateType@44d43cc9
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Date -> org.hibernate.type.DateType@44d43cc9
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration time -> org.hibernate.type.TimeType@7493d937
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Time -> org.hibernate.type.TimeType@7493d937
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration timestamp -> org.hibernate.type.TimestampType@2347b7af
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@2347b7af
+2021-11-22 16:23:56,989 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Date -> org.hibernate.type.TimestampType@2347b7af
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@4e94669c
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar -> org.hibernate.type.CalendarType@2026fbff
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@2026fbff
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@2026fbff
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@38bc5ac0
+2021-11-22 16:23:57,005 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration calendar_time -> org.hibernate.type.CalendarTimeType@2154652c
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration locale -> org.hibernate.type.LocaleType@7cc1f72c
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@7cc1f72c
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration currency -> org.hibernate.type.CurrencyType@819fb19
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@819fb19
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration timezone -> org.hibernate.type.TimeZoneType@12365bd8
+2021-11-22 16:23:57,020 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@12365bd8
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration class -> org.hibernate.type.ClassType@23afc725
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Class -> org.hibernate.type.ClassType@23afc725
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@5cc3e49b
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@5cc3e49b
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@3eac2e8a
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration binary -> org.hibernate.type.BinaryType@fabef2e
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration byte[] -> org.hibernate.type.BinaryType@fabef2e
+2021-11-22 16:23:57,036 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [B -> org.hibernate.type.BinaryType@fabef2e
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@7f8c3646
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@7f8c3646
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@7f8c3646
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration row_version -> org.hibernate.type.RowVersionType@6598caab
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration image -> org.hibernate.type.ImageType@6658f08a
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration characters -> org.hibernate.type.CharArrayType@44fb6ebd
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration char[] -> org.hibernate.type.CharArrayType@44fb6ebd
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [C -> org.hibernate.type.CharArrayType@44fb6ebd
+2021-11-22 16:23:57,052 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@738a815c
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@738a815c
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@738a815c
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration text -> org.hibernate.type.TextType@762405bf
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration ntext -> org.hibernate.type.NTextType@9d99851
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration blob -> org.hibernate.type.BlobType@1552da16
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@1552da16
+2021-11-22 16:23:57,067 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@29b5533
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration clob -> org.hibernate.type.ClobType@3513d214
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@3513d214
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration nclob -> org.hibernate.type.NClobType@547aaa32
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@547aaa32
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@5908e6d6
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@7b44bfb8
+2021-11-22 16:23:57,083 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration serializable -> org.hibernate.type.SerializableType@48a46b0f
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration object -> org.hibernate.type.ObjectType@203765b2
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@203765b2
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@4b6b5352
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@1d6713dd
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@3b39e79b
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@3ee6dc82
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@2f86f9cf
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@adafe19
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@7e2bd5e6
+2021-11-22 16:23:57,098 DEBUG o.h.t.BasicTypeRegistry [main] Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@76a1146d
+2021-11-22 16:23:57,208 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2021-11-22 16:23:57,958 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2021-11-22 16:23:58,020 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-22 16:23:58,286 DEBUG o.h.t.s.TypeConfiguration [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@bfd97fb] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@6bfdaa7a]
+2021-11-22 16:23:59,349 DEBUG o.h.t.s.TypeConfiguration [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@bfd97fb] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@52efb338]
+2021-11-22 16:24:00,552 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_budgets drop foreign key FK470b227lnmy2gdysoyqfogjqy
+2021-11-22 16:24:03,553 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_budgets drop foreign key FKtev0nmb1k30mdcyqu4vvxo71t
+2021-11-22 16:24:03,943 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_causeof_actions drop foreign key FKl23nn2h84t320difd7egyci9f
+2021-11-22 16:24:04,318 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_causeof_actions drop foreign key FKgggtp2f71uchjwt73j915c58i
+2021-11-22 16:24:04,506 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_international drop foreign key FKjtrp4e1xmlw0ww1pyd3vn0caa
+2021-11-22 16:24:04,803 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_international drop foreign key FK4gycinmqswjjoogc4ejpoinjf
+2021-11-22 16:24:05,155 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_national drop foreign key FKm5f6ragkk11y4kqjnnq201se7
+2021-11-22 16:24:05,389 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_national drop foreign key FKfruyia4gbb7trpjeatqw2okhh
+2021-11-22 16:24:05,577 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_tags drop foreign key FK3udym0cp072ngffx59tn4al1m
+2021-11-22 16:24:06,103 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_tags drop foreign key FKpfp3lwk1f2rlp325sclo9l1em
+2021-11-22 16:24:06,431 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_timelines drop foreign key FKeelmloi46vo6olo7m2kgmhw43
+2021-11-22 16:24:06,725 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_timelines drop foreign key FKkr721cuoc0h4ftev5ry6cwtbu
+2021-11-22 16:24:07,070 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table roles_permissions drop foreign key FK570wuy6sacdnrw8wdqjfh7j0q
+2021-11-22 16:24:07,487 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table roles_permissions drop foreign key FKqi9odri6c1o81vjox54eedwyh
+2021-11-22 16:24:07,721 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table timeline_processes drop foreign key FK3wta9wum0845imxpivs05skxu
+2021-11-22 16:24:07,940 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table timeline_processes drop foreign key FK476y42tkueiliv3v2xonuibw9
+2021-11-22 16:24:08,315 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_projects drop foreign key FKl4pd6nu9du914k03f86527wlj
+2021-11-22 16:24:08,596 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_projects drop foreign key FK3qbj3mr95j9ycxw7t1su82kji
+2021-11-22 16:24:08,784 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles drop foreign key FKdbv8tdyltxa1qjmfnj9oboxse
+2021-11-22 16:24:09,112 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles drop foreign key FKkv46dn3qakjvsk7ra33nd5sns
+2021-11-22 16:24:09,315 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_tags drop foreign key FKr04d6v56bgvc8day0ws2fm4kq
+2021-11-22 16:24:09,534 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_tags drop foreign key FKp9h8mqb7994o97nhb88ub02t4
+2021-11-22 16:24:09,706 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists budgets
+2021-11-22 16:24:11,346 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists causeofaction
+2021-11-22 16:24:11,913 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists futureplan
+2021-11-22 16:24:12,679 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists hibernate_sequence
+2021-11-22 16:24:13,491 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists international
+2021-11-22 16:24:14,147 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists national
+2021-11-22 16:24:14,850 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists permissions
+2021-11-22 16:24:16,821 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists process
+2021-11-22 16:24:17,602 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project
+2021-11-22 16:24:19,009 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_budgets
+2021-11-22 16:24:19,884 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_causeof_actions
+2021-11-22 16:24:20,243 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_international
+2021-11-22 16:24:20,977 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_national
+2021-11-22 16:24:21,321 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_tags
+2021-11-22 16:24:21,959 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists project_timelines
+2021-11-22 16:24:22,303 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists report
+2021-11-22 16:24:23,147 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists roles
+2021-11-22 16:24:23,928 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists roles_permissions
+2021-11-22 16:24:24,288 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists tags
+2021-11-22 16:24:25,022 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists timeline
+2021-11-22 16:24:25,256 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists timeline_processes
+2021-11-22 16:24:26,288 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists user
+2021-11-22 16:24:30,666 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists user_projects
+2021-11-22 16:24:31,103 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists user_roles
+2021-11-22 16:24:31,463 DEBUG o.h.e.j.s.SqlStatementLogger [main] drop table if exists user_tags
+2021-11-22 16:24:33,151 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table budgets (budget_id bigint not null auto_increment, budget bigint not null, created_date datetime(6), is_active bit not null, name varchar(255), quantity bigint not null, updated_date datetime(6), primary key (budget_id)) engine=InnoDB
+2021-11-22 16:24:34,375 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table causeofaction (causeof_action_id bigint not null, actions varchar(255), causeof_change varchar(255), created_date datetime(6), is_active bit not null, name varchar(255), post varchar(255), updated_date datetime(6), primary key (causeof_action_id)) engine=InnoDB
+2021-11-22 16:24:34,984 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table futureplan (future_id bigint not null auto_increment, created_date datetime(6), description varchar(255), is_active bit not null, name varchar(255), plan_type varchar(255), updated_date datetime(6), primary key (future_id)) engine=InnoDB
+2021-11-22 16:24:35,406 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table hibernate_sequence (next_val bigint) engine=InnoDB
+2021-11-22 16:24:36,312 DEBUG o.h.e.j.s.SqlStatementLogger [main] insert into hibernate_sequence values ( 1 )
+2021-11-22 16:24:36,422 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table international (international_id bigint not null auto_increment, created_date datetime(6), foreign_minister_approval varchar(255), intern_of_organizations integer not null, is_active bit not null, updated_date datetime(6), primary key (international_id)) engine=InnoDB
+2021-11-22 16:24:37,215 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table national (national_id bigint not null auto_increment, created_date datetime(6), is_active bit not null, land integer not null, location varchar(255), noof_organization integer not null, updated_date datetime(6), primary key (national_id)) engine=InnoDB
+2021-11-22 16:24:37,669 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table permissions (id bigint not null, created_date datetime(6), is_active bit not null, name varchar(255) not null, updated_date datetime(6), primary key (id)) engine=InnoDB
+2021-11-22 16:24:38,590 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table process (process_id bigint not null auto_increment, approved varchar(255), created_date datetime(6), description varchar(255), is_active bit not null, name varchar(255), updated_date datetime(6), primary key (process_id)) engine=InnoDB
+2021-11-22 16:24:39,653 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project (project_id bigint not null auto_increment, description varchar(255), created_date datetime(6), is_active bit not null, name varchar(255), project_status bit not null, updated_date datetime(6), primary key (project_id)) engine=InnoDB
+2021-11-22 16:24:40,637 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_budgets (project_project_id bigint not null, budgets_budget_id bigint not null) engine=InnoDB
+2021-11-22 16:24:41,387 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_causeof_actions (project_project_id bigint not null, causeof_actions_causeof_action_id bigint not null) engine=InnoDB
+2021-11-22 16:24:42,280 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_international (project_project_id bigint not null, international_international_id bigint not null) engine=InnoDB
+2021-11-22 16:24:42,686 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_national (project_project_id bigint not null, national_national_id bigint not null) engine=InnoDB
+2021-11-22 16:24:43,764 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_tags (project_project_id bigint not null, tags_tags_id bigint not null) engine=InnoDB
+2021-11-22 16:24:44,639 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table project_timelines (project_project_id bigint not null, timelines_timeline_id bigint not null) engine=InnoDB
+2021-11-22 16:24:45,467 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table report (report_id bigint not null auto_increment, created_date datetime(6), description varchar(255), is_active bit not null, name varchar(255), updated_date datetime(6), primary key (report_id)) engine=InnoDB
+2021-11-22 16:24:46,405 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table roles (id bigint not null, created_date datetime(6), is_active bit not null, name varchar(255), updated_date datetime(6), primary key (id)) engine=InnoDB
+2021-11-22 16:24:47,325 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table roles_permissions (role_id bigint not null, permissions_id bigint not null) engine=InnoDB
+2021-11-22 16:24:49,513 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table tags (tags_id bigint not null auto_increment, created_date datetime(6), is_active bit not null, name varchar(255), updated_date datetime(6), primary key (tags_id)) engine=InnoDB
+2021-11-22 16:24:51,869 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table timeline (timeline_id bigint not null auto_increment, created_date datetime(6), end_date datetime(6) not null, is_active bit not null, name varchar(255), start_date datetime(6) not null, updated_date datetime(6), updated_end_date varchar(255), primary key (timeline_id)) engine=InnoDB
+2021-11-22 16:24:52,650 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table timeline_processes (timeline_timeline_id bigint not null, processes_process_id bigint not null) engine=InnoDB
+2021-11-22 16:24:53,963 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user (user_id bigint not null auto_increment, account_verify_status bit not null, age integer not null, allowance varchar(255), cnic bigint, created_date datetime(6), department varchar(255), email varchar(255) not null, expiration_date datetime(6), first_name varchar(255), is_active bit not null, last_name varchar(255), password varchar(255), phone_number varchar(255), post varchar(255), token integer not null, updated_date datetime(6), username varchar(255), warning integer not null, primary key (user_id)) engine=InnoDB
+2021-11-22 16:24:55,197 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user_projects (user_user_id bigint not null, projects_project_id bigint not null) engine=InnoDB
+2021-11-22 16:24:56,558 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user_roles (user_user_id bigint not null, roles_id bigint not null) engine=InnoDB
+2021-11-22 16:24:57,119 DEBUG o.h.e.j.s.SqlStatementLogger [main] create table user_tags (user_user_id bigint not null, tags_tags_id bigint not null) engine=InnoDB
+2021-11-22 16:24:57,869 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on budgets (created_date)
+2021-11-22 16:24:58,885 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on budgets (is_active)
+2021-11-22 16:24:59,135 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on causeofaction (created_date)
+2021-11-22 16:25:00,135 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on causeofaction (is_active)
+2021-11-22 16:25:01,432 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on futureplan (created_date)
+2021-11-22 16:25:03,326 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on futureplan (is_active)
+2021-11-22 16:25:04,498 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on international (created_date)
+2021-11-22 16:25:06,541 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on international (is_active)
+2021-11-22 16:25:09,024 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on national (created_date)
+2021-11-22 16:25:10,758 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on national (is_active)
+2021-11-22 16:25:12,291 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on permissions (created_date)
+2021-11-22 16:25:13,151 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on permissions (is_active)
+2021-11-22 16:25:16,181 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table permissions add constraint UK_pnvtwliis6p05pn6i3ndjrqt2 unique (name)
+2021-11-22 16:25:18,140 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on process (created_date)
+2021-11-22 16:25:20,343 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on process (is_active)
+2021-11-22 16:25:21,500 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on project (created_date)
+2021-11-22 16:25:23,671 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on project (is_active)
+2021-11-22 16:25:25,358 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_budgets add constraint UK_hqyqv0gg00gkn9j4yvdwxc5o1 unique (budgets_budget_id)
+2021-11-22 16:25:27,783 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_causeof_actions add constraint UK_q9vrv0i3cwanggpnylt94qck unique (causeof_actions_causeof_action_id)
+2021-11-22 16:25:29,143 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_international add constraint UK_pkfr5c1bywgfyd82imf0rria2 unique (international_international_id)
+2021-11-22 16:25:31,533 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_national add constraint UK_anclc4h12b7ysa29rbx9irpy1 unique (national_national_id)
+2021-11-22 16:25:33,156 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_timelines add constraint UK_6hlpsid5eowc6tlg3eocduqcd unique (timelines_timeline_id)
+2021-11-22 16:25:34,296 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on report (created_date)
+2021-11-22 16:25:35,156 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on report (is_active)
+2021-11-22 16:25:36,078 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on roles (created_date)
+2021-11-22 16:25:38,143 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on roles (is_active)
+2021-11-22 16:25:39,518 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on tags (created_date)
+2021-11-22 16:25:40,034 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on tags (is_active)
+2021-11-22 16:25:40,581 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on timeline (created_date)
+2021-11-22 16:25:43,537 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on timeline (is_active)
+2021-11-22 16:25:44,396 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table timeline_processes add constraint UK_7qeutrl0g0itqdu84s850ieas unique (processes_process_id)
+2021-11-22 16:25:45,880 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index created_date_index on user (created_date)
+2021-11-22 16:25:46,740 DEBUG o.h.e.j.s.SqlStatementLogger [main] create index active_index on user (is_active)
+2021-11-22 16:25:47,851 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+2021-11-22 16:25:48,851 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_budgets add constraint FK470b227lnmy2gdysoyqfogjqy foreign key (budgets_budget_id) references budgets (budget_id)
+2021-11-22 16:25:51,398 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_budgets add constraint FKtev0nmb1k30mdcyqu4vvxo71t foreign key (project_project_id) references project (project_id)
+2021-11-22 16:25:53,508 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_causeof_actions add constraint FKl23nn2h84t320difd7egyci9f foreign key (causeof_actions_causeof_action_id) references causeofaction (causeof_action_id)
+2021-11-22 16:25:55,446 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_causeof_actions add constraint FKgggtp2f71uchjwt73j915c58i foreign key (project_project_id) references project (project_id)
+2021-11-22 16:26:00,033 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_international add constraint FKjtrp4e1xmlw0ww1pyd3vn0caa foreign key (international_international_id) references international (international_id)
+2021-11-22 16:26:04,240 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_international add constraint FK4gycinmqswjjoogc4ejpoinjf foreign key (project_project_id) references project (project_id)
+2021-11-22 16:26:07,817 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_national add constraint FKm5f6ragkk11y4kqjnnq201se7 foreign key (national_national_id) references national (national_id)
+2021-11-22 16:26:09,474 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_national add constraint FKfruyia4gbb7trpjeatqw2okhh foreign key (project_project_id) references project (project_id)
+2021-11-22 16:26:12,242 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_tags add constraint FK3udym0cp072ngffx59tn4al1m foreign key (tags_tags_id) references tags (tags_id)
+2021-11-22 16:26:14,632 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_tags add constraint FKpfp3lwk1f2rlp325sclo9l1em foreign key (project_project_id) references project (project_id)
+2021-11-22 16:26:17,569 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_timelines add constraint FKeelmloi46vo6olo7m2kgmhw43 foreign key (timelines_timeline_id) references timeline (timeline_id)
+2021-11-22 16:26:19,913 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table project_timelines add constraint FKkr721cuoc0h4ftev5ry6cwtbu foreign key (project_project_id) references project (project_id)
+2021-11-22 16:26:24,654 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table roles_permissions add constraint FK570wuy6sacdnrw8wdqjfh7j0q foreign key (permissions_id) references permissions (id)
+2021-11-22 16:26:31,300 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table roles_permissions add constraint FKqi9odri6c1o81vjox54eedwyh foreign key (role_id) references roles (id)
+2021-11-22 16:26:36,291 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table timeline_processes add constraint FK3wta9wum0845imxpivs05skxu foreign key (processes_process_id) references process (process_id)
+2021-11-22 16:26:38,101 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table timeline_processes add constraint FK476y42tkueiliv3v2xonuibw9 foreign key (timeline_timeline_id) references timeline (timeline_id)
+2021-11-22 16:26:39,913 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_projects add constraint FKl4pd6nu9du914k03f86527wlj foreign key (projects_project_id) references project (project_id)
+2021-11-22 16:26:42,928 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_projects add constraint FK3qbj3mr95j9ycxw7t1su82kji foreign key (user_user_id) references user (user_id)
+2021-11-22 16:26:45,022 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKdbv8tdyltxa1qjmfnj9oboxse foreign key (roles_id) references roles (id)
+2021-11-22 16:26:47,019 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_roles add constraint FKkv46dn3qakjvsk7ra33nd5sns foreign key (user_user_id) references user (user_id)
+2021-11-22 16:26:51,910 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_tags add constraint FKr04d6v56bgvc8day0ws2fm4kq foreign key (tags_tags_id) references tags (tags_id)
+2021-11-22 16:26:57,301 DEBUG o.h.e.j.s.SqlStatementLogger [main] alter table user_tags add constraint FKp9h8mqb7994o97nhb88ub02t4 foreign key (user_user_id) references user (user_id)
+2021-11-22 16:27:00,020 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-22 16:27:00,051 TRACE o.h.t.s.TypeConfiguration [main] Handling #sessionFactoryCreated from [org.hibernate.internal.SessionFactoryImpl@52efb338] for TypeConfiguration
+2021-11-22 16:27:00,067 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-22 16:27:02,488 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-22 16:27:03,442 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-11-22 16:27:03,754 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6202f8bf, org.springframework.security.web.context.SecurityContextPersistenceFilter@7a0df38e, org.springframework.security.web.header.HeaderWriterFilter@6a887649, org.springframework.security.web.authentication.logout.LogoutFilter@66ad7167, com.tfworkers.PDSISystem.Security.JwtRequestFilter@7a491a60, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8aa3013, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@513ddf5f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@330d557e, org.springframework.security.web.session.SessionManagementFilter@35bb3fea, org.springframework.security.web.access.ExceptionTranslationFilter@419c70f6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@505a48a2]
+2021-11-22 16:27:04,629 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2021-11-22 16:27:04,676 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-22 16:27:04,676 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
+2021-11-22 16:27:04,723 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2021-11-22 16:27:04,817 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
+2021-11-22 16:27:05,348 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: addProcessUsingPOST_1
+2021-11-22 16:27:05,488 INFO s.d.s.w.r.o.CachingOperationNameGenerator [main] Generating unique operation named: exportToPDFUsingGET_1
+2021-11-22 16:27:05,582 INFO o.s.b.StartupInfoLogger [main] Started PdsiSystemApplication in 196.321 seconds (JVM running for 201.596)
+2021-11-22 16:37:02,427 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-22 16:37:02,427 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2021-11-22 16:37:02,427 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2021-11-22 16:37:07,739 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-2] JWT Token does not begin with Bearer String
+2021-11-22 16:37:08,163 INFO c.t.P.U.E.ExceptionHandling [http-nio-8080-exec-2] some error has occurred see logs for more details ....general exception is 
+ org.springframework.web.bind.MissingRequestHeaderException: Required request header 'Authorization' for method parameter type String is not present/user/add
+2021-11-22 16:37:22,116 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-4] JWT Token does not begin with Bearer String
+2021-11-22 16:37:22,396 INFO c.t.P.S.UserService [http-nio-8080-exec-4] In Service class saving user
+2021-11-22 16:37:23,012 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into user (account_verify_status, age, allowance, cnic, created_date, department, email, expiration_date, first_name, is_active, last_name, password, phone_number, post, token, updated_date, username, warning) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-11-22 16:37:23,108 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [1] as [BOOLEAN] - [false]
+2021-11-22 16:37:23,116 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [2] as [INTEGER] - [45]
+2021-11-22 16:37:23,116 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [3] as [VARCHAR] - [30,000]
+2021-11-22 16:37:23,124 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [4] as [BIGINT] - [1234324]
+2021-11-22 16:37:23,132 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [5] as [TIMESTAMP] - [Mon Nov 22 16:37:22 PKT 2021]
+2021-11-22 16:37:23,156 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [6] as [VARCHAR] - [Construction]
+2021-11-22 16:37:23,156 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [7] as [VARCHAR] - [kamran@gmail.com]
+2021-11-22 16:37:23,156 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [8] as [TIMESTAMP] - [null]
+2021-11-22 16:37:23,164 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [9] as [VARCHAR] - [kamran]
+2021-11-22 16:37:23,164 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [10] as [BOOLEAN] - [true]
+2021-11-22 16:37:23,164 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [11] as [VARCHAR] - [abbasi]
+2021-11-22 16:37:23,172 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [12] as [VARCHAR] - [$2a$10$//nPGcqZGWZicT53KS4qjucm/uDlTTfXC60ylEjXCIYjF4pM9eidC]
+2021-11-22 16:37:23,172 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [13] as [VARCHAR] - [+44646465]
+2021-11-22 16:37:23,172 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [14] as [VARCHAR] - [manager]
+2021-11-22 16:37:23,172 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [15] as [INTEGER] - [0]
+2021-11-22 16:37:23,180 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [16] as [TIMESTAMP] - [null]
+2021-11-22 16:37:23,180 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [17] as [VARCHAR] - [kamranabbasi]
+2021-11-22 16:37:23,180 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [18] as [INTEGER] - [0]
+2021-11-22 16:37:23,380 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-4] insert into user_roles (user_user_id, roles_id) values (?, ?)
+2021-11-22 16:37:23,380 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [1] as [BIGINT] - [1]
+2021-11-22 16:37:23,388 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-4] binding parameter [2] as [BIGINT] - [2]
+2021-11-22 16:37:23,556 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] SQL Error: 1452, SQLState: 23000
+2021-11-22 16:37:23,556 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-4] Cannot add or update a child row: a foreign key constraint fails (`pdsi`.`user_roles`, CONSTRAINT `FKdbv8tdyltxa1qjmfnj9oboxse` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`))
+2021-11-22 16:37:23,556 INFO o.h.e.j.b.i.AbstractBatchImpl [http-nio-8080-exec-4] HHH000010: On release of batch it still contained JDBC statements
+2021-11-22 16:39:32,794 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-7] JWT Token does not begin with Bearer String
+2021-11-22 16:39:32,794 INFO c.t.P.S.UserService [http-nio-8080-exec-7] In Service class saving user
+2021-11-22 16:39:32,997 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-7] insert into user (account_verify_status, age, allowance, cnic, created_date, department, email, expiration_date, first_name, is_active, last_name, password, phone_number, post, token, updated_date, username, warning) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-11-22 16:39:32,997 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [1] as [BOOLEAN] - [false]
+2021-11-22 16:39:32,997 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [2] as [INTEGER] - [45]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [3] as [VARCHAR] - [30,000]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [4] as [BIGINT] - [1234324]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [5] as [TIMESTAMP] - [Mon Nov 22 16:39:32 PKT 2021]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [6] as [VARCHAR] - [Construction]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [7] as [VARCHAR] - [kamran@gmail.com]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [8] as [TIMESTAMP] - [null]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [9] as [VARCHAR] - [kamran]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [10] as [BOOLEAN] - [true]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [11] as [VARCHAR] - [abbasi]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [12] as [VARCHAR] - [$2a$10$1o6y6ZVSSGlyNu31YirHmuDqFDKwLKwnunR4RGBnx8AGbRFxlAJ2.]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [13] as [VARCHAR] - [+44646465]
+2021-11-22 16:39:33,013 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [14] as [VARCHAR] - [manager]
+2021-11-22 16:39:33,028 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [15] as [INTEGER] - [0]
+2021-11-22 16:39:33,028 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [16] as [TIMESTAMP] - [null]
+2021-11-22 16:39:33,028 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [17] as [VARCHAR] - [kamranabbasi]
+2021-11-22 16:39:33,028 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-7] binding parameter [18] as [INTEGER] - [0]
+2021-11-22 16:39:51,981 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-8] JWT Token does not begin with Bearer String
+2021-11-22 16:39:52,077 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] select next_val as id_val from hibernate_sequence for update
+2021-11-22 16:39:52,117 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] update hibernate_sequence set next_val= ? where next_val=?
+2021-11-22 16:39:52,205 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-8] insert into permissions (created_date, is_active, name, updated_date, id) values (?, ?, ?, ?, ?)
+2021-11-22 16:39:52,205 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-8] binding parameter [1] as [TIMESTAMP] - [Mon Nov 22 16:39:51 PKT 2021]
+2021-11-22 16:39:52,205 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-8] binding parameter [2] as [BOOLEAN] - [true]
+2021-11-22 16:39:52,205 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-8] binding parameter [3] as [VARCHAR] - [READ_PRIVILEGE]
+2021-11-22 16:39:52,205 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-8] binding parameter [4] as [TIMESTAMP] - [null]
+2021-11-22 16:39:52,213 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-8] binding parameter [5] as [BIGINT] - [1]
+2021-11-22 16:45:07,766 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-1] JWT Token does not begin with Bearer String
+2021-11-22 16:45:07,838 INFO c.t.P.U.E.ExceptionHandling [http-nio-8080-exec-1] some error has occurred see logs for more details ....general exception is 
+ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.util.ArrayList<com.tfworkers.PDSISystem.Model.Entity.Permissions>` from Object value (token `JsonToken.START_OBJECT`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.util.ArrayList<com.tfworkers.PDSISystem.Model.Entity.Permissions>` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (PushbackInputStream); line: 2, column: 7]/permission/add
+2021-11-22 16:45:58,220 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-3] JWT Token does not begin with Bearer String
+2021-11-22 16:45:58,236 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] select next_val as id_val from hibernate_sequence for update
+2021-11-22 16:45:58,244 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] update hibernate_sequence set next_val= ? where next_val=?
+2021-11-22 16:45:58,412 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into roles (created_date, is_active, name, updated_date, id) values (?, ?, ?, ?, ?)
+2021-11-22 16:45:58,412 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [1] as [TIMESTAMP] - [Mon Nov 22 16:45:58 PKT 2021]
+2021-11-22 16:45:58,412 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [2] as [BOOLEAN] - [true]
+2021-11-22 16:45:58,412 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [3] as [VARCHAR] - [admin]
+2021-11-22 16:45:58,412 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [4] as [TIMESTAMP] - [null]
+2021-11-22 16:45:58,412 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [5] as [BIGINT] - [2]
+2021-11-22 16:45:58,492 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-3] insert into roles_permissions (role_id, permissions_id) values (?, ?)
+2021-11-22 16:45:58,492 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [1] as [BIGINT] - [2]
+2021-11-22 16:45:58,492 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-3] binding parameter [2] as [BIGINT] - [1]
+2021-11-22 16:47:07,755 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-6] JWT Token does not begin with Bearer String
+2021-11-22 16:47:07,763 INFO c.t.P.S.UserService [http-nio-8080-exec-6] In Service class saving user
+2021-11-22 16:47:08,011 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-6] insert into user (account_verify_status, age, allowance, cnic, created_date, department, email, expiration_date, first_name, is_active, last_name, password, phone_number, post, token, updated_date, username, warning) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-11-22 16:47:08,019 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [1] as [BOOLEAN] - [false]
+2021-11-22 16:47:08,019 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [2] as [INTEGER] - [45]
+2021-11-22 16:47:08,019 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [3] as [VARCHAR] - [30,000]
+2021-11-22 16:47:08,019 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [4] as [BIGINT] - [1234324]
+2021-11-22 16:47:08,019 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [5] as [TIMESTAMP] - [Mon Nov 22 16:47:07 PKT 2021]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [6] as [VARCHAR] - [Construction]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [7] as [VARCHAR] - [kamran@gmail.com]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [8] as [TIMESTAMP] - [null]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [9] as [VARCHAR] - [kamran]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [10] as [BOOLEAN] - [true]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [11] as [VARCHAR] - [abbasi]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [12] as [VARCHAR] - [$2a$10$3azkBMskjWj8wC59kGnBGezm.AwigldKvsiwSpufmnVpBCkWtwVTm]
+2021-11-22 16:47:08,027 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [13] as [VARCHAR] - [+44646465]
+2021-11-22 16:47:08,035 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [14] as [VARCHAR] - [manager]
+2021-11-22 16:47:08,035 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [15] as [INTEGER] - [0]
+2021-11-22 16:47:08,035 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [16] as [TIMESTAMP] - [null]
+2021-11-22 16:47:08,035 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [17] as [VARCHAR] - [kamranabbasi]
+2021-11-22 16:47:08,035 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-6] binding parameter [18] as [INTEGER] - [0]
+2021-11-22 16:47:08,155 WARN o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-6] SQL Error: 1062, SQLState: 23000
+2021-11-22 16:47:08,155 ERROR o.h.e.j.s.SqlExceptionHelper [http-nio-8080-exec-6] Duplicate entry 'kamran@gmail.com' for key 'user.UK_ob8kqyqqgmefl0aco34akdtpe'
+2021-11-22 16:48:16,426 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-9] JWT Token does not begin with Bearer String
+2021-11-22 16:48:16,434 INFO c.t.P.S.UserService [http-nio-8080-exec-9] In Service class saving user
+2021-11-22 16:48:16,698 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-9] insert into user (account_verify_status, age, allowance, cnic, created_date, department, email, expiration_date, first_name, is_active, last_name, password, phone_number, post, token, updated_date, username, warning) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2021-11-22 16:48:16,698 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [1] as [BOOLEAN] - [false]
+2021-11-22 16:48:16,698 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [2] as [INTEGER] - [45]
+2021-11-22 16:48:16,698 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [3] as [VARCHAR] - [30,000]
+2021-11-22 16:48:16,706 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [4] as [BIGINT] - [1234324]
+2021-11-22 16:48:16,706 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [5] as [TIMESTAMP] - [Mon Nov 22 16:48:16 PKT 2021]
+2021-11-22 16:48:16,706 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [6] as [VARCHAR] - [Construction]
+2021-11-22 16:48:16,714 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [7] as [VARCHAR] - [talha@gamil.com]
+2021-11-22 16:48:16,714 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [8] as [TIMESTAMP] - [null]
+2021-11-22 16:48:16,714 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [9] as [VARCHAR] - [talha]
+2021-11-22 16:48:16,714 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [10] as [BOOLEAN] - [true]
+2021-11-22 16:48:16,714 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [11] as [VARCHAR] - [farooq]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [12] as [VARCHAR] - [$2a$10$eTmgKwloiTFCiNkOCZ4yQeJh0oZdygcEuTqllqwceQkbDqvUoQU9C]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [13] as [VARCHAR] - [+44646465]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [14] as [VARCHAR] - [manager]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [15] as [INTEGER] - [0]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [16] as [TIMESTAMP] - [null]
+2021-11-22 16:48:16,722 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [17] as [VARCHAR] - [talhafarooq]
+2021-11-22 16:48:16,730 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [18] as [INTEGER] - [0]
+2021-11-22 16:48:16,786 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-9] insert into user_roles (user_user_id, roles_id) values (?, ?)
+2021-11-22 16:48:16,786 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:48:16,794 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-9] binding parameter [2] as [BIGINT] - [2]
+2021-11-22 16:48:40,618 WARN c.t.P.S.JwtRequestFilter [http-nio-8080-exec-10] JWT Token does not begin with Bearer String
+2021-11-22 16:48:47,274 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-10] select user0_.user_id as user_id1_20_, user0_.account_verify_status as account_2_20_, user0_.age as age3_20_, user0_.allowance as allowanc4_20_, user0_.cnic as cnic5_20_, user0_.created_date as created_6_20_, user0_.department as departme7_20_, user0_.email as email8_20_, user0_.expiration_date as expirati9_20_, user0_.first_name as first_n10_20_, user0_.is_active as is_acti11_20_, user0_.last_name as last_na12_20_, user0_.password as passwor13_20_, user0_.phone_number as phone_n14_20_, user0_.post as post15_20_, user0_.token as token16_20_, user0_.updated_date as updated17_20_, user0_.username as usernam18_20_, user0_.warning as warning19_20_ from user user0_ where user0_.username=?
+2021-11-22 16:48:47,274 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-10] binding parameter [1] as [VARCHAR] - [talhafarooq]
+2021-11-22 16:48:47,378 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([user_id1_20_] : [BIGINT]) - [4]
+2021-11-22 16:48:47,386 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([account_2_20_] : [BOOLEAN]) - [false]
+2021-11-22 16:48:47,394 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([age3_20_] : [INTEGER]) - [45]
+2021-11-22 16:48:47,394 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([allowanc4_20_] : [VARCHAR]) - [30,000]
+2021-11-22 16:48:47,394 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([cnic5_20_] : [BIGINT]) - [1234324]
+2021-11-22 16:48:47,402 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([created_6_20_] : [TIMESTAMP]) - [2021-11-22 16:48:16.434]
+2021-11-22 16:48:47,402 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([departme7_20_] : [VARCHAR]) - [Construction]
+2021-11-22 16:48:47,402 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([email8_20_] : [VARCHAR]) - [talha@gamil.com]
+2021-11-22 16:48:47,402 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([expirati9_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([first_n10_20_] : [VARCHAR]) - [talha]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([is_acti11_20_] : [BOOLEAN]) - [true]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([last_na12_20_] : [VARCHAR]) - [farooq]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([passwor13_20_] : [VARCHAR]) - [$2a$10$eTmgKwloiTFCiNkOCZ4yQeJh0oZdygcEuTqllqwceQkbDqvUoQU9C]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([phone_n14_20_] : [VARCHAR]) - [+44646465]
+2021-11-22 16:48:47,410 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([post15_20_] : [VARCHAR]) - [manager]
+2021-11-22 16:48:47,418 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([token16_20_] : [INTEGER]) - [0]
+2021-11-22 16:48:47,418 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([updated17_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:48:47,418 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([usernam18_20_] : [VARCHAR]) - [talhafarooq]
+2021-11-22 16:48:47,418 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([warning19_20_] : [INTEGER]) - [0]
+2021-11-22 16:48:47,434 TRACE o.h.t.CollectionType [http-nio-8080-exec-10] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.projects#4]
+2021-11-22 16:48:47,434 TRACE o.h.t.CollectionType [http-nio-8080-exec-10] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.roles#4]
+2021-11-22 16:48:47,434 TRACE o.h.t.CollectionType [http-nio-8080-exec-10] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.tags#4]
+2021-11-22 16:48:47,578 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-10] select roles0_.user_user_id as user_use1_22_0_, roles0_.roles_id as roles_id2_22_0_, role1_.id as id1_15_1_, role1_.created_date as created_2_15_1_, role1_.is_active as is_activ3_15_1_, role1_.name as name4_15_1_, role1_.updated_date as updated_5_15_1_ from user_roles roles0_ inner join roles role1_ on roles0_.roles_id=role1_.id where roles0_.user_user_id=?
+2021-11-22 16:48:47,594 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-10] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:48:47,642 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([id1_15_1_] : [BIGINT]) - [2]
+2021-11-22 16:48:47,650 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([created_2_15_1_] : [TIMESTAMP]) - [2021-11-22 16:45:58.22]
+2021-11-22 16:48:47,650 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([is_activ3_15_1_] : [BOOLEAN]) - [true]
+2021-11-22 16:48:47,650 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([name4_15_1_] : [VARCHAR]) - [admin]
+2021-11-22 16:48:47,650 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([updated_5_15_1_] : [TIMESTAMP]) - [null]
+2021-11-22 16:48:47,650 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([user_use1_22_0_] : [BIGINT]) - [4]
+2021-11-22 16:48:47,658 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([roles_id2_22_0_] : [BIGINT]) - [2]
+2021-11-22 16:48:47,674 TRACE o.h.t.CollectionType [http-nio-8080-exec-10] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.Role.permissions#2]
+2021-11-22 16:48:50,682 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-10] select user0_.user_id as user_id1_20_, user0_.account_verify_status as account_2_20_, user0_.age as age3_20_, user0_.allowance as allowanc4_20_, user0_.cnic as cnic5_20_, user0_.created_date as created_6_20_, user0_.department as departme7_20_, user0_.email as email8_20_, user0_.expiration_date as expirati9_20_, user0_.first_name as first_n10_20_, user0_.is_active as is_acti11_20_, user0_.last_name as last_na12_20_, user0_.password as passwor13_20_, user0_.phone_number as phone_n14_20_, user0_.post as post15_20_, user0_.token as token16_20_, user0_.updated_date as updated17_20_, user0_.username as usernam18_20_, user0_.warning as warning19_20_ from user user0_ where user0_.username=?
+2021-11-22 16:48:50,690 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-10] binding parameter [1] as [VARCHAR] - [talhafarooq]
+2021-11-22 16:48:50,690 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-10] extracted value ([user_id1_20_] : [BIGINT]) - [4]
+2021-11-22 16:49:42,664 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select user0_.user_id as user_id1_20_, user0_.account_verify_status as account_2_20_, user0_.age as age3_20_, user0_.allowance as allowanc4_20_, user0_.cnic as cnic5_20_, user0_.created_date as created_6_20_, user0_.department as departme7_20_, user0_.email as email8_20_, user0_.expiration_date as expirati9_20_, user0_.first_name as first_n10_20_, user0_.is_active as is_acti11_20_, user0_.last_name as last_na12_20_, user0_.password as passwor13_20_, user0_.phone_number as phone_n14_20_, user0_.post as post15_20_, user0_.token as token16_20_, user0_.updated_date as updated17_20_, user0_.username as usernam18_20_, user0_.warning as warning19_20_ from user user0_ where user0_.username=?
+2021-11-22 16:49:42,664 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [VARCHAR] - [talhafarooq]
+2021-11-22 16:49:42,672 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([user_id1_20_] : [BIGINT]) - [4]
+2021-11-22 16:49:42,672 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([account_2_20_] : [BOOLEAN]) - [false]
+2021-11-22 16:49:42,672 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([age3_20_] : [INTEGER]) - [45]
+2021-11-22 16:49:42,672 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([allowanc4_20_] : [VARCHAR]) - [30,000]
+2021-11-22 16:49:42,672 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([cnic5_20_] : [BIGINT]) - [1234324]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_6_20_] : [TIMESTAMP]) - [2021-11-22 16:48:16.434]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([departme7_20_] : [VARCHAR]) - [Construction]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([email8_20_] : [VARCHAR]) - [talha@gamil.com]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([expirati9_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([first_n10_20_] : [VARCHAR]) - [talha]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_acti11_20_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([last_na12_20_] : [VARCHAR]) - [farooq]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([passwor13_20_] : [VARCHAR]) - [$2a$10$eTmgKwloiTFCiNkOCZ4yQeJh0oZdygcEuTqllqwceQkbDqvUoQU9C]
+2021-11-22 16:49:42,680 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([phone_n14_20_] : [VARCHAR]) - [+44646465]
+2021-11-22 16:49:42,688 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([post15_20_] : [VARCHAR]) - [manager]
+2021-11-22 16:49:42,688 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([token16_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,688 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated17_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,688 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([usernam18_20_] : [VARCHAR]) - [talhafarooq]
+2021-11-22 16:49:42,688 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([warning19_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,688 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.projects#4]
+2021-11-22 16:49:42,688 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.roles#4]
+2021-11-22 16:49:42,688 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.tags#4]
+2021-11-22 16:49:42,736 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select roles0_.user_user_id as user_use1_22_0_, roles0_.roles_id as roles_id2_22_0_, role1_.id as id1_15_1_, role1_.created_date as created_2_15_1_, role1_.is_active as is_activ3_15_1_, role1_.name as name4_15_1_, role1_.updated_date as updated_5_15_1_ from user_roles roles0_ inner join roles role1_ on roles0_.roles_id=role1_.id where roles0_.user_user_id=?
+2021-11-22 16:49:42,736 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:49:42,744 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([id1_15_1_] : [BIGINT]) - [2]
+2021-11-22 16:49:42,744 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_2_15_1_] : [TIMESTAMP]) - [2021-11-22 16:45:58.22]
+2021-11-22 16:49:42,744 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_activ3_15_1_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:42,744 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([name4_15_1_] : [VARCHAR]) - [admin]
+2021-11-22 16:49:42,744 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated_5_15_1_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,752 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([user_use1_22_0_] : [BIGINT]) - [4]
+2021-11-22 16:49:42,752 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([roles_id2_22_0_] : [BIGINT]) - [2]
+2021-11-22 16:49:42,752 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.Role.permissions#2]
+2021-11-22 16:49:42,856 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select user0_.user_id as user_id1_20_, user0_.account_verify_status as account_2_20_, user0_.age as age3_20_, user0_.allowance as allowanc4_20_, user0_.cnic as cnic5_20_, user0_.created_date as created_6_20_, user0_.department as departme7_20_, user0_.email as email8_20_, user0_.expiration_date as expirati9_20_, user0_.first_name as first_n10_20_, user0_.is_active as is_acti11_20_, user0_.last_name as last_na12_20_, user0_.password as passwor13_20_, user0_.phone_number as phone_n14_20_, user0_.post as post15_20_, user0_.token as token16_20_, user0_.updated_date as updated17_20_, user0_.username as usernam18_20_, user0_.warning as warning19_20_ from user user0_ where user0_.is_active=? order by user0_.created_date asc
+2021-11-22 16:49:42,856 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BOOLEAN] - [true]
+2021-11-22 16:49:42,928 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([user_id1_20_] : [BIGINT]) - [2]
+2021-11-22 16:49:42,928 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([account_2_20_] : [BOOLEAN]) - [false]
+2021-11-22 16:49:42,928 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([age3_20_] : [INTEGER]) - [45]
+2021-11-22 16:49:42,928 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([allowanc4_20_] : [VARCHAR]) - [30,000]
+2021-11-22 16:49:42,928 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([cnic5_20_] : [BIGINT]) - [1234324]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_6_20_] : [TIMESTAMP]) - [2021-11-22 16:39:32.794]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([departme7_20_] : [VARCHAR]) - [Construction]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([email8_20_] : [VARCHAR]) - [kamran@gmail.com]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([expirati9_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([first_n10_20_] : [VARCHAR]) - [kamran]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_acti11_20_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([last_na12_20_] : [VARCHAR]) - [abbasi]
+2021-11-22 16:49:42,936 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([passwor13_20_] : [VARCHAR]) - [$2a$10$1o6y6ZVSSGlyNu31YirHmuDqFDKwLKwnunR4RGBnx8AGbRFxlAJ2.]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([phone_n14_20_] : [VARCHAR]) - [+44646465]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([post15_20_] : [VARCHAR]) - [manager]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([token16_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated17_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([usernam18_20_] : [VARCHAR]) - [kamranabbasi]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([warning19_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([user_id1_20_] : [BIGINT]) - [4]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([account_2_20_] : [BOOLEAN]) - [false]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([age3_20_] : [INTEGER]) - [45]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([allowanc4_20_] : [VARCHAR]) - [30,000]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([cnic5_20_] : [BIGINT]) - [1234324]
+2021-11-22 16:49:42,944 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_6_20_] : [TIMESTAMP]) - [2021-11-22 16:48:16.434]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([departme7_20_] : [VARCHAR]) - [Construction]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([email8_20_] : [VARCHAR]) - [talha@gamil.com]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([expirati9_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([first_n10_20_] : [VARCHAR]) - [talha]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_acti11_20_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([last_na12_20_] : [VARCHAR]) - [farooq]
+2021-11-22 16:49:42,952 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([passwor13_20_] : [VARCHAR]) - [$2a$10$eTmgKwloiTFCiNkOCZ4yQeJh0oZdygcEuTqllqwceQkbDqvUoQU9C]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([phone_n14_20_] : [VARCHAR]) - [+44646465]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([post15_20_] : [VARCHAR]) - [manager]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([token16_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated17_20_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([usernam18_20_] : [VARCHAR]) - [talhafarooq]
+2021-11-22 16:49:42,960 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([warning19_20_] : [INTEGER]) - [0]
+2021-11-22 16:49:42,960 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.projects#2]
+2021-11-22 16:49:42,960 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.roles#2]
+2021-11-22 16:49:42,968 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.tags#2]
+2021-11-22 16:49:42,968 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.projects#4]
+2021-11-22 16:49:42,976 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.roles#4]
+2021-11-22 16:49:42,976 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.User.tags#4]
+2021-11-22 16:49:42,976 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select roles0_.user_user_id as user_use1_22_0_, roles0_.roles_id as roles_id2_22_0_, role1_.id as id1_15_1_, role1_.created_date as created_2_15_1_, role1_.is_active as is_activ3_15_1_, role1_.name as name4_15_1_, role1_.updated_date as updated_5_15_1_ from user_roles roles0_ inner join roles role1_ on roles0_.roles_id=role1_.id where roles0_.user_user_id=?
+2021-11-22 16:49:42,976 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:49:42,976 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([id1_15_1_] : [BIGINT]) - [2]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_2_15_1_] : [TIMESTAMP]) - [2021-11-22 16:45:58.22]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_activ3_15_1_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([name4_15_1_] : [VARCHAR]) - [admin]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated_5_15_1_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([user_use1_22_0_] : [BIGINT]) - [4]
+2021-11-22 16:49:42,984 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([roles_id2_22_0_] : [BIGINT]) - [2]
+2021-11-22 16:49:42,992 TRACE o.h.t.CollectionType [http-nio-8080-exec-1] Created collection wrapper: [com.tfworkers.PDSISystem.Model.Entity.Role.permissions#2]
+2021-11-22 16:49:42,992 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select roles0_.user_user_id as user_use1_22_0_, roles0_.roles_id as roles_id2_22_0_, role1_.id as id1_15_1_, role1_.created_date as created_2_15_1_, role1_.is_active as is_activ3_15_1_, role1_.name as name4_15_1_, role1_.updated_date as updated_5_15_1_ from user_roles roles0_ inner join roles role1_ on roles0_.roles_id=role1_.id where roles0_.user_user_id=?
+2021-11-22 16:49:42,992 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [2]
+2021-11-22 16:49:43,000 INFO c.t.P.S.UserService [http-nio-8080-exec-1] In Service class getting user list
+2021-11-22 16:49:43,056 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select projects0_.user_user_id as user_use1_21_0_, projects0_.projects_project_id as projects2_21_0_, project1_.project_id as project_1_7_1_, project1_.description as descript2_7_1_, project1_.created_date as created_3_7_1_, project1_.is_active as is_activ4_7_1_, project1_.name as name5_7_1_, project1_.project_status as project_6_7_1_, project1_.updated_date as updated_7_7_1_ from user_projects projects0_ inner join project project1_ on projects0_.projects_project_id=project1_.project_id where projects0_.user_user_id=?
+2021-11-22 16:49:43,056 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [2]
+2021-11-22 16:49:43,104 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select tags0_.user_user_id as user_use1_23_0_, tags0_.tags_tags_id as tags_tag2_23_0_, tags1_.tags_id as tags_id1_17_1_, tags1_.created_date as created_2_17_1_, tags1_.is_active as is_activ3_17_1_, tags1_.name as name4_17_1_, tags1_.updated_date as updated_5_17_1_ from user_tags tags0_ inner join tags tags1_ on tags0_.tags_tags_id=tags1_.tags_id where tags0_.user_user_id=?
+2021-11-22 16:49:43,104 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [2]
+2021-11-22 16:49:43,120 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select projects0_.user_user_id as user_use1_21_0_, projects0_.projects_project_id as projects2_21_0_, project1_.project_id as project_1_7_1_, project1_.description as descript2_7_1_, project1_.created_date as created_3_7_1_, project1_.is_active as is_activ4_7_1_, project1_.name as name5_7_1_, project1_.project_status as project_6_7_1_, project1_.updated_date as updated_7_7_1_ from user_projects projects0_ inner join project project1_ on projects0_.projects_project_id=project1_.project_id where projects0_.user_user_id=?
+2021-11-22 16:49:43,128 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:49:43,128 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select tags0_.user_user_id as user_use1_23_0_, tags0_.tags_tags_id as tags_tag2_23_0_, tags1_.tags_id as tags_id1_17_1_, tags1_.created_date as created_2_17_1_, tags1_.is_active as is_activ3_17_1_, tags1_.name as name4_17_1_, tags1_.updated_date as updated_5_17_1_ from user_tags tags0_ inner join tags tags1_ on tags0_.tags_tags_id=tags1_.tags_id where tags0_.user_user_id=?
+2021-11-22 16:49:43,128 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [4]
+2021-11-22 16:49:43,136 DEBUG o.h.e.j.s.SqlStatementLogger [http-nio-8080-exec-1] select permission0_.role_id as role_id1_16_0_, permission0_.permissions_id as permissi2_16_0_, permission1_.id as id1_5_1_, permission1_.created_date as created_2_5_1_, permission1_.is_active as is_activ3_5_1_, permission1_.name as name4_5_1_, permission1_.updated_date as updated_5_5_1_ from roles_permissions permission0_ inner join permissions permission1_ on permission0_.permissions_id=permission1_.id where permission0_.role_id=?
+2021-11-22 16:49:43,136 TRACE o.h.t.d.s.BasicBinder [http-nio-8080-exec-1] binding parameter [1] as [BIGINT] - [2]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([id1_5_1_] : [BIGINT]) - [1]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([created_2_5_1_] : [TIMESTAMP]) - [2021-11-22 16:39:51.989]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([is_activ3_5_1_] : [BOOLEAN]) - [true]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([name4_5_1_] : [VARCHAR]) - [READ_PRIVILEGE]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([updated_5_5_1_] : [TIMESTAMP]) - [null]
+2021-11-22 16:49:43,168 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([role_id1_16_0_] : [BIGINT]) - [2]
+2021-11-22 16:49:43,176 TRACE o.h.t.d.s.BasicExtractor [http-nio-8080-exec-1] extracted value ([permissi2_16_0_] : [BIGINT]) - [1]

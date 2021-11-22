@@ -30,6 +30,7 @@ import java.io.IOException;
  */
 @EnableSwagger2
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
@@ -73,7 +74,7 @@ public class UserController {
      * @return the response entity
      */
     @PutMapping("/login")
-    public ResponseEntity<Object> login(@RequestHeader JwtRequest jwtRequest) {
+    public ResponseEntity<Object> login(@RequestBody JwtRequest jwtRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
         final UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
@@ -90,7 +91,7 @@ public class UserController {
      * @createdTime 28 October 2021
      */
     @GetMapping("/all")
-    public ResponseEntity<Object> listAllUsers(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<Object> listAllUsers() {
         return userService.listAllUsers();
     }
 
@@ -148,7 +149,7 @@ public class UserController {
         if (authorization(token)) {
             return userService.updateUser(user);
         } else
-            return new ResponseEntity<Object>(na, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(na, HttpStatus.UNAUTHORIZED);
     }
 
     /**
@@ -267,5 +268,7 @@ public class UserController {
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         userService.userExportToPDF(response);
     }
+
+
 
 }

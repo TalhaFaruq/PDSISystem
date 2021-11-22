@@ -16,9 +16,9 @@ import java.util.List;
 })
 @Entity
 @Data
-public class Roles implements Serializable {
+public class Role implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "Name is Mandatory")
     private String name;

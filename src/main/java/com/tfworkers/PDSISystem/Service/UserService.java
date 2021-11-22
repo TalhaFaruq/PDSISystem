@@ -11,6 +11,7 @@ import com.lowagie.text.DocumentException;
 import com.tfworkers.PDSISystem.Model.DTO.RecommendedManagerDTO;
 
 import com.tfworkers.PDSISystem.Model.Entity.Project;
+import com.tfworkers.PDSISystem.Model.Entity.Role;
 import com.tfworkers.PDSISystem.Repository.ProjectRepository;
 import com.tfworkers.PDSISystem.Utilities.ResponseHandler;
 import com.tfworkers.PDSISystem.Utilities.UserPDFExporter;
@@ -21,6 +22,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -74,7 +77,7 @@ public class UserService implements UserDetailsService {
         Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
         if (user.isPresent()) {
             return new org.springframework.security.core.userdetails.User(user.get().getUsername(), user.get().getPassword(),
-                    new ArrayList<>());
+                   getAuthority(user.get()));
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
@@ -191,39 +194,7 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    /**
-     * Login check
-     *
-     * @return the boolean
-     */
-    public org.springframework.security.core.userdetails.User login(String username, String password) {
-        try {
-
-            Optional<User> newuser = Optional.ofNullable(userRepository.findByUsername(username));
-            if (newuser.isPresent() && newuser.get().getPassword() == password) {
-                logger.info("In Service class found email and password");
-              //  Authentication authenticate = authenticate(new UsernamePasswordAuthenticationToken(username, password));
-
-                return new org.springframework.security.core.userdetails.User(username, password, emptyList());
-                //  return ResponseHandler.generateResponse(HttpStatus.FOUND, "You are now Logged in",null);
-            } else {
-                logger.info("In Service class not found email and password");
-                return null;
-//                return ResponseHandler.generateResponse(HttpStatus.NOT_FOUND,"The Email and password are incorrect",null);
-//            }
-//        } catch (Exception e) {
-//            System.out.print("User not exist");
-//            logger.error("Error");
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-//        }
-            }
-        } catch (Exception e){
-            System.out.println(e);
-            return null;
-        }
-    }
-
-    /**
+     /**
      * Token send email and msg response entity.
      *
      * @param userId the user id
@@ -405,6 +376,27 @@ public class UserService implements UserDetailsService {
         List<User> listUsers = userRepository.findAll();
         UserPDFExporter exporter = new UserPDFExporter(listUsers);
         exporter.export(response);
+    }
+
+//    private Collection<? extends GrantedAuthority> getAuthorities(
+//            Collection<Role> roles) {
+//        List<GrantedAuthority> authorities
+//                = new ArrayList<>();
+//        for (Role role: roles) {
+//            authorities.add(new SimpleGrantedAuthority(role.getName()));
+//            role.getPermissions().stream()
+//                    .map(p -> new SimpleGrantedAuthority(p.getName()))
+//                    .forEach(authorities::add);
+//        }
+//
+//        return authorities;
+//    }
+    private Set<SimpleGrantedAuthority> getAuthority(User user) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        user.getRoles().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        });
+        return authorities;
     }
 
 }

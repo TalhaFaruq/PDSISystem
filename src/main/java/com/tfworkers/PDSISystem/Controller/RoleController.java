@@ -1,6 +1,6 @@
 package com.tfworkers.PDSISystem.Controller;
 
-import com.tfworkers.PDSISystem.Model.Entity.Roles;
+import com.tfworkers.PDSISystem.Model.Entity.Role;
 import com.tfworkers.PDSISystem.Service.RoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -88,7 +88,7 @@ public class RoleController {
      */
     @PostMapping("/add")
     public ResponseEntity<Object> saveRole(@RequestHeader(required = false, value = "Authorization") String authValue,
-                                           @RequestBody Roles role) {
+                                           @RequestBody Role role) {
 
         if (authValue != null) {
             if (authorize(authValue)) {
@@ -112,7 +112,7 @@ public class RoleController {
      */
     @PutMapping("/update")
     public ResponseEntity<Object> updateRole(@RequestHeader("Authorization") String authValue,
-                                             @RequestBody List<Roles> roles) {
+                                             @RequestBody List<Role> roles) {
 
         if (authorize(authValue)) {
             return roleService.updateRole(roles);

@@ -54,7 +54,10 @@ public class User {
 	@ManyToMany(targetEntity = Project.class, cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<>();
 
-	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+	@ManyToMany(targetEntity = Tags.class,cascade = CascadeType.ALL)
 	private List<Tags> tags = new ArrayList<>();
+
+	@ManyToMany(targetEntity=Role.class,cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	private List<Role> roles = new ArrayList<>();
 
 }

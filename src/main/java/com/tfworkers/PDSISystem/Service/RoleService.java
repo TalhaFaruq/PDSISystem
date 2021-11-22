@@ -1,6 +1,6 @@
 package com.tfworkers.PDSISystem.Service;
 
-import com.tfworkers.PDSISystem.Model.Entity.Roles;
+import com.tfworkers.PDSISystem.Model.Entity.Role;
 import com.tfworkers.PDSISystem.Repository.RoleRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,7 +43,7 @@ public class RoleService {
      */
     public ResponseEntity<Object> getAllRoles() {
         try {
-            List<Roles> roles = roleRepository.findAllByIsActiveOrderByCreatedDate(true);
+            List<Role> roles = roleRepository.findAllByIsActiveOrderByCreatedDate(true);
             logger.info("Getting role list",roles);
             // check if list is empty or not
             if (roles.isEmpty()) {
@@ -52,7 +52,7 @@ public class RoleService {
                 return new ResponseEntity<>(roles, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e.getMessage() + " \n " + e.getCause());
-            return new ResponseEntity<>("Roles could not fetched...", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Role could not fetched...", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -63,7 +63,7 @@ public class RoleService {
      * @param role the role
      * @return the response entity
      */
-    public ResponseEntity<Object> addRole(Roles role) {
+    public ResponseEntity<Object> addRole(Role role) {
         try {
             Calendar date = Calendar.getInstance();
             role.setCreatedDate(date.getTime());
@@ -74,7 +74,7 @@ public class RoleService {
             return new ResponseEntity<>("Role already exist , Duplicates not allowed", HttpStatus.CONFLICT);
         } catch (Exception e) {
             System.out.println(e.getMessage() + " \n " + e.getCause());
-            return new ResponseEntity<>("Roles could not added...", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Role could not added...", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -87,7 +87,7 @@ public class RoleService {
      */
     public ResponseEntity<Object> getRoleById(Long id) {
         try {
-            Optional<Roles> role = roleRepository.findById(id);
+            Optional<Role> role = roleRepository.findById(id);
             if (role.isPresent())
                 return new ResponseEntity<>(role, HttpStatus.FOUND);
             else
@@ -108,9 +108,9 @@ public class RoleService {
      * @param roles the roles
      * @return the response entity
      */
-    public ResponseEntity<Object> updateRole(List<Roles> roles) {
+    public ResponseEntity<Object> updateRole(List<Role> roles) {
         try {
-            for (Roles role : roles) {
+            for (Role role : roles) {
                 Calendar date = Calendar.getInstance();
 
                 role.setCreatedDate(date.getTime());
@@ -131,7 +131,7 @@ public class RoleService {
      */
     public ResponseEntity<Object> deleteRole(Long id) {
         try {
-            Optional<Roles> role = roleRepository.findById(id);
+            Optional<Role> role = roleRepository.findById(id);
             if (role.isPresent()) {
 
                 // set status false

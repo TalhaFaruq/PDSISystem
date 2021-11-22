@@ -16,7 +16,7 @@ public class Permissions {
     @Id
     @GeneratedValue
     private long id;
-    @NotBlank(message = "Name of the role is mandatory")
+    @NotBlank(message = "Name of the permission is mandatory")
     @Column(unique = true, nullable = false)
     private String name;
     private boolean isActive = true;
