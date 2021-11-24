@@ -31,6 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource(name = "userService")
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -40,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(encoder());
+                .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -58,18 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 
-    @Bean
-    public BCryptPasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
-    }
 
-    @Bean(name="myPasswordEncoder")
-    public PasswordEncoder getPasswordEncoder() {
-        DelegatingPasswordEncoder delPasswordEncoder=  (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        BCryptPasswordEncoder bcryptPasswordEncoder =new BCryptPasswordEncoder();
-        delPasswordEncoder.setDefaultPasswordEncoderForMatches(bcryptPasswordEncoder);
-        return delPasswordEncoder;
-    }
 
     @Bean
     public FilterRegistrationBean corsFilter() {
