@@ -7,8 +7,7 @@ import com.lowagie.text.DocumentException;
 import com.tfworkers.PDSISystem.Model.DTO.JwtRequest;
 import com.tfworkers.PDSISystem.Model.DTO.SelectUsersProjectDTO;
 
-import com.tfworkers.PDSISystem.Security.JwtResponse;
-import com.tfworkers.PDSISystem.Security.JwtTokenUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +36,6 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
 
     private final String na = "Not Authorize";
@@ -73,19 +70,18 @@ public class UserController {
      *
      * @return the response entity
      */
-    @PutMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody JwtRequest jwtRequest) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
-        final UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-
-        return ResponseEntity.ok(new JwtResponse(token));
-    }
+//    @PutMapping("/login")
+//    public ResponseEntity<Object> login(@RequestBody JwtRequest jwtRequest) {
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(),jwtRequest.getPassword()));
+//        final UserDetails userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
+//        final String token = jwtTokenUtil.generateToken(userDetails);
+//
+//        return ResponseEntity.ok(new JwtResponse(token));
+//    }
 
     /**
      * List all users response entity.
      *
-     * @param token the token
      * @return Just returns ResponseEntity
      * @author Talha Farooq
      * @createdTime 28 October 2021
